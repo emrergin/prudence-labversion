@@ -39,7 +39,8 @@
     />
     <DemographicQuestions v-if="currentPhase === `dem`" 
      @end="currentPhase = 'gps'"/>
-    <GPSQuestions v-if="currentPhase === `gps`"/>
+    <GPSQuestions v-if="currentPhase === `gps`"
+     @end="currentPhase = 'son'"/>
     <SonucEkrani
       v-if="currentPhase === `son`"
       @end="endOfExperiment = true"
@@ -83,7 +84,7 @@ export default {
   },
   data() {
     return {
-      currentPhase: `dem`,
+      currentPhase: `intro`,
       store,
       endOfExperiment: false,
       treatments: null,
@@ -135,13 +136,13 @@ export default {
           intro: `rskTut`,
           rskGam: `pruTut`,
           pruGam: `temTut`,
-          temGam: `son`,
+          temGam: `dem`,
         },
         {
           intro: `rskTut`,
           rskGam: `temTut`,
           temGam: `pruTut`,
-          pruGam: `son`,
+          pruGam: `dem`,
         },
       ],
     };

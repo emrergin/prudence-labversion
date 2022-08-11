@@ -4,7 +4,7 @@
       Hoş geldiniz. Bu deneyi belli durumlarda alınan ekonomik kararları anlamak
       için hazırladık.
     </li>
-    <li>
+    <!-- <li>
       Deneyde fare kullanmanız beklendiğinden, mobil cihazlar deneye uygun
       değildir.
     </li>
@@ -12,7 +12,7 @@
       Deney, <i>Internet Explorer</i> ve <i>Safari</i> üzerinden
       çalışmamaktadır. Lütfen kullandığınız tarayıcının güncel olduğuna emin
       olun.
-    </li>
+    </li> -->
     <li>
       Deneyde her biri 15 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
       oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için

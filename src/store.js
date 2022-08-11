@@ -11,6 +11,6 @@ export const store = reactive({
   kazanc: toplamKazanc,
   isim: KisiIsmi,
   _id: uuID,
-  demografi: [],
-  gps: []
+  demografi: {},
+  gps: {}
 });

@@ -169,7 +169,10 @@
 
 <script setup>
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
+import {checkValidityOfAllInputs} from '../functions/utilities'
 import { ref } from "vue";
+import { store } from "../store.js";
+import veriGuncelle from "../functions/veriGuncelle";
 
 const emit = defineEmits(["end"]);
 const age=ref('');
@@ -182,7 +185,11 @@ const diff=ref('');
 const sure=ref('');
 
 function finishPart(){
-    // console.log()
+    if (!checkValidityOfAllInputs()){return;}
+    // console.log({age:age.value,gpa:gpa.value,preExp:preExp.value,sex:sex.value,dep:dep.value,econ:econ.value,diff:diff.value,sure:sure.value});
+    store.demografi = {age:age.value,gpa:gpa.value,preExp:preExp.value,sex:sex.value,dep:dep.value,econ:econ.value,diff:diff.value,sure:sure.value};
+    console.log(store.demografi);
+    veriGuncelle();
     emit('end', true);
 }
 </script>

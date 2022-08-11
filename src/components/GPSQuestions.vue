@@ -502,9 +502,9 @@
         <p>Hangisini tercih ederdiniz:</p> 
         <p>%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
         <!-- <p v-else>Çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi tercih edersiniz?</p> -->
-        <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="0" required>
+        <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="1" required>
         <label for="lottery"> 50/50 çekiliş</label>
-        <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="1">
+        <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="0">
         <label for="sure"> Kesin ödeme</label>
     </div>
     <!-- <p>{{stairRiskSelections}}</p> -->
@@ -528,27 +528,27 @@
         <label class="statement">Yabancıya hangi hediyeyi verirsiniz?</label>
         <ul class='likert sixmemberlikert'>
             <li>
-                <input type="radio" name="d1" value="0" required>
+                <input type="radio" name="giftvalue" value="0" required>
                 <label>{{2*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="1">
+                <input type="radio" name="giftvalue" value="1">
                 <label>{{4*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="2">
+                <input type="radio" name="giftvalue" value="2">
                 <label>{{6*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="3">
+                <input type="radio" name="giftvalue" value="3">
                 <label>{{8*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="4">
+                <input type="radio" name="giftvalue" value="4">
                 <label>{{10*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="5">
+                <input type="radio" name="giftvalue" value="5">
                 <label>{{12*inflationMultiplier}} TL değerinde hediye</label>
             </li>
         </ul>
@@ -561,7 +561,7 @@
         <p>Bugün beklenmedik bir şekilde {{400*inflationMultiplier}} TL aldınız. İyi bir amaç için bu miktarın ne kadarını bağışlarsınız? (0 ile {{400*inflationMultiplier}} arasındaki herhangi bir değeri seçebilirsiniz)</p>
     </div>
     <br>
-    <input type="number" min="0" :max="400*inflationMultiplier" required/>
+    <input type="number" min="0" :max="400*inflationMultiplier" required name="donation"/>
 </div>
 <div v-if="question==='stairpatience'">
     <div class="subdiv">
@@ -576,9 +576,9 @@
     <div class="u-bot" >
         <p>Lütfen aşağıdaki durumu değerlendirin:</p> 
         <p>Bugün {{40* inflationMultiplier}} TL almayı mı yoksa 12 ay sonra {{valueNow* inflationMultiplier}} TL almayı mı tercih edersiniz?</p>
-        <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="0" required>
+        <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="1" required>
         <label for="stairPatience1"> Bugün </label>
-        <input type="radio" id="stairPatience2" name="stairPatience" v-model="currentStairValue" value="1">
+        <input type="radio" id="stairPatience2" name="stairPatience" v-model="currentStairValue" value="0">
         <label for="stairPatience2"> 12 ay sonra</label>
     </div>
 </div>
@@ -593,8 +593,11 @@
 
 <script setup>
     import { ref } from "vue";
-    import {checkValidityOfAllInputs} from '../functions/utilities'
-    defineEmits(["end"]);
+    import { defineEmits as defineEmits } from "@vue/runtime-dom";
+    import {checkValidityOfAllInputs} from '../functions/utilities';
+    import { store } from "../store.js";
+    import veriGuncelle from "../functions/veriGuncelle";
+    const emit = defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
     const question = ref(`generalrisk`);
@@ -604,9 +607,9 @@
     function nextQuestion(){
 
         if (!checkValidityOfAllInputs()){return;}
-        if(questionList[questionIndex.value]===`stairrisk` && stairRiskSelections.value.length<4){
+
+        if(questionList[questionIndex.value]===`stairrisk`){
             stairRiskSelections.value.push(currentStairValue.value);
-            // currentStairValue.value=null;
             if(stairRiskSelections.value[stairRiskSelections.value.length-1]==='0'){
                 currentSure.value+=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
@@ -614,20 +617,67 @@
                 currentSure.value-=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
             currentStairValue.value=null;
-            return false;
+            
+            if(stairRiskSelections.value.length<5){
+                return false;
+            }
+            
         }
-        if(questionList[questionIndex.value]===`stairpatience` && stairPatienceSelections.value.length<4){
-            stairPatienceSelections.value.push(currentStairValue.value);            
-            valueNow.value = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
+        if(questionList[questionIndex.value]===`stairpatience` ){
+            stairPatienceSelections.value.push(currentStairValue.value);   
+            if (stairPatienceMap.get(valueNow.value)){
+                valueNow.value = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
+            }         
+            
             currentStairValue.value=null;
-            return false;
+            if(stairPatienceSelections.value.length<5){
+                return false;
+            }
         }
 
+        var inputs, index;
+
+        inputs = document.getElementsByTagName('input');
+        if (questionList[questionIndex.value]==='stairrisk'|| questionList[questionIndex.value]==='stairpatience'){
+            if (questionList[questionIndex.value]==='stairrisk'){
+                // console.log(stairRiskSelections.value);
+                store.gps.stairrisk = stairRiskSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);
+            }
+            else{
+                // console.log(stairPatienceSelections.value);  
+                store.gps.stairpatience = stairPatienceSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);             
+            }
+        }
+        else if (questionList[questionIndex.value]==='gift'){
+            if (currentGiftSelection.value==='next'){
+                store.gps.gift = document.querySelector("input[name=giftvalue]:checked").value;
+            }
+            else{
+                store.gps.gift = currentGiftSelection.value;
+            }
+        }
+        else {
+            for (index = 0; index < inputs.length; ++index) {
+                if (inputs[index].type==='radio' && inputs[index].checked){
+                    
+                    store.gps[inputs[index].name] = inputs[index].value;
+                }
+                if (inputs[index].type==='text'||inputs[index].type==='number'){
+                    store.gps[inputs[index].name] = inputs[index].value;
+                }
+                
+            }
+        }
+        
+
+// console.log(`son burada`)
         questionIndex.value++;
         question.value=questionList[questionIndex.value];
-
+        console.log(store.gps);
         if(questionIndex===7){
-            $emit('end', true);
+            // store.gps= {};
+            veriGuncelle();
+            emit('end', true);
         }
     }
 
