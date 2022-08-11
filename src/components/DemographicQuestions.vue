@@ -7,9 +7,11 @@
             size="3" maxlength="3"
             min="0" max="200"
             id="yas"
+            v-model="age"
             />
-                <label for="ortalama" class="label">Üniversite genel ortalamanız hangi aralıkta? </label>
-            <select name="ortalama" id="ortalama">
+            <label for="ortalama" class="label">Üniversite genel ortalamanız hangi aralıkta? </label>
+            <select name="ortalama" id="ortalama" v-model="gpa">
+                <option disabled selected value="" hidden> seçiniz </option>
                 <option value="0">0-0.5</option>
                 <option value="0.5">0.5-1</option>
                 <option value="1">1-1.5</option>
@@ -23,33 +25,34 @@
         <div>
             <p class="label">Daha önce benzer bir deneye katıldınız mı?</p>
 
-            <input type="radio" id="html" name="fav_language" value="evet">
+            <input type="radio" id="html" name="fav_language" value="1" v-model="preExp">
             <label for="html">Evet</label>
-            <input type="radio" id="css" name="fav_language" value="hayır">
+            <input type="radio" id="css" name="fav_language" value="0"  v-model="preExp">
             <label for="css">Hayır</label>
         </div>
         <div >
             <p class="label">Cinsiyetiniz</p>
-            <input type="radio" id="kadin" name="cins" value="kadin">
+            <input type="radio" id="kadin" name="cins" value="0" v-model="sex">
             <label for="kadin">Kadın</label>
-            <input type="radio" id="erkek" name="cins" value="erkek">
+            <input type="radio" id="erkek" name="cins" value="1" v-model="sex">
             <label for="erkek">Erkek</label>
-            <input type="radio" id="diger" name="cins" value="diger">
+            <input type="radio" id="diger" name="cins" value="2" v-model="sex">
             <label for="diger">Diğer</label> 
         </div>
         <div >
             <label for="bolum" class="label">Bölümünüz: </label> 
-            <input id="bolum"/>
+            <input id="bolum" v-model="dep"/>
         </div>
         <div >
             <label for="ders" class="label">Bugüne kadar kaç ekonomi dersi aldınız?</label>
 
-            <select name="ders" id="ders">
+            <select name="ders" id="ders" v-model="econ">
+                <option disabled selected value="" hidden> seçiniz </option>
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="4+">4+</option>
+                <option value="4">4+</option>
             </select>
         </div>
     </div>
@@ -57,100 +60,103 @@
         <label class="label">Deneydeki işlerin ne kadar zor olduğunu düşündünüz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="zorluk" value="0">
-                <label>Çok zor</label>
+                <input type="radio" name="zorluk" value="0" v-model="diff">
+                <label>Çok kolay</label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="1">
+                <input type="radio" name="zorluk" value="1" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="2">
+                <input type="radio" name="zorluk" value="2" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="3">
+                <input type="radio" name="zorluk" value="3" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="4">
+                <input type="radio" name="zorluk" value="4" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="5">
+                <input type="radio" name="zorluk" value="5" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="6">
+                <input type="radio" name="zorluk" value="6" v-model="diff">
                 <label></label>
             </li>
                 <li>
-                <input type="radio" name="zorluk" value="7">
+                <input type="radio" name="zorluk" value="7" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="8">
+                <input type="radio" name="zorluk" value="8" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="9">
+                <input type="radio" name="zorluk" value="9" v-model="diff">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="zorluk" value="10">
-                <label>Çok kolay</label>
+                <input type="radio" name="zorluk" value="10" v-model="diff">
+                <label>Çok zor</label>
             </li>
         </ul>
         <label class="statement">Deneydeki seçimleriniz hakkında ne kadar emindiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="secimler" value="0">
+                <input type="radio" name="secimler" value="0" v-model="sure">
                 <label>Hiç emin değildim</label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="1">
+                <input type="radio" name="secimler" value="1" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="2">
+                <input type="radio" name="secimler" value="2" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="3">
+                <input type="radio" name="secimler" value="3" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="4">
+                <input type="radio" name="secimler" value="4" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="5">
+                <input type="radio" name="secimler" value="5" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="6">
+                <input type="radio" name="secimler" value="6" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="7">
+                <input type="radio" name="secimler" value="7" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="8">
+                <input type="radio" name="secimler" value="8" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="9">
+                <input type="radio" name="secimler" value="9" v-model="sure">
                 <label></label>
             </li>
             <li>
-                <input type="radio" name="secimler" value="10">
+                <input type="radio" name="secimler" value="10" v-model="sure">
                 <label>Çok emindim</label>
             </li>
         </ul>
+        <!-- <p>{{age}}-{{gpa}}-{{preExp}}-{{sex}}-{{dep}}-{{econ}}-{{diff}}-{{sure}}</p> -->
         <div>
-            <button @click="$emit('end', true)" class="stepButton">
-                <span>Verileri Kaydet</span>
+            <button type="button" @click="finishPart" class="stepButton"
+            :disabled="age === '' || gpa === '' || preExp=== '' || sex === '' || econ==='' || diff==='' || sure === ''" 
+            >
+                <span>Devam</span>
             </button>
         </div>
 
@@ -160,10 +166,33 @@
     </div>
 </template>
 
+
+<script setup>
+import { defineEmits as defineEmits } from "@vue/runtime-dom";
+import { ref } from "vue";
+
+const emit = defineEmits(["end"]);
+const age=ref('');
+const gpa=ref('');
+const preExp=ref('');
+const sex=ref('');
+const dep=ref('');
+const econ=ref('');
+const diff=ref('');
+const sure=ref('');
+
+function finishPart(){
+    // console.log()
+    emit('end', true);
+}
+</script>
+
 <style scoped>
 div{
     font-size:14px;
 }
+
+
 
 /* *{
     outline: 2px solid red;

@@ -8,7 +8,7 @@
     <!-- <label class="statement">Genel olarak, risk almaya istekli bir kişi mi yoksa risk almaktan sakınan biri misiniz? </label> -->
     <ul class='likert'>
         <li>
-            <input type="radio" name="risk_istegi" value="0">
+            <input type="radio" name="risk_istegi" value="0" required>
             <label>0 - Risk almaya tamamen isteksiz</label>
         </li>
         <li>
@@ -63,7 +63,7 @@
         <label class="statement">Gelecekte daha fazla faydasını görebilmek adına bugün sizin için faydalı olan bir şeyden vazgeçmeye ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="gelecekfayda" value="0">
+                <input type="radio" name="gelecekfayda" value="0" required>
                 <label>0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
@@ -110,7 +110,7 @@
         <label class="statement">Size maliyetleri olsa bile, size karşı haksız davranışları cezalandırmaya ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="cezakendi" value="0">
+                <input type="radio" name="cezakendi" value="0" required>
                 <label>0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
@@ -157,7 +157,7 @@
         <label class="statement">Size maliyetleri olsa bile, başkalarına haksızlık yapan birini cezalandırmaya ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="cezabaskasi" value="0">
+                <input type="radio" name="cezabaskasi" value="0" required>
                 <label>0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
@@ -204,7 +204,7 @@
         <label class="statement">Karşılığında hiçbir geri dönüş beklemeden hayır işlerine bir şeyler vermeye ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="hayir" value="0">
+                <input type="radio" name="hayir" value="0" required>
                 <label>0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
@@ -259,7 +259,7 @@
         <label class="statement smalltoppadding">Bana iyilikte bulunan birisine karşılık vermeye hazırım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d1" value="0">
+                <input type="radio" name="d1" value="0" required>
                 <label>0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
@@ -306,7 +306,7 @@
         <label class="statement smalltoppadding">Eğer çok haksız bir muamele görürsem, bunu yapmak için bir bedel olsa bile ilk fırsatta bunun intikamını alırım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d1" value="0">
+                <input type="radio" name="d2" value="0" required>
                 <label>0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
@@ -353,7 +353,7 @@
         <label class="statement smalltoppadding">Ben insanların sadece en iyi niyetlerle davrandıklarını varsayarım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d3" value="0">
+                <input type="radio" name="d3" value="0" required>
                 <label>0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
@@ -400,7 +400,7 @@
         <label class="statement smalltoppadding">Matematikte iyiyim.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d4" value="0">
+                <input type="radio" name="d4" value="0" required>
                 <label>0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
@@ -447,7 +447,7 @@
         <label class="statement smalltoppadding">Görevleri hemen yapmanın daha iyi olacağını bilsem bile erteleme eğilimindeyim.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d5" value="0">
+                <input type="radio" name="d5" value="0" required>
                 <label>0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
@@ -496,13 +496,13 @@
 <div v-if="question==='stairrisk'">
     <div class="subdiv">
         <p>Lütfen aşağıdaki durumu hayal edin: </p>
-        <p>150 TL kazanma ve hiçbir şey kazanamama arasında eşit şansa sahip olacağınız bir çekiliş yahut belirli bir miktar kesin ödeme arasında seçim yapabilirsiniz. Size böyle beş farklı durum sunacağız.</p> 
+        <p>{{150* inflationMultiplier}} TL kazanma ve hiçbir şey kazanamama arasında eşit şansa sahip olacağınız bir çekiliş yahut belirli bir miktar kesin ödeme arasında seçim yapabilirsiniz. Size böyle beş farklı durum sunacağız.</p> 
     </div>
     <div class="u-bot" >
-        <p v-if="stairRiskSelections.length===0">Hangisini tercih ederdiniz:</p> 
-        <p v-if="stairRiskSelections.length===0">%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
-        <p v-else>Çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi tercih edersiniz?</p>
-        <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="0">
+        <p>Hangisini tercih ederdiniz:</p> 
+        <p>%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
+        <!-- <p v-else>Çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi tercih edersiniz?</p> -->
+        <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="0" required>
         <label for="lottery"> 50/50 çekiliş</label>
         <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="1">
         <label for="sure"> Kesin ödeme</label>
@@ -518,7 +518,7 @@
         <p>Bu hediyelerden birini “teşekkür hediyesi” olarak bu yabancıya verir misiniz? </p>
     </div>
     <div >
-        <input type="radio" id="gifter" name="gift" value="next" v-model="currentGiftSelection">
+        <input type="radio" id="gifter" name="gift" value="next" v-model="currentGiftSelection" required>
         <label for="kadin">Evet</label>
         <input type="radio" id="nongifter" name="gift" value="0" v-model="currentGiftSelection">
         <label for="erkek">Hayır</label>
@@ -528,7 +528,7 @@
         <label class="statement">Yabancıya hangi hediyeyi verirsiniz?</label>
         <ul class='likert sixmemberlikert'>
             <li>
-                <input type="radio" name="d1" value="0">
+                <input type="radio" name="d1" value="0" required>
                 <label>{{2*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
@@ -557,10 +557,11 @@
 </div>
 <div v-if="question==='hypodonation'">
     <div class="subdiv">
-        Aşağıdaki durumu hayal edin: Bugün beklenmedik bir şekilde {{400*inflationMultiplier}} TL aldınız. İyi bir amaç için bu miktarın ne kadarını bağışlarsınız? (0 ile {{400*inflationMultiplier}} arasındaki herhangi bir değeri seçebilirsiniz)
+        <p>Aşağıdaki durumu hayal edin:</p> 
+        <p>Bugün beklenmedik bir şekilde {{400*inflationMultiplier}} TL aldınız. İyi bir amaç için bu miktarın ne kadarını bağışlarsınız? (0 ile {{400*inflationMultiplier}} arasındaki herhangi bir değeri seçebilirsiniz)</p>
     </div>
     <br>
-    <input type="number" min="0" max="{{400*inflationMultiplier}}"/>
+    <input type="number" min="0" :max="400*inflationMultiplier" required/>
 </div>
 <div v-if="question==='stairpatience'">
     <div class="subdiv">
@@ -573,12 +574,12 @@
 
     </div>
     <div class="u-bot" >
-        <p v-if="stairPatienceSelections.length===0">Lütfen aşağıdaki durumu değerlendirin:</p> 
+        <p>Lütfen aşağıdaki durumu değerlendirin:</p> 
         <p>Bugün {{40* inflationMultiplier}} TL almayı mı yoksa 12 ay sonra {{valueNow* inflationMultiplier}} TL almayı mı tercih edersiniz?</p>
-        <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="0">
-        <label for="lottery"> Bugün </label>
+        <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="0" required>
+        <label for="stairPatience1"> Bugün </label>
         <input type="radio" id="stairPatience2" name="stairPatience" v-model="currentStairValue" value="1">
-        <label for="sure"> 12 ay sonra</label>
+        <label for="stairPatience2"> 12 ay sonra</label>
     </div>
 </div>
 
@@ -592,14 +593,17 @@
 
 <script setup>
     import { ref } from "vue";
+    import {checkValidityOfAllInputs} from '../functions/utilities'
     defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
-    const question = ref(`stairpatience`);
+    const question = ref(`generalrisk`);
 
-    const questionIndex = ref(6);
+    const questionIndex = ref(0);
 
     function nextQuestion(){
+
+        if (!checkValidityOfAllInputs()){return;}
         if(questionList[questionIndex.value]===`stairrisk` && stairRiskSelections.value.length<4){
             stairRiskSelections.value.push(currentStairValue.value);
             // currentStairValue.value=null;
@@ -609,15 +613,15 @@
             else{
                 currentSure.value-=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
+            currentStairValue.value=null;
             return false;
         }
         if(questionList[questionIndex.value]===`stairpatience` && stairPatienceSelections.value.length<4){
             stairPatienceSelections.value.push(currentStairValue.value);            
             valueNow.value = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
-            
+            currentStairValue.value=null;
             return false;
         }
-        currentStairValue.value=null;
 
         questionIndex.value++;
         question.value=questionList[questionIndex.value];
@@ -641,21 +645,21 @@
     const valueNow=ref(62);
     // const currentStairValueP=ref('');
     const stairPatienceMap = new Map();
-    stairPatienceMap.set(62,[50,74]);
-    stairPatienceMap.set(50,[45,56]);
-    stairPatienceMap.set(74,[68,81]);
-    stairPatienceMap.set(45,[42,48]);
-    stairPatienceMap.set(56,[53,59]);
-    stairPatienceMap.set(68,[65,71]);
-    stairPatienceMap.set(81,[77,84]);
-    stairPatienceMap.set(42,[41,44]);
-    stairPatienceMap.set(48,[46,49]);
-    stairPatienceMap.set(53,[52,54]);
-    stairPatienceMap.set(59,[57,60]);
-    stairPatienceMap.set(65,[63,66]);
-    stairPatienceMap.set(71,[69,72]);
-    stairPatienceMap.set(77,[76,79]);
-    stairPatienceMap.set(84,[92,86]);
+    stairPatienceMap.set(62,[74,50]);
+    stairPatienceMap.set(50,[56,45]);
+    stairPatienceMap.set(74,[81,68]);
+    stairPatienceMap.set(45,[48,42]);
+    stairPatienceMap.set(56,[59,53]);
+    stairPatienceMap.set(68,[71,65]);
+    stairPatienceMap.set(81,[84,77]);
+    stairPatienceMap.set(42,[44,41]);
+    stairPatienceMap.set(48,[49,46]);
+    stairPatienceMap.set(53,[54,52]);
+    stairPatienceMap.set(59,[60,57]);
+    stairPatienceMap.set(65,[66,63]);
+    stairPatienceMap.set(71,[72,69]);
+    stairPatienceMap.set(77,[79,76]);
+    stairPatienceMap.set(84,[86,92]);
 
 
 </script>

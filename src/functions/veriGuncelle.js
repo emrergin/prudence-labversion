@@ -7,6 +7,8 @@ function veriGuncelle() {
     odeme: store.kazanc,
     isim: store.isim,
     _id: store._id,
+    demografi: store.demografi,
+    gps: store.gps
   };
   const putMethod = {
     method: "PUT",

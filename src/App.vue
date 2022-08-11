@@ -1,11 +1,6 @@
 <template>
-  <!-- <div id="languagePicker" v-if="currentPhase === `intro`">
-    <button v-if="isTurkish" @click="isTurkish = false">English</button>
-    <button v-else @click="isTurkish = true">Türkçe</button>
-  </div> -->
   <div id="mobileWarning">
     <div >Daha geniş bir ekrana ihtiyacınız var.</div>
-    <!-- <div v-else>You need a larger screen for this.</div> -->
   </div>
   <div id="mainWrapper">
     <IntroScreen
@@ -42,8 +37,9 @@
       v-if="currentPhase === `rskGam`"
       @end="currentPhase = treatments[`rskGam`]"
     />
-    <DemographicQuestions v-if="currentPhase === `dem`"/>
-    <GSPQuestionsVue v-if="currentPhase === `gsp`"/>
+    <DemographicQuestions v-if="currentPhase === `dem`" 
+     @end="currentPhase = 'gps'"/>
+    <GPSQuestions v-if="currentPhase === `gps`"/>
     <SonucEkrani
       v-if="currentPhase === `son`"
       @end="endOfExperiment = true"
@@ -68,7 +64,7 @@ import RiskGame from "./components/RiskGamev2.vue";
 import RiskTutorial from "./components/RiskTutorial.vue";
 import SonucEkrani from "./components/SonucEkrani.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
-import GSPQuestionsVue from "./components/GSPQuestions.vue";
+import GPSQuestions from "./components/GPSQuestions.vue";
 import { store } from "./store.js";
 
 export default {
@@ -83,12 +79,11 @@ export default {
     RiskTutorial,
     SonucEkrani,
     DemographicQuestions,
-    GSPQuestionsVue
+    GPSQuestions
   },
   data() {
     return {
-      currentPhase: `gsp`,
-      mode: `notDemo`,
+      currentPhase: `dem`,
       store,
       endOfExperiment: false,
       treatments: null,
@@ -193,11 +188,7 @@ export default {
     this.pruPayOffs = shuffle(this.pruPayOffs);
     this.rskPayOffs = shuffle(this.rskPayOffs);
     this.temPayOffs = shuffle(this.temPayOffs);
-    // console.log(this.pruPayOffs, this.rskPayOffs, this.temPayOffs);
 
-    // if (navigator.language === `tr-TR`) {
-    //   this.isTurkish = true;
-    // }
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);
