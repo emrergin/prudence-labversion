@@ -62,6 +62,8 @@ function logData() {
     odeme: store.kazanc,
     isim: store.isim,
     _id: store._id,
+    demografi: store.demografi,
+    gps: store.gps
   };
   const postMethod = {
     method: `POST`,
@@ -74,11 +76,15 @@ function logData() {
 }
 function fullScreen() {
   var requestMethod =
-    document.body.requestFullScreen ||
-    document.body.webkitRequestFullScreen ||
-    document.body.mozRequestFullScreen ||
-    document.body.msRequestFullscreen;
-  requestMethod.call(document.body);
+    // document.requestFullScreen ||
+    // document.webkitRequestFullScreen ||
+    // document.mozRequestFullScreen ||
+    // document.msRequestFullscreen;
+    document.documentElement.requestFullScreen ||
+    document.documentElement.webkitRequestFullScreen ||
+    document.documentElement.mozRequestFullScreen ||
+    document.documentElement.msRequestFullscreen;
+  requestMethod.call(document.documentElement);
   return false;
 }
 </script>
@@ -88,7 +94,7 @@ function fullScreen() {
   text-align: left;
   font-size: 1.5rem;
   width: 75ch;
-  margin: 1.5rem auto 1rem auto;
+  margin: 5.5rem auto 1rem auto;
 }
 
 .girisMetni > li + li {
@@ -100,4 +106,5 @@ function fullScreen() {
 .stepButton {
   margin: 1em auto 20px auto;
 }
+
 </style>

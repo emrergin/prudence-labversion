@@ -93,7 +93,7 @@
   <div v-if="oyunSonu" class="oyunKutusu">
     <p>Oyunu tamamladınız. Toplam kazancınız: {{ totalRevenue - totalLoss }}</p>
     <button @click="$emit('end', true)" class="stepButton">
-      <span v-if="lastTreatment">Deneyi Bitir</span>
+      <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>
     </button>
   </div>

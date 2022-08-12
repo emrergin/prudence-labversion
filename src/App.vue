@@ -4,16 +4,18 @@
   </div>
   <div id="mainWrapper">
     <IntroScreen
-      v-if="currentPhase === `intro`"
+      v-if="currentPhase === `intro`"      
       @end="currentPhase = treatments[`intro`]"
     />
+    <!-- @end="currentPhase = treatments[`intro`]" -->
+    <!-- @end="currentPhase = 'dem'" -->
     <PrudenceTutorial
       v-if="currentPhase === `pruTut`"
       @end="currentPhase = `pruGam`"
     />
     <PrudenceGame
       :payOffs="pruPayOffs"
-      :lastTreatment="treatments[`pruGam`] === `son`"
+      :lastTreatment="treatments[`pruGam`] === `dem`"
       v-if="currentPhase === `pruGam`"
       @end="currentPhase = treatments[`pruGam`]"
     />
@@ -23,7 +25,7 @@
     />
     <TemperanceGame
       :payOffs="temPayOffs"
-      :lastTreatment="treatments[`temGam`] === `son`"
+      :lastTreatment="treatments[`temGam`] === `dem`"
       v-if="currentPhase === `temGam`"
       @end="currentPhase = treatments[`temGam`]"
     />
@@ -33,7 +35,7 @@
     />
     <RiskGame
       :payOffs="rskPayOffs"
-      :lastTreatment="treatments[`rskGam`] === `son`"
+      :lastTreatment="treatments[`rskGam`] === `dem`"
       v-if="currentPhase === `rskGam`"
       @end="currentPhase = treatments[`rskGam`]"
     />
@@ -88,7 +90,6 @@ export default {
       store,
       endOfExperiment: false,
       treatments: null,
-      // isTurkish: false,
       pruPayOffs: [
         [4, 11, 3, -3],
         [3, 9, 2, -2],
@@ -129,7 +130,7 @@ export default {
         [10, 10, 3, -3, 6, -6],
         [10, 10, 4, -4, 5, -5],
         [8, 8, 1, -1, 6, -6],
-        [5, 5, 2 - 2, 2, -2],
+        [5, 5, 2, -2, 2, -2],
       ],
       nextTreatment: [
         {
@@ -221,16 +222,21 @@ export default {
 }
 
 footer {
+  position:absolute;
   width: 100%;
+  bottom:0px;
+  left:0px;
   text-align: right;
   font-weight: 800;
   padding: 20px;
+  padding-right: calc(50vw - 600px);
   background-color: turquoise;
   margin-top: auto;
 }
 
 #mainWrapper{
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #mobileWarning {

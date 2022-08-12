@@ -782,6 +782,7 @@ export default {
 </style>
 
 <style scoped>
+
 .centered {
   margin-top: 30px;
   margin-bottom: -40px;

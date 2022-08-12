@@ -82,7 +82,7 @@
   <div v-if="oyunSonu" class="oyunKutusu">
     <p>Oyunu tamamladınız. Toplam kazancınız: {{ totalRevenue - totalLoss }}</p>
     <button @click="$emit('end', true)" class="stepButton">
-      <span v-if="lastTreatment">Deneyi Bitir</span>
+      <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>
     </button>
   </div>
@@ -152,8 +152,7 @@ function convertNumbertoString(number) {
 </script>
 
 <style>
-.oyunKutusu {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.oyunKutusu {  
   display: flex;
   flex-direction: column;
   margin: 0px;

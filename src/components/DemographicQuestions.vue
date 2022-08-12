@@ -163,7 +163,7 @@
         </div>
 
 
-    </div>
+</div>
 </template>
 
 
@@ -186,27 +186,31 @@ const sure=ref('');
 
 function finishPart(){
     if (!checkValidityOfAllInputs()){return;}
-    // console.log({age:age.value,gpa:gpa.value,preExp:preExp.value,sex:sex.value,dep:dep.value,econ:econ.value,diff:diff.value,sure:sure.value});
     store.demografi = {age:age.value,gpa:gpa.value,preExp:preExp.value,sex:sex.value,dep:dep.value,econ:econ.value,diff:diff.value,sure:sure.value};
-    console.log(store.demografi);
+    // console.log(store.demografi);
     veriGuncelle();
     emit('end', true);
 }
 </script>
+
 
 <style scoped>
 div{
     font-size:14px;
 }
 
+.flex{
+    display:flex;
+}
 
+/* .vertical-centering{
+    margin-block:10%;
+} */
 
 /* *{
     outline: 2px solid red;
 } */
-.flex{
-    display:flex;
-}
+
 .sol{
     text-align: left;
     padding-left:50px;

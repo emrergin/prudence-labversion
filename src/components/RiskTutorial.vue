@@ -406,7 +406,6 @@ export default {
 .kirmiziKenarli {
   border: 10px solid red;
 }
-
 .gorunmez {
   display: none !important;
 }

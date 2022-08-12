@@ -55,10 +55,12 @@
 </div>
 <div v-if="question==='willingnesstoact'">
     <div>
-        Şimdi size belirli bir şekilde hareket etmeye istekli olup olmadığınızı soruyoruz.
-        Lütfen cevabınızı 0&#39;dan 10&#39;a kadar bir ölçekte tekrar belirtin. 0, “hiçbir şekilde yapmak
-        istemiyor” ve 10, “yapmaya çok istekli” anlamına gelir. Ölçekte nereye düştüğünüzü
-        belirtmek için 0 ile 10 arasında herhangi bir sayı kullanabilirsiniz.
+        <p> Şimdi size belirli bir şekilde hareket etmeye istekli olup olmadığınızı soruyoruz.</p>
+        <p> 
+            Lütfen cevabınızı 0'dan 10'a kadar bir ölçekte tekrar belirtin. 0, “hiçbir şekilde yapmak istemiyor” 
+            ve 10, “yapmaya çok istekli” anlamına gelir. Ölçekte nereye düştüğünüzü
+            belirtmek için 0 ile 10 arasında herhangi bir sayı kullanabilirsiniz.
+        </p>
     </div>
         <label class="statement">Gelecekte daha fazla faydasını görebilmek adına bugün sizin için faydalı olan bir şeyden vazgeçmeye ne kadar isteklisiniz?</label>
         <ul class='likert'>
@@ -501,13 +503,11 @@
     <div class="u-bot" >
         <p>Hangisini tercih ederdiniz:</p> 
         <p>%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
-        <!-- <p v-else>Çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi tercih edersiniz?</p> -->
         <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="1" required>
         <label for="lottery"> 50/50 çekiliş</label>
         <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="0">
         <label for="sure"> Kesin ödeme</label>
     </div>
-    <!-- <p>{{stairRiskSelections}}</p> -->
 </div>
 <div v-if="question==='gift'">
     <div class="subdiv">
@@ -585,9 +585,11 @@
 
 <div>
     <button @click="nextQuestion" class="stepButton">
-        <span>Sıradaki Soru</span>
+        <span v-if="stairPatienceSelections.length<5">Sıradaki Soru</span>
+        <span v-else>Deneyi Bitir</span>
     </button>
 </div>
+
 </template>
 
 
@@ -610,7 +612,7 @@
 
         if(questionList[questionIndex.value]===`stairrisk`){
             stairRiskSelections.value.push(currentStairValue.value);
-            if(stairRiskSelections.value[stairRiskSelections.value.length-1]==='0'){
+            if(stairRiskSelections.value[stairRiskSelections.value.length-1]==='1'){
                 currentSure.value+=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
             else{
@@ -635,9 +637,7 @@
             }
         }
 
-        var inputs, index;
 
-        inputs = document.getElementsByTagName('input');
         if (questionList[questionIndex.value]==='stairrisk'|| questionList[questionIndex.value]==='stairpatience'){
             if (questionList[questionIndex.value]==='stairrisk'){
                 // console.log(stairRiskSelections.value);
@@ -657,6 +657,9 @@
             }
         }
         else {
+            let inputs, index;
+
+            inputs = document.getElementsByTagName('input');
             for (index = 0; index < inputs.length; ++index) {
                 if (inputs[index].type==='radio' && inputs[index].checked){
                     
@@ -669,16 +672,16 @@
             }
         }
         
-
-// console.log(`son burada`)
         questionIndex.value++;
-        question.value=questionList[questionIndex.value];
-        console.log(store.gps);
-        if(questionIndex===7){
+
+        // console.log(store.gps);
+        if(questionIndex.value>=7){
             // store.gps= {};
             veriGuncelle();
             emit('end', true);
         }
+
+        question.value=questionList[questionIndex.value];
     }
 
 
@@ -695,20 +698,20 @@
     const valueNow=ref(62);
     // const currentStairValueP=ref('');
     const stairPatienceMap = new Map();
-    stairPatienceMap.set(62,[74,50]);
-    stairPatienceMap.set(50,[56,45]);
-    stairPatienceMap.set(74,[81,68]);
-    stairPatienceMap.set(45,[48,42]);
-    stairPatienceMap.set(56,[59,53]);
-    stairPatienceMap.set(68,[71,65]);
-    stairPatienceMap.set(81,[84,77]);
-    stairPatienceMap.set(42,[44,41]);
-    stairPatienceMap.set(48,[49,46]);
-    stairPatienceMap.set(53,[54,52]);
-    stairPatienceMap.set(59,[60,57]);
-    stairPatienceMap.set(65,[66,63]);
-    stairPatienceMap.set(71,[72,69]);
-    stairPatienceMap.set(77,[79,76]);
+    stairPatienceMap.set(62,[50,74]);
+    stairPatienceMap.set(50,[45,56]);
+    stairPatienceMap.set(74,[68,81]);
+    stairPatienceMap.set(45,[42,48]);
+    stairPatienceMap.set(56,[53,59]);
+    stairPatienceMap.set(68,[65,71]);
+    stairPatienceMap.set(81,[77,84]);
+    stairPatienceMap.set(42,[41,44]);
+    stairPatienceMap.set(48,[46,49]);
+    stairPatienceMap.set(53,[52,54]);
+    stairPatienceMap.set(59,[57,60]);
+    stairPatienceMap.set(65,[63,66]);
+    stairPatienceMap.set(71,[69,72]);
+    stairPatienceMap.set(77,[76,79]);
     stairPatienceMap.set(84,[86,92]);
 
 
