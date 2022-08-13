@@ -14,7 +14,7 @@
       olun.
     </li> -->
     <li>
-      Deneyde her biri 15 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
+      Deneyde her biri 12 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
       oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için
       metnin istediği şeyi yapmanız yahut farenin sol tuşuyla ekrana tıklamanız
       bekleniyor.
@@ -33,7 +33,7 @@
 
   <p >Çalışmaya katılmayı kabul ediyorum.</p>
   <input
-    style="display: block; margin-inline: auto"
+    style="display: block; margin-inline: auto;"
     v-model="store.isim"
     placeholder="Ad Soyad"
   />
@@ -100,11 +100,17 @@ function fullScreen() {
 .girisMetni > li + li {
   margin-top: 0.75em;
 }
+
+#mainWrapper>input:last-child{
+  margin-bottom:4ch;
+}
 </style>
 
 <style scoped>
 .stepButton {
   margin: 1em auto 20px auto;
 }
+
+
 
 </style>

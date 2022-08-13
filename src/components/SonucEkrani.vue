@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!bitis">
+  <div v-if="!bitis" class="p-v-15">
     <button      
       @click="
         bitis = true;
@@ -86,6 +86,9 @@ function exitFullscreen() {
 </script>
 
 <style scoped>
+.p-v-15{
+  padding-block:15ch;
+}
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;

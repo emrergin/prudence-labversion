@@ -716,6 +716,12 @@
 
 
 </script>
+<style>
+.m-bot{
+    margin-bottom:5ch;
+}
+
+</style>
 <style scoped>
 /* div{
     font-size:14px;
@@ -733,9 +739,6 @@ div{
 }
 .m-top{
     margin-top:5ch;
-}
-.m-bot{
-    margin-bottom:5ch;
 }
 
 .u-bot{

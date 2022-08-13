@@ -12,6 +12,9 @@ Ready to use version for the experiment whose full details are [here](https://gi
 - Selecting a list of points easily from a given image: https://www.mobilefish.com/services/record_mouse_coordinates/record_mouse_coordinates.php
 - Adding warning for refreshing the page: https://medium.com/js-dojo/how-to-prevent-browser-refresh-url-changes-or-route-navigation-in-vue-132e3f9f96cc
 
+### What I learned
+- You can make individual elements fullscreen, destroying depending CSS structure on these elements meanwhile.
+
 ## Thanks
 
 - We thank [Gürol Afşar](https://tr.linkedin.com/in/g%C3%BCrol-af%C5%9Far-14981286) for the idea of using pipes for the design, which made things more intuitive.

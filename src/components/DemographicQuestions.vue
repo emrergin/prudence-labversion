@@ -1,5 +1,5 @@
 <template>
-<div class="flex">
+<div class="flex m-bot">
     <div class="sol">
         <div >
             <label for="yas" class="label">Yaşınız: </label>

@@ -230,6 +230,7 @@ footer {
   font-weight: 800;
   padding: 20px;
   padding-right: calc(50vw - 600px);
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   background-color: turquoise;
   margin-top: auto;
 }
