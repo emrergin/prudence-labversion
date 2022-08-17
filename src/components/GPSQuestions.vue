@@ -502,7 +502,7 @@
     </div>
     <div class="u-bot" >
         <p>Hangisini tercih ederdiniz:</p> 
-        <p>%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
+        <p id="stairStep" class="stair-step">%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
         <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="1" required>
         <label for="lottery"> 50/50 çekiliş</label>
         <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="0">
@@ -575,7 +575,7 @@
     </div>
     <div class="u-bot" >
         <p>Lütfen aşağıdaki durumu değerlendirin:</p> 
-        <p>Bugün {{40* inflationMultiplier}} TL almayı mı yoksa 12 ay sonra {{valueNow* inflationMultiplier}} TL almayı mı tercih edersiniz?</p>
+        <p id="stairStep" class="stair-step">Bugün {{40* inflationMultiplier}} TL almayı mı yoksa 12 ay sonra {{valueNow* inflationMultiplier}} TL almayı mı tercih edersiniz?</p>
         <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="1" required>
         <label for="stairPatience1"> Bugün </label>
         <input type="radio" id="stairPatience2" name="stairPatience" v-model="currentStairValue" value="0">
@@ -620,9 +620,16 @@
             }
             currentStairValue.value=null;
             
+            document.getElementById('stairStep').classList.add("faded-out");
+            const myTimeout = setTimeout(
+            ()=>{
+                document.getElementById('stairStep').classList.remove("faded-out");
+            }    
+                , 750);
+            
             if(stairRiskSelections.value.length<5){
                 return false;
-            }
+            }          
             
         }
         if(questionList[questionIndex.value]===`stairpatience` ){
@@ -632,6 +639,14 @@
             }         
             
             currentStairValue.value=null;
+
+            document.getElementById('stairStep').classList.add("faded-out");
+            const myTimeout = setTimeout(
+            ()=>{
+                document.getElementById('stairStep').classList.remove("faded-out");
+            }    
+                , 750);
+
             if(stairPatienceSelections.value.length<5){
                 return false;
             }
@@ -719,6 +734,14 @@
 <style>
 .m-bot{
     margin-bottom:5ch;
+}
+
+.faded-out{
+    opacity:0;
+}
+
+.stair-step{
+    transition: all 0.5s ease-in;
 }
 
 </style>

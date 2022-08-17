@@ -15,8 +15,8 @@
     </li> -->
     <li>
       Deneyde her biri 12 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
-      oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için
-      metnin istediği şeyi yapmanız yahut farenin sol tuşuyla ekrana tıklamanız
+      oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için bazen
+      <b>metnin istediği şeyi yapmanız</b> bazen de <b>farenin sol tuşuyla ekrana tıklamanız</b>
       bekleniyor.
     </li>
     <li>
@@ -102,7 +102,7 @@ function fullScreen() {
 }
 
 #mainWrapper>input:last-child{
-  margin-bottom:4ch;
+  margin-bottom:6ch;
 }
 </style>
 

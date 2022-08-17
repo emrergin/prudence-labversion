@@ -224,11 +224,14 @@ export default {
 footer {
   position:absolute;
   width: 100%;
-  bottom:0px;
+  /* bottom:0px; */
+  top: calc(100% - 50px);
+  height: 15px;
   left:0px;
   text-align: right;
   font-weight: 800;
   padding: 20px;
+  padding-bottom:30px;
   padding-right: calc(50vw - 600px);
   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   background-color: turquoise;
