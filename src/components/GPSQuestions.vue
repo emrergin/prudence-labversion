@@ -502,7 +502,7 @@
     </div>
     <div class="u-bot" >
         <p>Hangisini tercih ederdiniz:</p> 
-        <p id="stairStep" class="stair-step">%50 şansla {{inflationMultiplier * stair1SureOutcome}} TL para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut {{currentSure * inflationMultiplier}} TL’lik kesin bir nakit para ödemesini mi? </p>
+        <p id="stairStep" class="stair-step">%50 şansla <strong>{{inflationMultiplier * stair1SureOutcome}} TL</strong> para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut <strong>{{currentSure * inflationMultiplier}} TL</strong>’lik kesin bir nakit para ödemesini mi? </p>
         <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="1" required>
         <label for="lottery"> 50/50 çekiliş</label>
         <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="0">
@@ -575,7 +575,7 @@
     </div>
     <div class="u-bot" >
         <p>Lütfen aşağıdaki durumu değerlendirin:</p> 
-        <p id="stairStep" class="stair-step">Bugün {{40* inflationMultiplier}} TL almayı mı yoksa 12 ay sonra {{valueNow* inflationMultiplier}} TL almayı mı tercih edersiniz?</p>
+        <p id="stairStep" class="stair-step">Bugün <strong>{{40* inflationMultiplier}} TL</strong> almayı mı yoksa 12 ay sonra <strong>{{valueNow* inflationMultiplier}} TL</strong> almayı mı tercih edersiniz?</p>
         <input type="radio" id="stairPatience1" name="stairPatience" v-model="currentStairValue" value="1" required>
         <label for="stairPatience1"> Bugün </label>
         <input type="radio" id="stairPatience2" name="stairPatience" v-model="currentStairValue" value="0">
