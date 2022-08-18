@@ -759,6 +759,7 @@ div{
 .subdiv{
     max-width:1000px;
     margin-inline:auto;
+    padding-inline:3ch;
 }
 .m-top{
     margin-top:5ch;

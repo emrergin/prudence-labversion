@@ -7,6 +7,18 @@
       v-if="currentPhase === `intro`"      
       @end="currentPhase = treatments[`intro`]"
     />
+    <!-- <IntroScreen
+      v-if="currentPhase === `intro`"      
+      @end="currentPhase = treatments[`intro`]"
+    />
+    <IntroScreen
+      v-if="currentPhase === `intro`"      
+      @end="currentPhase = treatments[`intro`]"
+    />
+    <IntroScreen
+      v-if="currentPhase === `intro`"      
+      @end="currentPhase = treatments[`intro`]"
+    />     -->
     <!-- @end="currentPhase = treatments[`intro`]" -->
     <!-- @end="currentPhase = 'dem'" -->
     <PrudenceTutorial
@@ -233,7 +245,7 @@ footer {
   padding: 20px;
   padding-bottom:30px;
   padding-right: calc(50vw - 600px);
-  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: turquoise;
   margin-top: auto;
 }

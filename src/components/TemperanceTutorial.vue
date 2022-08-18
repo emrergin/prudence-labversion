@@ -318,20 +318,12 @@ export default {
           kucukBoru.style.position = `relative`;
           vm.step++;
 
-          if (vm.remainingPlaces === ``) {
-            if (vm.isTurkish) {
+          if (vm.remainingPlaces === ``) {          
               if (vm.secimler[1]) {
                 vm.remainingPlaces = "A'ya veya D";
               } else {
                 vm.remainingPlaces = "C'ye veya B";
-              }
-            } else {
-              if (vm.secimler[1]) {
-                vm.remainingPlaces = "A or D";
-              } else {
-                vm.remainingPlaces = "C or B";
-              }
-            }
+              }            
           }
         }
         kucukBoru.onmouseup = null;

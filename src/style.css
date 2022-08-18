@@ -5,6 +5,7 @@
 
 html {
   border-top: 6px solid turquoise;
+  position: relative;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -ms-user-select: none;
