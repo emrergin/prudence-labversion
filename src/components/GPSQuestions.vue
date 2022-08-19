@@ -602,9 +602,9 @@
     const emit = defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
-    const question = ref(`stairrisk`);
+    const question = ref(`generalrisk`);
 
-    const questionIndex = ref(3);
+    const questionIndex = ref(0);
 
     function nextQuestion(){
 
