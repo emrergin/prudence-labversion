@@ -620,12 +620,14 @@
             }
             currentStairValue.value=null;
             
-            document.getElementById('stairStep').classList.add("faded-out");
-            const myTimeout = setTimeout(
-            ()=>{
-                document.getElementById('stairStep').classList.remove("faded-out");
-            }    
-                , 750);
+            if(document.getElementById('stairStep')){
+                document.getElementById('stairStep').classList.add("faded-out");
+                const myTimeout = setTimeout(
+                ()=>{
+                    document.getElementById('stairStep').classList.remove("faded-out");
+                }    
+                    , 750);
+            }
             
             if(stairRiskSelections.value.length<5){
                 return false;
@@ -640,12 +642,14 @@
             
             currentStairValue.value=null;
 
-            document.getElementById('stairStep').classList.add("faded-out");
-            const myTimeout = setTimeout(
-            ()=>{
-                document.getElementById('stairStep').classList.remove("faded-out");
-            }    
-                , 750);
+            if(document.getElementById('stairStep')){
+                document.getElementById('stairStep').classList.add("faded-out");
+                const myTimeout = setTimeout(
+                ()=>{
+                    document.getElementById('stairStep').classList.remove("faded-out");
+                }    
+                    , 750);
+            }
 
             if(stairPatienceSelections.value.length<5){
                 return false;

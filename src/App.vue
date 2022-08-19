@@ -19,8 +19,7 @@
       v-if="currentPhase === `intro`"      
       @end="currentPhase = treatments[`intro`]"
     />     -->
-    <!-- @end="currentPhase = treatments[`intro`]" -->
-    <!-- @end="currentPhase = 'dem'" -->
+
     <PrudenceTutorial
       v-if="currentPhase === `pruTut`"
       @end="currentPhase = `pruGam`"
@@ -234,10 +233,10 @@ export default {
 }
 
 footer {
-  position:absolute;
+  position:fixed;
   width: 100%;
-  /* bottom:0px; */
-  top: calc(100% - 50px);
+  bottom:0px;
+  /* top: calc(100% - 56px); */
   height: 15px;
   left:0px;
   text-align: right;
