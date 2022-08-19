@@ -602,21 +602,22 @@
     const emit = defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
-    const question = ref(`generalrisk`);
+    const question = ref(`stairrisk`);
 
-    const questionIndex = ref(0);
+    const questionIndex = ref(3);
 
     function nextQuestion(){
 
         if (!checkValidityOfAllInputs()){return;}
 
         if(questionList[questionIndex.value]===`stairrisk`){
+            let nextValue;//For value to be rendered after the animation.
             stairRiskSelections.value.push(currentStairValue.value);
             if(stairRiskSelections.value[stairRiskSelections.value.length-1]==='1'){
-                currentSure.value+=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
+                nextValue=currentSure.value+1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
             else{
-                currentSure.value-=1/(2**stairRiskSelections.value.length)*stair1StartingValue;
+                nextValue=currentSure.value-1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
             currentStairValue.value=null;
             
@@ -625,6 +626,7 @@
                 const myTimeout = setTimeout(
                 ()=>{
                     document.getElementById('stairStep').classList.remove("faded-out");
+                    currentSure.value = nextValue;
                 }    
                     , 750);
             }
@@ -635,9 +637,10 @@
             
         }
         if(questionList[questionIndex.value]===`stairpatience` ){
-            stairPatienceSelections.value.push(currentStairValue.value);   
+            stairPatienceSelections.value.push(currentStairValue.value);  
+            let nextValue; //For value to be rendered after the animation.
             if (stairPatienceMap.get(valueNow.value)){
-                valueNow.value = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
+                nextValue = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
             }         
             
             currentStairValue.value=null;
@@ -647,6 +650,7 @@
                 const myTimeout = setTimeout(
                 ()=>{
                     document.getElementById('stairStep').classList.remove("faded-out");
+                    valueNow.value=nextValue;
                 }    
                     , 750);
             }
@@ -742,6 +746,7 @@
 
 .faded-out{
     opacity:0;
+    /* transition: all 0.5s ease-in; */
 }
 
 .stair-step{
@@ -750,9 +755,7 @@
 
 </style>
 <style scoped>
-/* div{
-    font-size:14px;
-} */
+
 
 
 

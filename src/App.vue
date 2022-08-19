@@ -7,18 +7,6 @@
       v-if="currentPhase === `intro`"      
       @end="currentPhase = treatments[`intro`]"
     />
-    <!-- <IntroScreen
-      v-if="currentPhase === `intro`"      
-      @end="currentPhase = treatments[`intro`]"
-    />
-    <IntroScreen
-      v-if="currentPhase === `intro`"      
-      @end="currentPhase = treatments[`intro`]"
-    />
-    <IntroScreen
-      v-if="currentPhase === `intro`"      
-      @end="currentPhase = treatments[`intro`]"
-    />     -->
 
     <PrudenceTutorial
       v-if="currentPhase === `pruTut`"
@@ -97,7 +85,7 @@ export default {
   },
   data() {
     return {
-      currentPhase: `intro`,
+      currentPhase: `gps`,
       store,
       endOfExperiment: false,
       treatments: null,
