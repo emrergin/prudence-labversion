@@ -20,8 +20,7 @@
       bekleniyor.
     </li>
     <li>
-      Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Toplam kazancınız
-      deney boyunca topladığınız puanlara eşittir.
+      Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Oyunun sonunda her üç oyunun rastgele seçtiğimiz birer turunda kazandığınız puanı parasal değerine çevireceğiz.
     </li>
     <li>
       Deneyden erken ayrılabilirsiniz. Bulunduğunuz sayfayı değiştirmeniz ve
