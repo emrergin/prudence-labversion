@@ -1,6 +1,6 @@
 <template>
-<div class="flex m-bot">
-    <div class="sol">
+<div class="flex">
+    <div class="sol p-bot">
         <div >
             <label for="yas" class="label">Yaşınız: </label>
             <input type="number"
@@ -56,8 +56,8 @@
             </select>
         </div>
     </div>
-    <div class="sag">
-        <label class="label">Deneydeki işlerin ne kadar zor olduğunu düşündünüz?</label>
+    <div class="sag p-bot">
+        <label class="label">Deneydeki kararların ne kadar zor olduğunu düşündünüz?</label>
         <ul class='likert'>
             <li>
                 <input type="radio" name="zorluk" value="0" v-model="diff">
@@ -203,17 +203,13 @@ div{
     display:flex;
 }
 
-/* .vertical-centering{
-    margin-block:10%;
-} */
-
-/* *{
-    outline: 2px solid red;
-} */
-
+.p-bot{
+    padding-bottom:5ch;
+}
 .sol{
     text-align: left;
-    padding-left:50px;
+    padding-inline:25px;
+    border-right:2px solid #858f9a;
 }
 
 .sag{

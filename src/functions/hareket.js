@@ -1,4 +1,4 @@
-function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store) {
+function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, willBePaid, earningForCurrentRound) {
   if (!Array.isArray(secimler.value)) {
     if (!secimler.value) {
       return;
@@ -259,11 +259,17 @@ function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store) {
     for (let etiket of collection) {
       if (+etiket.textContent > 0) {
         totalRevenue.value += +etiket.textContent;
-        store.kazanc += +etiket.textContent;
+        // store.kazanc += +etiket.textContent;
+        earningForCurrentRound.value += +etiket.textContent;
       } else {
         totalLoss.value += -etiket.textContent;
-        store.kazanc += +etiket.textContent;
+        // store.kazanc += +etiket.textContent;
+        earningForCurrentRound.value += +etiket.textContent;
       }
+    }
+
+    if (willBePaid){
+      store.kazanc += earningForCurrentRound.value;
     }
   }
 

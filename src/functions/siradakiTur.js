@@ -11,7 +11,8 @@ function siradakiTur(
   secimler,
   boruClass,
   oyunSonu,
-  totalRounds
+  totalRounds,
+  earningForCurrentRound
 ) {
   if (Array.isArray(secimler.value)) {
     secimler.value = secimler.value.map((a) => (a === null ? `_` : a));
@@ -21,6 +22,7 @@ function siradakiTur(
     bitis.value - baslangic.value,
     payOffs[currentRound.value],
     secimler.value,
+    earningForCurrentRound
   ]);
   veriGuncelle();
   if (!Array.isArray(secimler.value)) {
@@ -28,6 +30,8 @@ function siradakiTur(
   } else {
     secimler.value = [null, null, null, null];
   }
+
+  earningForCurrentRound.value=0;
 
   const kucukBorular = document.querySelectorAll(`.${boruClass}`);
   kucukBorular.forEach((kucukBoru) => kucukBoru.remove());

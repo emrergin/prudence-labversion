@@ -253,8 +253,8 @@ export default {
       }
 
       kucukBoru.style.cursor = "grabbing";
-      vm.secimler[vm.secimler.findIndex((a) => a === kucukBoru.id.slice(9))] =
-        null;
+      // vm.secimler[vm.secimler.findIndex((a) => a === kucukBoru.id.slice(9))] =
+      //   null;
 
       let shiftX = e.clientX - kucukBoru.getBoundingClientRect().left;
       let shiftY = e.clientY - kucukBoru.getBoundingClientRect().top;

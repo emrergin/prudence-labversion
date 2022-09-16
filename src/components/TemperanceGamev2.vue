@@ -152,6 +152,7 @@ const props = defineProps({
 });
 // eslint-disable-next-line
 const totalRounds = props.payOffs.length;
+const roundToPay = Math.floor(Math.random() * totalRounds);
 
 const currentDroppable = ref(null);
 const secimler = ref([null, null, null, null]);
@@ -160,6 +161,7 @@ const baslangic = ref(new Date());
 const bitis = ref(null);
 const totalRevenue = ref(0);
 const totalLoss = ref(0);
+const earningForCurrentRound = ref(0);
 
 const currentRound = ref(0);
 const oyunSonu = ref(false);
@@ -176,7 +178,7 @@ function boruTasiE(e) {
 }
 
 function hareketE(e) {
-  hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store);
+  hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
 function siradakiTurE() {
@@ -191,7 +193,8 @@ function siradakiTurE() {
     secimler,
     `temperanceBoru`,
     oyunSonu,
-    totalRounds
+    totalRounds,
+    earningForCurrentRound
   );
 }
 

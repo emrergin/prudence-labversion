@@ -85,7 +85,7 @@ export default {
   },
   data() {
     return {
-      currentPhase: `intro`,
+      currentPhase: `temTut`,
       store,
       endOfExperiment: false,
       treatments: null,

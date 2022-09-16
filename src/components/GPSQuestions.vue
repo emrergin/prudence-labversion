@@ -528,27 +528,27 @@
         <label class="statement">Yabancıya hangi hediyeyi verirsiniz?</label>
         <ul class='likert sixmemberlikert'>
             <li>
-                <input type="radio" name="giftvalue" value="0" required>
+                <input type="radio" name="giftvalue" value="2" required>
                 <label>{{2*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="1">
+                <input type="radio" name="giftvalue" value="4">
                 <label>{{4*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="2">
+                <input type="radio" name="giftvalue" value="6">
                 <label>{{6*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="3">
+                <input type="radio" name="giftvalue" value="8">
                 <label>{{8*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="4">
+                <input type="radio" name="giftvalue" value="10">
                 <label>{{10*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="5">
+                <input type="radio" name="giftvalue" value="12">
                 <label>{{12*inflationMultiplier}} TL değerinde hediye</label>
             </li>
         </ul>

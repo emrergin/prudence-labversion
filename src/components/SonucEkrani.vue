@@ -19,7 +19,7 @@
     <p>İsminiz: {{ store.isim }}</p>    
     <p>Toplam kazancınız: {{ store.kazanc }}</p>
     
-    <table>
+    <!-- <table>
       <tr>
         <th>Deney</th>        
         <th>Karar Süresi (ms)</th>        
@@ -46,7 +46,7 @@
         <p>hypothetic donation: {{store.gps.donation}}</p>
         <p>staircase patience: {{store.gps.stairpatience}}</p>
     </div>
-    <div>
+    <div style="margin-bottom:5ch;">
       <h3>Demografi</h3>
       <p>Yaş: {{store.demografi.age}}</p>
       <p>GNO: {{store.demografi.gpa}}</p>
@@ -56,9 +56,9 @@
       <p> Ekonomi Dersi: {{store.demografi.econ}}</p>
       <p> Algılanan zorluk: {{store.demografi.diff}}</p>
       <p>Eminlik: {{store.demografi.sure}}</p>
-    </div>
+    </div> -->
     
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 <script setup>
