@@ -19,7 +19,7 @@
     <p>İsminiz: {{ store.isim }}</p>    
     <p>Toplam kazancınız: {{ store.kazanc }}</p>
     
-    <!-- <table>
+    <table>
       <tr>
         <th>Deney</th>        
         <th>Karar Süresi (ms)</th>        
@@ -56,9 +56,9 @@
       <p> Ekonomi Dersi: {{store.demografi.econ}}</p>
       <p> Algılanan zorluk: {{store.demografi.diff}}</p>
       <p>Eminlik: {{store.demografi.sure}}</p>
-    </div> -->
+    </div>
     
-    <!-- </div> -->
+    </div>
   </div>
 </template>
 <script setup>
