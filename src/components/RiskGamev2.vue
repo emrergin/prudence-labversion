@@ -30,7 +30,7 @@
       <div id="smallPipelar" v-if="asama !== `roundsonu`">
         <div
           id="smallPipe1"
-          class="riskBoru"
+          class="riskPipe"
           oncontextmenu="return false"
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
@@ -54,7 +54,7 @@
         </div>
         <div
           id="smallPipe2"
-          class="riskBoru"
+          class="riskPipe"
           oncontextmenu="return false"
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
@@ -134,7 +134,7 @@ const currentRound = ref(0);
 const oyunSonu = ref(false);
 
 function carryPipeE(e) {
-  carryPipe(e, `droppable`, asama.value, `riskBoru`, currentDroppable, secim);
+  carryPipe(e, `droppable`, asama.value, `riskPipe`, currentDroppable, secim);
 }
 
 function hareketE(e) {
@@ -151,7 +151,7 @@ function nextTurnE() {
     props.payOffs,
     currentRound,
     secim,
-    `riskBoru`,
+    `riskPipe`,
     oyunSonu,
     totalRounds,
     earningForCurrentRound

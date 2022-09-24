@@ -74,7 +74,7 @@ function carryPipe(e, dropClass, asama, boruClass, currentDroppable, choices) {
       smallPipe.style.top = `${rect.top + window.scrollY}px`;
 
       if (!Array.isArray(choices.value)) {
-        if (boruClass === `riskBoru`) {
+        if (boruClass === `riskPipe`) {
           choices.value = smallPipe.id.slice(9);
         } else {
           choices.value = currentDroppable.value.id.slice(1);

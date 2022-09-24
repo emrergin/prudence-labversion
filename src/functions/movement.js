@@ -225,11 +225,11 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     fakeBall.style.display = "block";
     let zar = Math.floor(Math.random() * 2) + 1;
 
-    if (elemBelow.closest(`.smallPipe,.riskBoru`)) {
+    if (elemBelow.closest(`.smallPipe,.riskPipe`)) {
       zar === 1 ? Left2PR() : Right2PR();
       zar === 1
-        ? etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sol`, 600)
-        : etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sag`, 600);
+        ? etiketBoya(elemBelow.closest(`.smallPipe,.riskPipe`), `sol`, 600)
+        : etiketBoya(elemBelow.closest(`.smallPipe,.riskPipe`), `sag`, 600);
       return false;
     }
     if (elemBelow.closest(`.temperancePipe`)) {

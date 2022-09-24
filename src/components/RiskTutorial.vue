@@ -95,7 +95,7 @@
           oncontextmenu="return false"
           @mousedown.left="carryPipe($event)"
           ondragstart="return false"
-          class="riskBoru"
+          class="riskPipe"
         >
           <div
             id="smallTags1"
@@ -125,7 +125,7 @@
           oncontextmenu="return false"
           @mousedown.left="carryPipe($event)"
           ondragstart="return false"
-          class="riskBoru"
+          class="riskPipe"
         >
           <div
             id="smallTags2"
@@ -169,7 +169,7 @@ export default {
     window.addEventListener("click", this.nextStep);
   },
   beforeUnmount() {
-    document.querySelectorAll(".riskBoru").forEach((e) => e.remove());
+    document.querySelectorAll(".riskPipe").forEach((e) => e.remove());
     window.removeEventListener("click", this.nextStep);
   },
   methods: {
@@ -191,7 +191,7 @@ export default {
       if (this.step !== 5) {
         return false;
       }
-      let smallPipe = e.target.closest(`.riskBoru`);
+      let smallPipe = e.target.closest(`.riskPipe`);
       var vm = this;
 
       smallPipe.style.cursor = "grabbing";
@@ -259,6 +259,10 @@ export default {
           smallPipe.style.left = "0px";
           smallPipe.style.top = "0px";
           smallPipe.style.position = `relative`;
+
+          if (document.querySelector("#app> .riskPipe")) {
+            document.querySelector("#app> .riskPipe").remove();
+          }
           vm.step++;
         }
         smallPipe.onmouseup = null;
@@ -276,9 +280,6 @@ export default {
       }
       if (this.step !== 6) {
         return;
-      }
-      if (document.querySelector("#app> .riskBoru")) {
-        document.querySelector("#app> .riskBoru").remove();
       }
 
       let vm = this;
