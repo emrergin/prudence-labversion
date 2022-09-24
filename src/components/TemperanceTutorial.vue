@@ -1,5 +1,5 @@
 <template>
-  <div class="tutorialKutusu">
+  <div class="tutorialBox">
     <div class="column1" >
       <transition-group tag="div" name="tutorial" class="tutorialText">
         <p :key="1" v-if="step > 0">
@@ -33,7 +33,7 @@
         </p>
 
         <p :key="10" v-if="step > 11">
-          Bu örnek turda {{ ciktiHesapla() }} puan kazandınız. Her tur puanınız
+          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur puanınız
           böyle belirlenecek.
         </p>
 
@@ -90,7 +90,7 @@
         </div>
         <img src="../assets/buyukboru.svg" />
       </div>
-      <div class="buyukInputlar">
+      <div class="bigInputs">
         <div
           class="droppable2 phaseIn"
           id="i0"
@@ -116,7 +116,7 @@
           B
         </div>
       </div>
-      <div class="buyukInputlar">
+      <div class="bigInputs">
         <div
           class="droppable2 phaseIn"
           id="i2"
@@ -151,7 +151,7 @@
           class="temperancePipe"
         >
           <div
-            id="kucukEtiketler1"
+            id="smallTags1"
             class="phaseIn"
             :class="[
               { redBordered: step === 11 },
@@ -181,7 +181,7 @@
           class="temperancePipe"
         >
           <div
-            id="kucukEtiketler2"
+            id="smallTags2"
             class="phaseIn"
             :class="[
               { redBordered: step === 11 },
@@ -238,7 +238,7 @@ export default {
         this.step++;
       }
       if (this.step === 9) {
-        this.hareket2();
+        this.movement2();
       }
     },
     carryPipe(e) {
@@ -352,9 +352,9 @@ export default {
       footBall.after(fakeBall);
       footBall.style.position = "absolute";
 
-      Asagi();
+      Down();
 
-      function Asagi() {
+      function Down() {
         footBall
           .animate(
             [
@@ -373,15 +373,15 @@ export default {
         }, 1000);
       }
     },
-    hareket2() {
+    movement2() {
       let vm = this;
       this.step++;
       let footBall = this.$refs.footBall;
       let zar = Math.floor(Math.random() * 2) + 1;
-      zar === 1 ? Sol1() : Sag1();
-      zar === 1 ? setTimeout(solBEtiket, 1100) : setTimeout(sagBEtiket, 1100);
+      zar === 1 ? Left1() : Right1();
+      zar === 1 ? setTimeout(leftBTag, 1100) : setTimeout(rightBTag, 1100);
       vm.zarlar.push(zar);
-      function Sol1() {
+      function Left1() {
         footBall
           .animate(
             [
@@ -407,9 +407,9 @@ export default {
             }
           )
           .persist();
-        setTimeout(animasyonDevamEt, 3000);
+        setTimeout(continueAnimation, 3000);
       }
-      function Sag1() {
+      function Right1() {
         footBall
           .animate(
             [
@@ -435,9 +435,9 @@ export default {
             }
           )
           .persist();
-        setTimeout(animasyonDevamEt, 3000);
+        setTimeout(continueAnimation, 3000);
       }
-      function Sol2() {
+      function Left2() {
         footBall
           .animate(
             [
@@ -472,9 +472,9 @@ export default {
             }
           )
           .persist();
-        setTimeout(animasyonDevamEt, 4000);
+        setTimeout(continueAnimation, 4000);
       }
-      function Sag2() {
+      function Right2() {
         footBall
           .animate(
             [
@@ -506,73 +506,72 @@ export default {
             }
           )
           .persist();
-        setTimeout(animasyonDevamEt, 4000);
+        setTimeout(continueAnimation, 4000);
       }
-      function animasyonDevamEt() {
-        if (vm.hareketBittiMi()) {
+      function continueAnimation() {
+        if (vm.isMovementOver()) {
           vm.step++;
-          // vm.kazancMetin=vm.ciktiHesapla();
         } else {
           let zar = Math.floor(Math.random() * 2) + 1;
           let ilgiliKucukBoru =
             vm.zarlar.length === 1
               ? vm.choices[vm.zarlar[0] - 1]
               : 3 - +vm.choices[vm.zarlar[0] - 1];
-          zar === 1 ? Sol2() : Sag2();
+          zar === 1 ? Left2() : Right2();
           vm.zarlar.push(zar);
           setTimeout(() => {
-            kucukEtiketler(ilgiliKucukBoru, zar);
+            smallTags(ilgiliKucukBoru, zar);
           }, 750);
         }
       }
-      function solBEtiket() {
-        document.getElementById(`leftLargeTag`).classList.add(`yaklasilmis`);
+      function leftBTag() {
+        document.getElementById(`leftLargeTag`).classList.add(`approached`);
       }
-      function sagBEtiket() {
-        document.getElementById(`rightLargeTag`).classList.add(`yaklasilmis`);
+      function rightBTag() {
+        document.getElementById(`rightLargeTag`).classList.add(`approached`);
       }
-      function kucukEtiketler(id, yon) {
+      function smallTags(id, yon) {
         let idtext = yon === 1 ? `solKucukEtiket` : `sagKucukEtiket`;
         idtext += id;
-        document.getElementById(idtext).classList.add(`yaklasilmis`);
+        document.getElementById(idtext).classList.add(`approached`);
       }
     },
-    hareketBittiMi() {
+    isMovementOver() {
       let rect = this.$refs.footBall.getBoundingClientRect();
       let elemBelow = document.elementFromPoint(
         (rect.left + rect.right) / 2,
         rect.top - 5
       );
-      return !elemBelow.closest(`.temperancePipe,#buyukBoru`);
+      return !elemBelow.closest(`.temperancePipe,#bigPipe`);
     },
-    ciktiHesapla() {
-      let sonucMetin = ``;
-      let sonucSayi = 0;
-      const collection = document.getElementsByClassName("yaklasilmis");
+    calculateOutcome() {
+      let outcomeText = ``;
+      let outcomeNumber = 0;
+      const collection = document.getElementsByClassName("approached");
       if (collection.length === 1) {
         return +collection[0].textContent;
       }
-      for (let etiket of collection) {
-        sonucSayi += +etiket.textContent;
-        if (sonucMetin) {
-          +etiket.textContent > 0
-            ? (sonucMetin += `+` + +etiket.textContent)
-            : (sonucMetin += +etiket.textContent);
+      for (let tag of collection) {
+        outcomeNumber += +tag.textContent;
+        if (outcomeText) {
+          +tag.textContent > 0
+            ? (outcomeText += `+` + +tag.textContent)
+            : (outcomeText += +tag.textContent);
         } else {
-          +etiket.textContent > 0
-            ? (sonucMetin += +etiket.textContent)
-            : (sonucMetin += +etiket.textContent);
+          +tag.textContent > 0
+            ? (outcomeText += +tag.textContent)
+            : (outcomeText += +tag.textContent);
         }
       }
-      sonucMetin += `=` + sonucSayi;
-      return sonucMetin;
+      outcomeText += `=` + outcomeNumber;
+      return outcomeText;
     },
   },
 };
 </script>
 
 <style scoped>
-.buyukInputlar {
+.bigInputs {
   gap: 109px;
 }
 
@@ -591,7 +590,7 @@ export default {
   border: 10px solid red;
 }
 
-.tutorialKutusu {
+.tutorialBox {
   min-height: 618px;
 }
 

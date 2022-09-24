@@ -1,5 +1,5 @@
 <template>
-  <div class="tutorialKutusu">
+  <div class="tutorialBox">
     <div class="column1">
       <transition-group tag="div" name="tutorial" class="tutorialText">
         <p :key="5" v-if="step > 0">
@@ -138,7 +138,7 @@
         ]"
       >
         <div
-          id="kucukEtiketler"
+          id="smallTags"
           class="phaseIn"
           :class="[
             { redBordered: step === 10 },
@@ -182,7 +182,7 @@ export default {
         this.step++;
       }
       if (this.step === 8) {
-        this.hareket2();
+        this.movement2();
       }
     },
     carryPipe(e) {
@@ -285,7 +285,7 @@ export default {
         this.step++;
       };
     },
-    hareket2() {
+    movement2() {
       this.step++;
       let footBall = this.$refs.footBall;
       let zar = Math.floor(Math.random() * 100);
@@ -295,34 +295,34 @@ export default {
         if (zar > 75) {
           footBall.classList.add(`asagiHareketli1PT`);
           this.durum = 1;
-          setTimeout(sagBEtiket, 1100);
+          setTimeout(rightBTag, 1100);
           setTimeout(sagKEtiket, 2650);
         } else if (zar > 50) {
           footBall.classList.add(`asagiHareketli2PT`);
           this.durum = 2;
-          setTimeout(sagBEtiket, 1100);
+          setTimeout(rightBTag, 1100);
           setTimeout(solKEtiket, 2650);
         } else {
           footBall.classList.add(`asagiHareketli6PT`);
           this.durum = 6;
-          setTimeout(solBEtiket, 1100);
+          setTimeout(leftBTag, 1100);
         }
       }
       if (this.secim === `1`) {
         if (zar > 75) {
           footBall.classList.add(`asagiHareketli4PT`);
           this.durum = 4;
-          setTimeout(solBEtiket, 1100);
+          setTimeout(leftBTag, 1100);
           setTimeout(solKEtiket, 2650);
         } else if (zar > 50) {
           footBall.classList.add(`asagiHareketli5PT`);
           this.durum = 5;
-          setTimeout(solBEtiket, 1100);
+          setTimeout(leftBTag, 1100);
           setTimeout(sagKEtiket, 2650);
         } else {
           footBall.classList.add(`asagiHareketli3PT`);
           this.durum = 3;
-          setTimeout(sagBEtiket, 1100);
+          setTimeout(rightBTag, 1100);
         }
       }
 
@@ -330,24 +330,24 @@ export default {
         this.step++;
       };
 
-      function solBEtiket() {
-        document.getElementById(`leftLargeTag`).classList.add(`yaklasilmis`);
+      function leftBTag() {
+        document.getElementById(`leftLargeTag`).classList.add(`approached`);
       }
-      function sagBEtiket() {
-        document.getElementById(`rightLargeTag`).classList.add(`yaklasilmis`);
+      function rightBTag() {
+        document.getElementById(`rightLargeTag`).classList.add(`approached`);
       }
       function solKEtiket() {
-        document.getElementById(`solKucukEtiket`).classList.add(`yaklasilmis`);
+        document.getElementById(`solKucukEtiket`).classList.add(`approached`);
       }
       function sagKEtiket() {
-        document.getElementById(`sagKucukEtiket`).classList.add(`yaklasilmis`);
+        document.getElementById(`sagKucukEtiket`).classList.add(`approached`);
       }
     },
   },
 };
 </script>
 <style>
-.tutorialKutusu {
+.tutorialBox {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   margin: 0px;

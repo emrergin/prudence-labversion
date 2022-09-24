@@ -50,7 +50,7 @@
             ondragstart="return false"
             data-intro="Bu oyunda bu boruyu"
           >
-            <div id="kucukEtiketler">
+            <div id="smallTags">
               <div id="solKucukEtiket" class="kucukEtiket etiket soletiket">
                 +2
               </div>
@@ -147,7 +147,7 @@
   #smallPipe,
   #smallPipe1,
   #smallPipe2,
-  #buyukBoru {
+  #bigPipe {
     position: relative;
   }
   
@@ -155,9 +155,9 @@
     display: block;
   }
   
-  #kucukEtiketler,
-  #kucukEtiketler1,
-  #kucukEtiketler2 {
+  #smallTags,
+  #smallTags1,
+  #smallTags2 {
     position: absolute;
     left: 30px;
     gap: 85px;
@@ -172,7 +172,7 @@
     min-width: 3ch;
   }
   
-  .yaklasilmis {
+  .approached {
     background-color: green;
     color: #f8f8f8;
   }

@@ -38,7 +38,7 @@
             visibility: secim === `2` ? `hidden` : `visible`,
           }"
         >
-          <div id="kucukEtiketler1">
+          <div id="smallTags1">
             <div id="solKucukEtiket1" class="kucukEtiket etiket soletiket">
               {{ convertNumbertoString(payOffs[currentRound][0]) }}
             </div>
@@ -62,7 +62,7 @@
             visibility: secim === `1` ? `hidden` : `visible`,
           }"
         >
-          <div id="kucukEtiketler2">
+          <div id="smallTags2">
             <div id="solKucukEtiket2" class="kucukEtiket etiket soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>

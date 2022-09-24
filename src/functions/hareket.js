@@ -21,9 +21,9 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
   footBall.after(fakeBall);
   fakeBall.style.position = "absolute";
 
-  Asagi();
+  Down();
 
-  function Asagi() {
+  function Down() {
     fakeBall
       .animate(
         [
@@ -57,7 +57,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     setTimeout(nextAnimation, 1000);
   }
 
-  function Sol1() {
+  function Left1() {
     fakeBall
       .animate(
         [
@@ -79,7 +79,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       .persist();
     setTimeout(nextAnimation, 3000);
   }
-  function Sag1() {
+  function Right1() {
     fakeBall
       .animate(
         [
@@ -102,7 +102,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     setTimeout(nextAnimation, 3000);
   }
 
-  function Sol2PR() {
+  function Left2PR() {
     fakeBall
       .animate(
         [
@@ -121,7 +121,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       .persist();
     setTimeout(nextAnimation, 2000);
   }
-  function Sag2PR() {
+  function Right2PR() {
     fakeBall
       .animate(
         [
@@ -141,7 +141,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     setTimeout(nextAnimation, 2000);
   }
 
-  function Sol2T() {
+  function Left2T() {
     fakeBall
       .animate(
         [
@@ -178,7 +178,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       .persist();
     setTimeout(nextAnimation, 4000);
   }
-  function Sag2T() {
+  function Right2T() {
     fakeBall
       .animate(
         [
@@ -226,14 +226,14 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     let zar = Math.floor(Math.random() * 2) + 1;
 
     if (elemBelow.closest(`.smallPipe,.riskBoru`)) {
-      zar === 1 ? Sol2PR() : Sag2PR();
+      zar === 1 ? Left2PR() : Right2PR();
       zar === 1
         ? etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sol`, 600)
         : etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sag`, 600);
       return false;
     }
     if (elemBelow.closest(`.temperancePipe`)) {
-      zar === 1 ? Sol2T() : Sag2T();
+      zar === 1 ? Left2T() : Right2T();
       zar === 1
         ? etiketBoya(elemBelow.closest(`.temperancePipe`), `sol`, 600)
         : etiketBoya(elemBelow.closest(`.temperancePipe`), `sag`, 600);
@@ -244,8 +244,8 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       AsagiR();
       return false;
     }
-    if (elemBelow.closest(`#buyukBoru`)) {
-      zar === 1 ? Sol1() : Sag1();
+    if (elemBelow.closest(`#bigPipe`)) {
+      zar === 1 ? Left1() : Right1();
       let etiketler = document.getElementById(`largeTags`);
       zar === 1
         ? etiketBoya(etiketler, `sol`, 1100)
@@ -255,7 +255,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     }
 
     asama.value = `roundsonu`;
-    const collection = document.getElementsByClassName("yaklasilmis");
+    const collection = document.getElementsByClassName("approached");
     for (let etiket of collection) {
       if (+etiket.textContent > 0) {
         totalRevenue.value += +etiket.textContent;
@@ -275,7 +275,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
 
   function etiketBoya(obje, yon, time) {
     setTimeout(() => {
-      obje.querySelector(`.${yon}etiket`).classList.add(`yaklasilmis`);
+      obje.querySelector(`.${yon}etiket`).classList.add(`approached`);
     }, time);
   }
 }

@@ -31,7 +31,7 @@
         </div>
         <img src="../assets/buyukboru.svg" />
       </div>
-      <div class="buyukInputlar">
+      <div class="bigInputs">
         <div
           class="droppable2"
           id="i0"
@@ -47,7 +47,7 @@
           B
         </div>
       </div>
-      <div class="buyukInputlar">
+      <div class="bigInputs">
         <div
           class="droppable2"
           id="i2"
@@ -75,7 +75,7 @@
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
-          <div id="kucukEtiketler1">
+          <div id="smallTags1">
             <div id="solKucukEtiket1" class="kucukEtiket etiket soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
@@ -96,7 +96,7 @@
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
-          <div id="kucukEtiketler2">
+          <div id="smallTags2">
             <div id="solKucukEtiket2" class="kucukEtiket etiket soletiket">
               {{ convertNumbertoString(payOffs[currentRound][4]) }}
             </div>
@@ -207,7 +207,7 @@ function convertNumbertoString(number) {
 </script>
 
 <style>
-.buyukInputlar {
+.bigInputs {
   display: flex;
   width: 100%;
   justify-content: center;

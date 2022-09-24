@@ -1,5 +1,5 @@
 <template>
-  <div class="tutorialKutusu">
+  <div class="tutorialBox">
     <div class="column1" >
       <transition-group tag="div" name="tutorial" class="tutorialText">
         <p :key="1" v-if="step > 0">
@@ -30,7 +30,7 @@
         </p>
 
         <p :key="10" v-if="step > 10">
-          Bu örnek turda {{ ciktiHesapla() }} puan kazandınız. Her tur puanınız
+          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur puanınız
           böyle belirlenecek.
         </p>
 
@@ -98,7 +98,7 @@
           class="riskBoru"
         >
           <div
-            id="kucukEtiketler1"
+            id="smallTags1"
             class="phaseIn"
             :class="[
               { redBordered: step === 10 },
@@ -128,7 +128,7 @@
           class="riskBoru"
         >
           <div
-            id="kucukEtiketler2"
+            id="smallTags2"
             class="phaseIn"
             :class="[
               { redBordered: step === 10 },
@@ -184,7 +184,7 @@ export default {
         this.step++;
       }
       if (this.step === 8) {
-        this.hareket2();
+        this.movement2();
       }
     },
     carryPipe(e) {
@@ -291,9 +291,9 @@ export default {
       footBall.after(fakeBall);
       footBall.style.position = "absolute";
 
-      Asagi();
+      Down();
 
-      function Asagi() {
+      function Down() {
         footBall
           .animate(
             [
@@ -312,7 +312,7 @@ export default {
         }, 2000);
       }
     },
-    hareket2() {
+    movement2() {
       let footBall = this.$refs.footBall;
       let vm = this;
       this.step++;
@@ -322,7 +322,7 @@ export default {
       ilgiliEtiket = zar === 1 ? `solKucukEtiket` : `sagKucukEtiket`;
       ilgiliEtiket += vm.secim;
       setTimeout(() => {
-        kucukEtiketler(ilgiliEtiket);
+        smallTags(ilgiliEtiket);
       }, 400);
       function Sol() {
         footBall
@@ -379,12 +379,12 @@ export default {
         }, 2000);
       }
 
-      function kucukEtiketler(idtext) {
-        document.getElementById(idtext).classList.add(`yaklasilmis`);
+      function smallTags(idtext) {
+        document.getElementById(idtext).classList.add(`approached`);
       }
     },
-    ciktiHesapla() {
-      const collection = document.getElementsByClassName("yaklasilmis");
+    calculateOutcome() {
+      const collection = document.getElementsByClassName("approached");
       return +collection[0].textContent;
     },
   },

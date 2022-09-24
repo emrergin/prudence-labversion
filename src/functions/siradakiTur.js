@@ -42,7 +42,7 @@ function siradakiTur(
   }
 
   const etiketler = document.querySelectorAll(".etiket");
-  etiketler.forEach((etiket) => etiket.classList.remove(`yaklasilmis`));
+  etiketler.forEach((etiket) => etiket.classList.remove(`approached`));
 
   document.getElementById(`fakeBall`).remove();
   document.getElementById("footBall").style.visibility = "visible";

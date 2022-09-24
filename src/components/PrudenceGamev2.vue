@@ -52,7 +52,7 @@
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
-          <div id="kucukEtiketler">
+          <div id="smallTags">
             <div id="solKucukEtiket" class="kucukEtiket etiket soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
@@ -187,7 +187,7 @@ function convertNumbertoString(number) {
 #smallPipe,
 #smallPipe1,
 #smallPipe2,
-#buyukBoru {
+#bigPipe {
   position: relative;
 }
 
@@ -195,9 +195,9 @@ img {
   display: block;
 }
 
-#kucukEtiketler,
-#kucukEtiketler1,
-#kucukEtiketler2 {
+#smallTags,
+#smallTags1,
+#smallTags2 {
   position: absolute;
   left: 30px;
   gap: 85px;
@@ -212,7 +212,7 @@ img {
   min-width: 3ch;
 }
 
-.yaklasilmis {
+.approached {
   background-color: green;
   color: #f8f8f8;
 }
