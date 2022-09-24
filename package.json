@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "intro.js": "^6.0.0",
     "vue": "^3.2.37",
     "vue-uuid": "^3.0.0"
   },

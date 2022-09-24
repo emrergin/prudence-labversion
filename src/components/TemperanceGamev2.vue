@@ -8,14 +8,14 @@
     />
     <div id="oyunAsagi">
       <img
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         src="../assets/soccer_ball.svg"
         oncontextmenu="return false"
         @click="hareketE($event)"
         :class="{
           clickReminder:
-            secimler.filter((a) => a).length === 2 &&
+            choices.filter((a) => a).length === 2 &&
             currentRound === 0 &&
             asama === `baslangic`,
         }"
@@ -35,14 +35,14 @@
         <div
           class="droppable2"
           id="i0"
-          :class="{ gorulmez: secimler[0] || asama !== `baslangic` }"
+          :class="{ gorulmez: choices[0] || asama !== `baslangic` }"
         >
           A
         </div>
         <div
           class="droppable2"
           id="i1"
-          :class="{ gorulmez: secimler[1] || asama !== `baslangic` }"
+          :class="{ gorulmez: choices[1] || asama !== `baslangic` }"
         >
           B
         </div>
@@ -52,7 +52,7 @@
           class="droppable2"
           id="i2"
           :class="{
-            gorulmez: !secimler[0] || secimler[2] || asama !== `baslangic`,
+            gorulmez: !choices[0] || choices[2] || asama !== `baslangic`,
           }"
         >
           C
@@ -61,18 +61,18 @@
           class="droppable2"
           id="i3"
           :class="{
-            gorulmez: !secimler[1] || secimler[3] || asama !== `baslangic`,
+            gorulmez: !choices[1] || choices[3] || asama !== `baslangic`,
           }"
         >
           D
         </div>
       </div>
-      <div id="kucukBorular" v-if="asama !== `roundsonu`">
+      <div id="smallPipelar" v-if="asama !== `roundsonu`">
         <div
-          id="kucukBoru1"
-          class="temperanceBoru"
+          id="smallPipe1"
+          class="temperancePipe"
           oncontextmenu="return false"
-          @mousedown.left="boruTasiE($event)"
+          @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
           <div id="kucukEtiketler1">
@@ -90,10 +90,10 @@
           />
         </div>
         <div
-          id="kucukBoru2"
-          class="temperanceBoru"
+          id="smallPipe2"
+          class="temperancePipe"
           oncontextmenu="return false"
-          @mousedown.left="boruTasiE($event)"
+          @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
           <div id="kucukEtiketler2">
@@ -137,7 +137,7 @@
 import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
-import boruTasi from "../functions/boruTasi";
+import carryPipe from "../functions/carryPipe";
 import hareket from "../functions/hareket";
 import siradakiTur from "../functions/siradakiTur";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
@@ -155,7 +155,7 @@ const totalRounds = props.payOffs.length;
 const roundToPay = Math.floor(Math.random() * totalRounds);
 
 const currentDroppable = ref(null);
-const secimler = ref([null, null, null, null]);
+const choices = ref([null, null, null, null]);
 const asama = ref(`baslangic`);
 const baslangic = ref(new Date());
 const bitis = ref(null);
@@ -166,19 +166,19 @@ const earningForCurrentRound = ref(0);
 const currentRound = ref(0);
 const oyunSonu = ref(false);
 
-function boruTasiE(e) {
-  boruTasi(
+function carryPipeE(e) {
+  carryPipe(
     e,
     `droppable2`,
     asama.value,
-    `temperanceBoru`,
+    `temperancePipe`,
     currentDroppable,
-    secimler
+    choices
   );
 }
 
 function hareketE(e) {
-  hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
 function siradakiTurE() {
@@ -190,8 +190,8 @@ function siradakiTurE() {
     asama,
     props.payOffs,
     currentRound,
-    secimler,
-    `temperanceBoru`,
+    choices,
+    `temperancePipe`,
     oyunSonu,
     totalRounds,
     earningForCurrentRound
@@ -215,14 +215,14 @@ function convertNumbertoString(number) {
   min-height: 167.5px;
 }
 
-#kucukBorular {
+#smallPipelar {
   display: flex;
   justify-content: space-evenly;
   gap: 64px;
   min-height: 167.5px;
 }
 
-.temperanceBoru {
+.temperancePipe {
   height: 167.5px;
 }
 

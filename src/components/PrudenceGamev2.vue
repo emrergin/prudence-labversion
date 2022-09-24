@@ -8,8 +8,8 @@
     />
     <div id="oyunAsagi">
       <img
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         src="../assets/soccer_ball.svg"
         oncontextmenu="return false"
         @click="hareketE($event)"
@@ -46,10 +46,10 @@
       </div>
       <div v-if="asama !== `roundsonu`">
         <div
-          id="kucukBoru"
-          class="kucukBoru"
+          id="smallPipe"
+          class="smallPipe"
           oncontextmenu="return false"
-          @mousedown.left="boruTasiE($event)"
+          @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
         >
           <div id="kucukEtiketler">
@@ -92,7 +92,7 @@
 import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
-import boruTasi from "../functions/boruTasi";
+import carryPipe from "../functions/carryPipe";
 import hareket from "../functions/hareket";
 import siradakiTur from "../functions/siradakiTur";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
@@ -122,12 +122,12 @@ const earningForCurrentRound = ref(0);
 const currentRound = ref(0);
 const oyunSonu = ref(false);
 
-function boruTasiE(e) {
-  boruTasi(e, `droppable`, asama.value, `kucukBoru`, currentDroppable, secim);
+function carryPipeE(e) {
+  carryPipe(e, `droppable`, asama.value, `smallPipe`, currentDroppable, secim);
 }
 
 function hareketE(e) {
-  hareket(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
 function siradakiTurE() {
@@ -140,7 +140,7 @@ function siradakiTurE() {
     props.payOffs,
     currentRound,
     secim,
-    `kucukBoru`,
+    `smallPipe`,
     oyunSonu,
     totalRounds,
     earningForCurrentRound
@@ -184,9 +184,9 @@ function convertNumbertoString(number) {
   border-radius: 8px;
   padding: 2px;
 }
-#kucukBoru,
-#kucukBoru1,
-#kucukBoru2,
+#smallPipe,
+#smallPipe1,
+#smallPipe2,
 #buyukBoru {
   position: relative;
 }
@@ -238,7 +238,7 @@ img {
   border: 2px dashed turquoise;
 }
 
-#futbolTopu {
+#footBall {
   cursor: pointer;
 }
 

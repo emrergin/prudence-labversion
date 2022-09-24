@@ -53,10 +53,10 @@
 
     <div class="column2" id="sut2">
       <div
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         oncontextmenu="return false"
-        @click="hareket()"
+        @click="movement()"
       >
         <div
           :class="[{ gorunur: step === 8 }, { gorunmez: step !== 8 }]"
@@ -70,7 +70,7 @@
           style="align-self: flex-end"
           id="topResim"
           :class="[
-            { kirmiziKenarli: step === 7 },
+            { redBordered: step === 7 },
             { odakli: step > 6 },
             { odaksiz: step <= 6 },
           ]"
@@ -81,7 +81,7 @@
         id="buyukBoru"
         class="phaseIn"
         :class="[
-          { kirmiziKenarli: step === 3 },
+          { redBordered: step === 3 },
           { odakli: step > 2 },
           { odaksiz: step <= 2 },
         ]"
@@ -90,7 +90,7 @@
           id="largeTags"
           class="phaseIn"
           :class="[
-            { kirmiziKenarli: step === 10 },
+            { redBordered: step === 10 },
             { odakli: step > 9 },
             { odaksiz: step <= 9 },
           ]"
@@ -105,7 +105,7 @@
           class="droppable phaseIn"
           id="i1"
           :class="[
-            { kirmiziKenarli: step === 4 },
+            { redBordered: step === 4 },
             { odakli: step > 3 },
             { odaksiz: step <= 3 },
           ]"
@@ -116,7 +116,7 @@
           class="droppable phaseIn"
           id="i2"
           :class="[
-            { kirmiziKenarli: step === 4 },
+            { redBordered: step === 4 },
             { odakli: step > 3 },
             { odaksiz: step <= 3 },
           ]"
@@ -125,14 +125,14 @@
         </div>
       </div>
       <div
-        id="kucukBoru"
-        ref="kucukBoru"
+        id="smallPipe"
+        ref="smallPipe"
         oncontextmenu="return false"
-        @mousedown.left="boruTasi($event)"
+        @mousedown.left="carryPipe($event)"
         ondragstart="return false"
         class="draggable phaseIn"
         :class="[
-          { kirmiziKenarli: step === 2 },
+          { redBordered: step === 2 },
           { odakli: step > 1 },
           { odaksiz: step <= 1 },
         ]"
@@ -141,7 +141,7 @@
           id="kucukEtiketler"
           class="phaseIn"
           :class="[
-            { kirmiziKenarli: step === 10 },
+            { redBordered: step === 10 },
             { odakli: step > 9 },
             { odaksiz: step <= 9 },
           ]"
@@ -185,35 +185,35 @@ export default {
         this.hareket2();
       }
     },
-    boruTasi(e) {
+    carryPipe(e) {
       if (this.step !== 6) {
         return false;
       }
-      let kucukBoru = this.$refs.kucukBoru;
+      let smallPipe = this.$refs.smallPipe;
       var vm = this;
-      kucukBoru.style.cursor = "grabbing";
+      smallPipe.style.cursor = "grabbing";
 
-      let shiftX = e.clientX - kucukBoru.getBoundingClientRect().left;
-      let shiftY = e.clientY - kucukBoru.getBoundingClientRect().top;
+      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
+      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
 
-      kucukBoru.style.position = "absolute";
-      kucukBoru.style.zIndex = 3;
-      document.getElementById(`app`).append(kucukBoru);
+      smallPipe.style.position = "absolute";
+      smallPipe.style.zIndex = 3;
+      document.getElementById(`app`).append(smallPipe);
 
       moveAt(e.pageX, e.pageY);
 
       function moveAt(pageX, pageY) {
-        kucukBoru.style.left = pageX - shiftX + "px";
-        kucukBoru.style.top = pageY - shiftY + "px";
+        smallPipe.style.left = pageX - shiftX + "px";
+        smallPipe.style.top = pageY - shiftY + "px";
       }
 
       function onMouseMove(event) {
         moveAt(event.pageX, event.pageY);
 
-        kucukBoru.hidden = true;
+        smallPipe.hidden = true;
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
 
-        kucukBoru.hidden = false;
+        smallPipe.hidden = false;
 
         if (!elemBelow) return;
 
@@ -235,28 +235,28 @@ export default {
 
       document.addEventListener("mousemove", onMouseMove);
 
-      kucukBoru.onmouseup = function () {
+      smallPipe.onmouseup = function () {
         document.removeEventListener("mousemove", onMouseMove);
-        kucukBoru.style.cursor = "grab";
+        smallPipe.style.cursor = "grab";
 
         if (vm.currentDroppable) {
           vm.currentDroppable.style.background = "";
           vm.currentDroppable.parentNode.insertBefore(
-            kucukBoru,
+            smallPipe,
             vm.currentDroppable
           );
           vm.secim = vm.currentDroppable.id.slice(1);
           vm.currentDroppable.remove();
-          kucukBoru.style.left = "0px";
-          kucukBoru.style.top = "0px";
-          kucukBoru.style.position = `relative`;
+          smallPipe.style.left = "0px";
+          smallPipe.style.top = "0px";
+          smallPipe.style.position = `relative`;
           const collection = document.getElementsByClassName("droppable");
           for (let i = 0; i < collection.length; i++) {
             collection[i].style.visibility = "hidden";
           }
           vm.step++;
         }
-        kucukBoru.onmouseup = null;
+        smallPipe.onmouseup = null;
       };
       function enterDroppable(elem) {
         elem.style.background = "#F0FFF0";
@@ -265,68 +265,68 @@ export default {
         elem.style.background = "";
       }
     },
-    hareket() {
+    movement() {
       if (!this.secim || !(this.step === 7)) {
         return;
       }
-      let futbolTopu = this.$refs.futbolTopu;
-      futbolTopu.style.zIndex = 4;
-      document.getElementById(`topResim`).classList.remove(`kirmiziKenarli`);
-      let fakeBall = futbolTopu.cloneNode(true);
+      let footBall = this.$refs.footBall;
+      footBall.style.zIndex = 4;
+      document.getElementById(`topResim`).classList.remove(`redBordered`);
+      let fakeBall = footBall.cloneNode(true);
       fakeBall.id = `fakeBall`;
       fakeBall.style.visibility = "hidden";
 
-      futbolTopu.after(fakeBall);
-      futbolTopu.style.position = "absolute";
+      footBall.after(fakeBall);
+      footBall.style.position = "absolute";
 
-      futbolTopu.classList.add(`asagiHareketli0PT`);
+      footBall.classList.add(`asagiHareketli0PT`);
 
-      futbolTopu.onanimationend = () => {
+      footBall.onanimationend = () => {
         this.step++;
       };
     },
     hareket2() {
       this.step++;
-      let futbolTopu = this.$refs.futbolTopu;
+      let footBall = this.$refs.footBall;
       let zar = Math.floor(Math.random() * 100);
-      futbolTopu.classList.remove(`asagiHareketli0PT`);
+      footBall.classList.remove(`asagiHareketli0PT`);
 
       if (this.secim === `2`) {
         if (zar > 75) {
-          futbolTopu.classList.add(`asagiHareketli1PT`);
+          footBall.classList.add(`asagiHareketli1PT`);
           this.durum = 1;
           setTimeout(sagBEtiket, 1100);
           setTimeout(sagKEtiket, 2650);
         } else if (zar > 50) {
-          futbolTopu.classList.add(`asagiHareketli2PT`);
+          footBall.classList.add(`asagiHareketli2PT`);
           this.durum = 2;
           setTimeout(sagBEtiket, 1100);
           setTimeout(solKEtiket, 2650);
         } else {
-          futbolTopu.classList.add(`asagiHareketli6PT`);
+          footBall.classList.add(`asagiHareketli6PT`);
           this.durum = 6;
           setTimeout(solBEtiket, 1100);
         }
       }
       if (this.secim === `1`) {
         if (zar > 75) {
-          futbolTopu.classList.add(`asagiHareketli4PT`);
+          footBall.classList.add(`asagiHareketli4PT`);
           this.durum = 4;
           setTimeout(solBEtiket, 1100);
           setTimeout(solKEtiket, 2650);
         } else if (zar > 50) {
-          futbolTopu.classList.add(`asagiHareketli5PT`);
+          footBall.classList.add(`asagiHareketli5PT`);
           this.durum = 5;
           setTimeout(solBEtiket, 1100);
           setTimeout(sagKEtiket, 2650);
         } else {
-          futbolTopu.classList.add(`asagiHareketli3PT`);
+          footBall.classList.add(`asagiHareketli3PT`);
           this.durum = 3;
           setTimeout(sagBEtiket, 1100);
         }
       }
 
-      futbolTopu.onanimationend = () => {
+      footBall.onanimationend = () => {
         this.step++;
       };
 
@@ -395,9 +395,9 @@ export default {
   display: flex;
   scale: 0.8;
 }
-.droppable.kirmiziKenarli,
-.droppable2.kirmiziKenarli,
-.kirmiziKenarli {
+.droppable.redBordered,
+.droppable2.redBordered,
+.redBordered {
   border: 10px solid red;
 }
 
@@ -792,7 +792,7 @@ export default {
   gap: 109px;
 }
 
-#futbolTopu,
+#footBall,
 #fakeBall {
   display: flex;
   align-items: flex-end;

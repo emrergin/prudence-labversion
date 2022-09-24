@@ -1,10 +1,10 @@
-function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, willBePaid, earningForCurrentRound) {
-  if (!Array.isArray(secimler.value)) {
-    if (!secimler.value) {
+function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, willBePaid, earningForCurrentRound) {
+  if (!Array.isArray(choices.value)) {
+    if (!choices.value) {
       return;
     }
   } else {
-    if (secimler.value.filter((a) => a).length !== 2) {
+    if (choices.value.filter((a) => a).length !== 2) {
       return;
     }
   }
@@ -13,12 +13,12 @@ function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, will
   }
   bitis.value = new Date();
   asama.value = `tophareketi`;
-  let futbolTopu = e.target;
-  let fakeBall = futbolTopu.cloneNode(true);
+  let footBall = e.target;
+  let fakeBall = footBall.cloneNode(true);
   fakeBall.id = `fakeBall`;
   fakeBall.classList.remove(`clickReminder`);
-  futbolTopu.style.visibility = "hidden";
-  futbolTopu.after(fakeBall);
+  footBall.style.visibility = "hidden";
+  footBall.after(fakeBall);
   fakeBall.style.position = "absolute";
 
   Asagi();
@@ -225,18 +225,18 @@ function hareket(e, asama, bitis, secimler, totalRevenue, totalLoss, store, will
     fakeBall.style.display = "block";
     let zar = Math.floor(Math.random() * 2) + 1;
 
-    if (elemBelow.closest(`.kucukBoru,.riskBoru`)) {
+    if (elemBelow.closest(`.smallPipe,.riskBoru`)) {
       zar === 1 ? Sol2PR() : Sag2PR();
       zar === 1
-        ? etiketBoya(elemBelow.closest(`.kucukBoru,.riskBoru`), `sol`, 600)
-        : etiketBoya(elemBelow.closest(`.kucukBoru,.riskBoru`), `sag`, 600);
+        ? etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sol`, 600)
+        : etiketBoya(elemBelow.closest(`.smallPipe,.riskBoru`), `sag`, 600);
       return false;
     }
-    if (elemBelow.closest(`.temperanceBoru`)) {
+    if (elemBelow.closest(`.temperancePipe`)) {
       zar === 1 ? Sol2T() : Sag2T();
       zar === 1
-        ? etiketBoya(elemBelow.closest(`.temperanceBoru`), `sol`, 600)
-        : etiketBoya(elemBelow.closest(`.temperanceBoru`), `sag`, 600);
+        ? etiketBoya(elemBelow.closest(`.temperancePipe`), `sol`, 600)
+        : etiketBoya(elemBelow.closest(`.temperancePipe`), `sag`, 600);
 
       return false;
     }

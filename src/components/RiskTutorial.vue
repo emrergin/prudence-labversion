@@ -47,13 +47,13 @@
     
     <div class="column2" id="sut2">
       <div
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         oncontextmenu="return false"
-        @click="hareket()"
+        @click="movement()"
         class="phaseIn"
         :class="[
-          { kirmiziKenarli: step === 6 },
+          { redBordered: step === 6 },
           { odakli: step > 5 },
           { odaksiz: step <= 5 },
         ]"
@@ -79,7 +79,7 @@
           class="droppable phaseIn"
           id="i1"
           :class="[
-            { kirmiziKenarli: step === 3 },
+            { redBordered: step === 3 },
             { odakli: step > 2 },
             { odaksiz: step <= 2 },
           ]"
@@ -89,11 +89,11 @@
         </div>
       </div>
 
-      <div id="kucukBorular" class="gorunur" :class="[{ gorulmez: step >= 6 }]">
+      <div id="smallPipelar" class="gorunur" :class="[{ gorulmez: step >= 6 }]">
         <div
-          id="kucukBoru1"
+          id="smallPipe1"
           oncontextmenu="return false"
-          @mousedown.left="boruTasi($event)"
+          @mousedown.left="carryPipe($event)"
           ondragstart="return false"
           class="riskBoru"
         >
@@ -101,7 +101,7 @@
             id="kucukEtiketler1"
             class="phaseIn"
             :class="[
-              { kirmiziKenarli: step === 10 },
+              { redBordered: step === 10 },
               { odakli: step > 9 },
               { odaksiz: step <= 9 },
             ]"
@@ -114,16 +114,16 @@
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
-              { kirmiziKenarli: step === 2 },
+              { redBordered: step === 2 },
               { odakli: step > 1 },
               { odaksiz: step <= 1 },
             ]"
           />
         </div>
         <div
-          id="kucukBoru2"
+          id="smallPipe2"
           oncontextmenu="return false"
-          @mousedown.left="boruTasi($event)"
+          @mousedown.left="carryPipe($event)"
           ondragstart="return false"
           class="riskBoru"
         >
@@ -131,7 +131,7 @@
             id="kucukEtiketler2"
             class="phaseIn"
             :class="[
-              { kirmiziKenarli: step === 10 },
+              { redBordered: step === 10 },
               { odakli: step > 9 },
               { odaksiz: step <= 9 },
             ]"
@@ -144,7 +144,7 @@
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
-              { kirmiziKenarli: step === 2 },
+              { redBordered: step === 2 },
               { odakli: step > 1 },
               { odaksiz: step <= 1 },
             ]"
@@ -187,46 +187,46 @@ export default {
         this.hareket2();
       }
     },
-    boruTasi(e) {
+    carryPipe(e) {
       if (this.step !== 5) {
         return false;
       }
-      let kucukBoru = e.target.closest(`.riskBoru`);
+      let smallPipe = e.target.closest(`.riskBoru`);
       var vm = this;
 
-      kucukBoru.style.cursor = "grabbing";
-      if (this.secim === kucukBoru.id.slice(9)) {
+      smallPipe.style.cursor = "grabbing";
+      if (this.secim === smallPipe.id.slice(9)) {
         this.secim = null;
       }
 
-      let shiftX = e.clientX - kucukBoru.getBoundingClientRect().left;
-      let shiftY = e.clientY - kucukBoru.getBoundingClientRect().top;
+      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
+      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
 
-      if (!document.getElementById(`fakeBoru`)) {
-        var fakeBoru = kucukBoru.cloneNode(true);
-        fakeBoru.id = `fakeBoru`;
-        fakeBoru.style.visibility = "hidden";
-        kucukBoru.after(fakeBoru);
+      if (!document.getElementById(`fakePipe`)) {
+        var fakePipe = smallPipe.cloneNode(true);
+        fakePipe.id = `fakePipe`;
+        fakePipe.style.visibility = "hidden";
+        smallPipe.after(fakePipe);
       }
 
-      kucukBoru.style.position = "absolute";
-      kucukBoru.style.zIndex = 3;
-      document.getElementById(`app`).append(kucukBoru);
+      smallPipe.style.position = "absolute";
+      smallPipe.style.zIndex = 3;
+      document.getElementById(`app`).append(smallPipe);
 
       moveAt(e.pageX, e.pageY);
 
       function moveAt(pageX, pageY) {
-        kucukBoru.style.left = pageX - shiftX + "px";
-        kucukBoru.style.top = pageY - shiftY + "px";
+        smallPipe.style.left = pageX - shiftX + "px";
+        smallPipe.style.top = pageY - shiftY + "px";
       }
 
       function onMouseMove(event) {
         moveAt(event.pageX, event.pageY);
 
-        kucukBoru.hidden = true;
+        smallPipe.hidden = true;
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
 
-        kucukBoru.hidden = false;
+        smallPipe.hidden = false;
 
         if (!elemBelow) return;
 
@@ -245,23 +245,23 @@ export default {
 
       document.addEventListener("mousemove", onMouseMove);
 
-      kucukBoru.onmouseup = function () {
+      smallPipe.onmouseup = function () {
         document.removeEventListener("mousemove", onMouseMove);
-        kucukBoru.style.cursor = "grab";
+        smallPipe.style.cursor = "grab";
 
         if (vm.currentDroppable) {
           vm.currentDroppable.parentNode.insertBefore(
-            kucukBoru,
+            smallPipe,
             vm.currentDroppable
           );
-          vm.secim = kucukBoru.id.slice(9);
+          vm.secim = smallPipe.id.slice(9);
           vm.currentDroppable.remove();
-          kucukBoru.style.left = "0px";
-          kucukBoru.style.top = "0px";
-          kucukBoru.style.position = `relative`;
+          smallPipe.style.left = "0px";
+          smallPipe.style.top = "0px";
+          smallPipe.style.position = `relative`;
           vm.step++;
         }
-        kucukBoru.onmouseup = null;
+        smallPipe.onmouseup = null;
       };
       function enterDroppable(elem) {
         elem.style.background = "#F0FFF0";
@@ -270,7 +270,7 @@ export default {
         elem.style.background = "";
       }
     },
-    hareket() {
+    movement() {
       if (!this.secim) {
         return;
       }
@@ -282,19 +282,19 @@ export default {
       }
 
       let vm = this;
-      let futbolTopu = this.$refs.futbolTopu;
-      futbolTopu.style.zIndex = 4;
-      futbolTopu.classList.remove(`kirmiziKenarli`);
-      let fakeBall = futbolTopu.cloneNode(true);
+      let footBall = this.$refs.footBall;
+      footBall.style.zIndex = 4;
+      footBall.classList.remove(`redBordered`);
+      let fakeBall = footBall.cloneNode(true);
       fakeBall.id = `fakeBall`;
       fakeBall.style.visibility = "hidden";
-      futbolTopu.after(fakeBall);
-      futbolTopu.style.position = "absolute";
+      footBall.after(fakeBall);
+      footBall.style.position = "absolute";
 
       Asagi();
 
       function Asagi() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,5px)` },
@@ -313,7 +313,7 @@ export default {
       }
     },
     hareket2() {
-      let futbolTopu = this.$refs.futbolTopu;
+      let footBall = this.$refs.footBall;
       let vm = this;
       this.step++;
       let zar = Math.floor(Math.random() * 2) + 1;
@@ -325,7 +325,7 @@ export default {
         kucukEtiketler(ilgiliEtiket);
       }, 400);
       function Sol() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(0deg)`, offset: 0 },
@@ -355,7 +355,7 @@ export default {
         }, 2000);
       }
       function Sag() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(0deg)`, offset: 0 },
@@ -392,7 +392,7 @@ export default {
 </script>
 
 <style scoped>
-#futbolTopu,
+#footBall,
 #fakeBall {
   display: flex;
   align-items: flex-end;
@@ -403,14 +403,14 @@ export default {
   display: block;
 }
 
-.kirmiziKenarli {
+.redBordered {
   border: 10px solid red;
 }
 .gorunmez {
   display: none !important;
 }
 
-#kucukBorular {
+#smallPipelar {
   min-width: 458px;
 }
 </style>

@@ -8,33 +8,33 @@ function siradakiTur(
   asama,
   payOffs,
   currentRound,
-  secimler,
+  choices,
   boruClass,
   oyunSonu,
   totalRounds,
   earningForCurrentRound
 ) {
-  if (Array.isArray(secimler.value)) {
-    secimler.value = secimler.value.map((a) => (a === null ? `_` : a));
+  if (Array.isArray(choices.value)) {
+    choices.value = choices.value.map((a) => (a === null ? `_` : a));
   }
   store.veriler.push([
     treatment,
     bitis.value - baslangic.value,
     payOffs[currentRound.value],
-    secimler.value,
+    choices.value,
     earningForCurrentRound
   ]);
   veriGuncelle();
-  if (!Array.isArray(secimler.value)) {
-    secimler.value = null;
+  if (!Array.isArray(choices.value)) {
+    choices.value = null;
   } else {
-    secimler.value = [null, null, null, null];
+    choices.value = [null, null, null, null];
   }
 
   earningForCurrentRound.value=0;
 
-  const kucukBorular = document.querySelectorAll(`.${boruClass}`);
-  kucukBorular.forEach((kucukBoru) => kucukBoru.remove());
+  const smallPipelar = document.querySelectorAll(`.${boruClass}`);
+  smallPipelar.forEach((smallPipe) => smallPipe.remove());
 
   if (currentRound.value >= totalRounds - 1) {
     oyunSonu.value = true;
@@ -45,7 +45,7 @@ function siradakiTur(
   etiketler.forEach((etiket) => etiket.classList.remove(`yaklasilmis`));
 
   document.getElementById(`fakeBall`).remove();
-  document.getElementById("futbolTopu").style.visibility = "visible";
+  document.getElementById("footBall").style.visibility = "visible";
 
   baslangic.value = new Date();
   asama.value = `baslangic`;

@@ -25,6 +25,7 @@
         <th>Karar Süresi (ms)</th>        
         <th>Değerler</th>        
         <th>Seçim</th>
+        <th>Kazanç</th>
         
       </tr>
       <tr v-for="veriSatiri in store.veriler" :key="veriSatiri[3]">
@@ -32,6 +33,7 @@
         <td>{{ veriSatiri[1] }}</td>
         <td>{{ veriSatiri[2] }}</td>
         <td>{{ veriSatiri[3] }}</td>
+        <td>{{ veriSatiri[4] }}</td>
       </tr>
 
     </table>

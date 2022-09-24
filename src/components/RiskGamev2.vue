@@ -8,8 +8,8 @@
     />
     <div id="oyunAsagi">
       <img
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         src="../assets/soccer_ball.svg"
         oncontextmenu="return false"
         @click="hareketE($event)"
@@ -27,12 +27,12 @@
           A
         </div>
       </div>
-      <div id="kucukBorular" v-if="asama !== `roundsonu`">
+      <div id="smallPipelar" v-if="asama !== `roundsonu`">
         <div
-          id="kucukBoru1"
+          id="smallPipe1"
           class="riskBoru"
           oncontextmenu="return false"
-          @mousedown.left="boruTasiE($event)"
+          @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
           :style="{
             visibility: secim === `2` ? `hidden` : `visible`,
@@ -53,10 +53,10 @@
           />
         </div>
         <div
-          id="kucukBoru2"
+          id="smallPipe2"
           class="riskBoru"
           oncontextmenu="return false"
-          @mousedown.left="boruTasiE($event)"
+          @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
           :style="{
             visibility: secim === `1` ? `hidden` : `visible`,
@@ -103,7 +103,7 @@
 import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
-import boruTasi from "../functions/boruTasi";
+import carryPipe from "../functions/carryPipe";
 import hareket from "../functions/hareket";
 import siradakiTur from "../functions/siradakiTur";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
@@ -133,12 +133,12 @@ const earningForCurrentRound = ref(0);
 const currentRound = ref(0);
 const oyunSonu = ref(false);
 
-function boruTasiE(e) {
-  boruTasi(e, `droppable`, asama.value, `riskBoru`, currentDroppable, secim);
+function carryPipeE(e) {
+  carryPipe(e, `droppable`, asama.value, `riskBoru`, currentDroppable, secim);
 }
 
 function hareketE(e) {
-  hareket(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
 function siradakiTurE() {
@@ -167,7 +167,7 @@ function convertNumbertoString(number) {
 </script>
 
 <style scoped>
-#kucukBorular {
+#smallPipelar {
   align-items: center;
 }
 </style>

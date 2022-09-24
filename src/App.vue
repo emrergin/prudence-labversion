@@ -51,8 +51,9 @@
   <footer
     v-if="(endOfExperiment === true || currentPhase === `intro`)"
   >
-    <a href="https://github.com/emrergin" target="_blank">Emre Ergin</a>
+  <a href="https://github.com/emrergin" target="_blank">Emre Ergin</a>
     tarafından yapılmıştır.
+
   </footer>
 </template>
 
@@ -85,7 +86,7 @@ export default {
   },
   data() {
     return {
-      currentPhase: `intro`,
+      currentPhase: `temTut`,
       store,
       endOfExperiment: false,
       treatments: null,
@@ -225,12 +226,12 @@ footer {
   width: 100%;
   bottom:0px;
   /* top: calc(100% - 56px); */
-  height: 15px;
+  height: 55px;
   left:0px;
   text-align: right;
   font-weight: 800;
   padding: 20px;
-  padding-bottom:30px;
+  padding-bottom:20px;
   padding-right: calc(50vw - 600px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: turquoise;

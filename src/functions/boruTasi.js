@@ -1,48 +1,48 @@
-function boruTasi(e, dropClass, asama, boruClass, currentDroppable, secimler) {
+function carryPipe(e, dropClass, asama, boruClass, currentDroppable, choices) {
   if (asama !== `baslangic`) {
     return false;
   }
-  let kucukBoru = e.target.closest(`.${boruClass}`);
-  kucukBoru.style.cursor = "grabbing";
+  let smallPipe = e.target.closest(`.${boruClass}`);
+  smallPipe.style.cursor = "grabbing";
 
-  if (!Array.isArray(secimler.value)) {
-    secimler.value = null;
+  if (!Array.isArray(choices.value)) {
+    choices.value = null;
   } else {
-    let indeks = secimler.value.findIndex((a) => a === kucukBoru.id.slice(9));
-    if (indeks !== -1 && secimler.value[indeks + 2]) {
+    let index = choices.value.findIndex((a) => a === smallPipe.id.slice(9));
+    if (index !== -1 && choices.value[index + 2]) {
       return false;
     } else {
-      secimler.value[indeks] = null;
+      choices.value[index] = null;
     }
   }
 
-  let shiftX = e.clientX - kucukBoru.getBoundingClientRect().left;
-  let shiftY = e.clientY - kucukBoru.getBoundingClientRect().top;
+  let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
+  let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
 
-  if (!document.getElementById(`fakeBoru`)) {
-    var fakeBoru = kucukBoru.cloneNode(true);
-    fakeBoru.id = `fakeBoru`;
-    fakeBoru.style.visibility = "hidden";
-    kucukBoru.after(fakeBoru);
+  if (!document.getElementById(`fakePipe`)) {
+    var fakePipe = smallPipe.cloneNode(true);
+    fakePipe.id = `fakePipe`;
+    fakePipe.style.visibility = "hidden";
+    smallPipe.after(fakePipe);
   }
 
-  kucukBoru.style.position = "absolute";
-  kucukBoru.style.zIndex = 3;
-  document.getElementById(`app`).append(kucukBoru);
+  smallPipe.style.position = "absolute";
+  smallPipe.style.zIndex = 3;
+  document.getElementById(`app`).append(smallPipe);
 
   moveAt(e.pageX, e.pageY);
 
   function moveAt(pageX, pageY) {
-    kucukBoru.style.left = pageX - shiftX + "px";
-    kucukBoru.style.top = pageY - shiftY + "px";
+    smallPipe.style.left = pageX - shiftX + "px";
+    smallPipe.style.top = pageY - shiftY + "px";
   }
 
   function onMouseMove(event) {
     moveAt(event.pageX, event.pageY);
 
-    kucukBoru.hidden = true;
+    smallPipe.hidden = true;
     let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-    kucukBoru.hidden = false;
+    smallPipe.hidden = false;
 
     if (!elemBelow) return;
 
@@ -61,32 +61,32 @@ function boruTasi(e, dropClass, asama, boruClass, currentDroppable, secimler) {
   }
 
   document.addEventListener("mousemove", onMouseMove);
-  kucukBoru.addEventListener("mouseup", onMouseUp);
+  smallPipe.addEventListener("mouseup", onMouseUp);
 
   function onMouseUp() {
     document.removeEventListener("mousemove", onMouseMove);
-    kucukBoru.style.cursor = "grab";
+    smallPipe.style.cursor = "grab";
 
     if (currentDroppable.value) {
       var rect = currentDroppable.value.getBoundingClientRect();
       currentDroppable.value.style.background = "";
-      kucukBoru.style.left = `${rect.left + window.scrollX}px`;
-      kucukBoru.style.top = `${rect.top + window.scrollY}px`;
+      smallPipe.style.left = `${rect.left + window.scrollX}px`;
+      smallPipe.style.top = `${rect.top + window.scrollY}px`;
 
-      if (!Array.isArray(secimler.value)) {
+      if (!Array.isArray(choices.value)) {
         if (boruClass === `riskBoru`) {
-          secimler.value = kucukBoru.id.slice(9);
+          choices.value = smallPipe.id.slice(9);
         } else {
-          secimler.value = currentDroppable.value.id.slice(1);
+          choices.value = currentDroppable.value.id.slice(1);
         }
       } else {
-        secimler.value[currentDroppable.value.id.slice(1)] =
-          kucukBoru.id.slice(9);
+        choices.value[currentDroppable.value.id.slice(1)] =
+          smallPipe.id.slice(9);
         currentDroppable.value = null;
       }
     }
 
-    kucukBoru.removeEventListener("mouseup", onMouseUp);
+    smallPipe.removeEventListener("mouseup", onMouseUp);
   }
 
   function enterDroppable(elem) {
@@ -97,4 +97,4 @@ function boruTasi(e, dropClass, asama, boruClass, currentDroppable, secimler) {
   }
 }
 
-export default boruTasi;
+export default carryPipe;

@@ -50,13 +50,13 @@
     
     <div class="column2" id="sut2">
       <div
-        id="futbolTopu"
-        ref="futbolTopu"
+        id="footBall"
+        ref="footBall"
         oncontextmenu="return false"
-        @click="hareket()"
+        @click="movement()"
         class="phaseIn"
         :class="[
-          { kirmiziKenarli: step === 7 },
+          { redBordered: step === 7 },
           { odakli: step > 6 },
           { odaksiz: step <= 6 },
         ]"
@@ -80,7 +80,7 @@
           id="largeTags"
           class="phaseIn"
           :class="[
-            { kirmiziKenarli: step === 11 },
+            { redBordered: step === 11 },
             { odakli: step > 10 },
             { odaksiz: step <= 10 },
           ]"
@@ -95,10 +95,10 @@
           class="droppable2 phaseIn"
           id="i0"
           :class="[
-            { kirmiziKenarli: step === 3 },
+            { redBordered: step === 3 },
             { odakli: step > 2 },
             { odaksiz: step <= 2 },
-            { gorulmez: secimler[0] },
+            { gorulmez: choices[0] },
           ]"
         >
           A
@@ -107,10 +107,10 @@
           class="droppable2 phaseIn"
           id="i1"
           :class="[
-            { kirmiziKenarli: step === 3 },
+            { redBordered: step === 3 },
             { odakli: step > 2 },
             { odaksiz: step <= 2 },
-            { gorulmez: secimler[1] },
+            { gorulmez: choices[1] },
           ]"
         >
           B
@@ -121,10 +121,10 @@
           class="droppable2 phaseIn"
           id="i2"
           :class="[
-            { kirmiziKenarli: step === 3 },
+            { redBordered: step === 3 },
             { odakli: step > 2 },
             { odaksiz: step <= 2 },
-            { gorulmez: (!secimler[0] || secimler[2]) && step !== 3 },
+            { gorulmez: (!choices[0] || choices[2]) && step !== 3 },
           ]"
         >
           C
@@ -133,28 +133,28 @@
           class="droppable2 phaseIn"
           id="i3"
           :class="[
-            { kirmiziKenarli: step === 3 },
+            { redBordered: step === 3 },
             { odakli: step > 2 },
             { odaksiz: step <= 2 },
-            { gorulmez: (!secimler[1] || secimler[3]) && step !== 3 },
+            { gorulmez: (!choices[1] || choices[3]) && step !== 3 },
           ]"
         >
           D
         </div>
       </div>
-      <div id="kucukBorular">
+      <div id="smallPipelar">
         <div
-          id="kucukBoru1"
+          id="smallPipe1"
           oncontextmenu="return false"
-          @mousedown.left="boruTasi($event)"
+          @mousedown.left="carryPipe($event)"
           ondragstart="return false"
-          class="temperanceBoru"
+          class="temperancePipe"
         >
           <div
             id="kucukEtiketler1"
             class="phaseIn"
             :class="[
-              { kirmiziKenarli: step === 11 },
+              { redBordered: step === 11 },
               { odakli: step > 10 },
               { odaksiz: step <= 10 },
             ]"
@@ -167,24 +167,24 @@
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
-              { kirmiziKenarli: step === 2 },
+              { redBordered: step === 2 },
               { odakli: step > 1 },
               { odaksiz: step <= 1 },
             ]"
           />
         </div>
         <div
-          id="kucukBoru2"
+          id="smallPipe2"
           oncontextmenu="return false"
-          @mousedown.left="boruTasi($event)"
+          @mousedown.left="carryPipe($event)"
           ondragstart="return false"
-          class="temperanceBoru"
+          class="temperancePipe"
         >
           <div
             id="kucukEtiketler2"
             class="phaseIn"
             :class="[
-              { kirmiziKenarli: step === 11 },
+              { redBordered: step === 11 },
               { odakli: step > 10 },
               { odaksiz: step <= 10 },
             ]"
@@ -197,7 +197,7 @@
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
-              { kirmiziKenarli: step === 2 },
+              { redBordered: step === 2 },
               { odakli: step > 1 },
               { odaksiz: step <= 1 },
             ]"
@@ -213,7 +213,7 @@ export default {
   data() {
     return {
       step: 1,
-      secimler: [null, null, null, null],
+      choices: [null, null, null, null],
       zarlar: [],
       currentDroppable: null,
       remainingPlaces: ``,
@@ -241,49 +241,49 @@ export default {
         this.hareket2();
       }
     },
-    boruTasi(e) {
+    carryPipe(e) {
       if (this.step !== 5 && this.step !== 6) {
         return false;
       }
       var vm = this;
-      let kucukBoru = e.target.closest(`.temperanceBoru`);
-      let indeks = vm.secimler.findIndex((a) => a === kucukBoru.id.slice(9));
-      if (indeks !== -1) {
+      let smallPipe = e.target.closest(`.temperancePipe`);
+      let index = vm.choices.findIndex((a) => a === smallPipe.id.slice(9));
+      if (index !== -1) {
         return false;
       }
 
-      kucukBoru.style.cursor = "grabbing";
-      // vm.secimler[vm.secimler.findIndex((a) => a === kucukBoru.id.slice(9))] =
+      smallPipe.style.cursor = "grabbing";
+      // vm.choices[vm.choices.findIndex((a) => a === smallPipe.id.slice(9))] =
       //   null;
 
-      let shiftX = e.clientX - kucukBoru.getBoundingClientRect().left;
-      let shiftY = e.clientY - kucukBoru.getBoundingClientRect().top;
+      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
+      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
 
-      if (!document.getElementById(`fakeBoru`)) {
-        var fakeBoru = kucukBoru.cloneNode(true);
-        fakeBoru.id = `fakeBoru`;
-        fakeBoru.style.visibility = "hidden";
-        kucukBoru.after(fakeBoru);
+      if (!document.getElementById(`fakePipe`)) {
+        var fakePipe = smallPipe.cloneNode(true);
+        fakePipe.id = `fakePipe`;
+        fakePipe.style.visibility = "hidden";
+        smallPipe.after(fakePipe);
       }
 
-      kucukBoru.style.position = "absolute";
-      kucukBoru.style.zIndex = 3;
-      document.getElementById(`app`).append(kucukBoru);
+      smallPipe.style.position = "absolute";
+      smallPipe.style.zIndex = 3;
+      document.getElementById(`app`).append(smallPipe);
 
       moveAt(e.pageX, e.pageY);
 
       function moveAt(pageX, pageY) {
-        kucukBoru.style.left = pageX - shiftX + "px";
-        kucukBoru.style.top = pageY - shiftY + "px";
+        smallPipe.style.left = pageX - shiftX + "px";
+        smallPipe.style.top = pageY - shiftY + "px";
       }
 
       function onMouseMove(event) {
         moveAt(event.pageX, event.pageY);
 
-        kucukBoru.hidden = true;
+        smallPipe.hidden = true;
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
 
-        kucukBoru.hidden = false;
+        smallPipe.hidden = false;
 
         if (!elemBelow) return;
 
@@ -302,31 +302,31 @@ export default {
 
       document.addEventListener("mousemove", onMouseMove);
 
-      kucukBoru.onmouseup = function () {
+      smallPipe.onmouseup = function () {
         document.removeEventListener("mousemove", onMouseMove);
-        kucukBoru.style.cursor = "grab";
+        smallPipe.style.cursor = "grab";
 
         if (vm.currentDroppable) {
           vm.currentDroppable.parentNode.insertBefore(
-            kucukBoru,
+            smallPipe,
             vm.currentDroppable
           );
-          vm.secimler[vm.currentDroppable.id.slice(1)] = kucukBoru.id.slice(9);
+          vm.choices[vm.currentDroppable.id.slice(1)] = smallPipe.id.slice(9);
           vm.currentDroppable.remove();
-          kucukBoru.style.left = "0px";
-          kucukBoru.style.top = "0px";
-          kucukBoru.style.position = `relative`;
+          smallPipe.style.left = "0px";
+          smallPipe.style.top = "0px";
+          smallPipe.style.position = `relative`;
           vm.step++;
 
           if (vm.remainingPlaces === ``) {          
-              if (vm.secimler[1]) {
+              if (vm.choices[1]) {
                 vm.remainingPlaces = "A'ya veya D";
               } else {
                 vm.remainingPlaces = "C'ye veya B";
               }            
           }
         }
-        kucukBoru.onmouseup = null;
+        smallPipe.onmouseup = null;
       };
       function enterDroppable(elem) {
         elem.style.background = "#F0FFF0";
@@ -335,27 +335,27 @@ export default {
         elem.style.background = "";
       }
     },
-    hareket() {
-      if (this.secimler.filter((a) => a).length !== 2) {
+    movement() {
+      if (this.choices.filter((a) => a).length !== 2) {
         return;
       }
       if (this.step !== 7) {
         return;
       }
       let vm = this;
-      let futbolTopu = this.$refs.futbolTopu;
-      futbolTopu.style.zIndex = 4;
-      futbolTopu.classList.remove(`kirmiziKenarli`);
-      let fakeBall = futbolTopu.cloneNode(true);
+      let footBall = this.$refs.footBall;
+      footBall.style.zIndex = 4;
+      footBall.classList.remove(`redBordered`);
+      let fakeBall = footBall.cloneNode(true);
       fakeBall.id = `fakeBall`;
       fakeBall.style.visibility = "hidden";
-      futbolTopu.after(fakeBall);
-      futbolTopu.style.position = "absolute";
+      footBall.after(fakeBall);
+      footBall.style.position = "absolute";
 
       Asagi();
 
       function Asagi() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,5px)` },
@@ -376,13 +376,13 @@ export default {
     hareket2() {
       let vm = this;
       this.step++;
-      let futbolTopu = this.$refs.futbolTopu;
+      let footBall = this.$refs.footBall;
       let zar = Math.floor(Math.random() * 2) + 1;
       zar === 1 ? Sol1() : Sag1();
       zar === 1 ? setTimeout(solBEtiket, 1100) : setTimeout(sagBEtiket, 1100);
       vm.zarlar.push(zar);
       function Sol1() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(360deg)`, offset: 0 },
@@ -410,7 +410,7 @@ export default {
         setTimeout(animasyonDevamEt, 3000);
       }
       function Sag1() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(0deg)`, offset: 0 },
@@ -438,7 +438,7 @@ export default {
         setTimeout(animasyonDevamEt, 3000);
       }
       function Sol2() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(0deg)`, offset: 0 },
@@ -475,7 +475,7 @@ export default {
         setTimeout(animasyonDevamEt, 4000);
       }
       function Sag2() {
-        futbolTopu
+        footBall
           .animate(
             [
               { transform: `translate(0px,0px) rotate(0deg)`, offset: 0 },
@@ -516,8 +516,8 @@ export default {
           let zar = Math.floor(Math.random() * 2) + 1;
           let ilgiliKucukBoru =
             vm.zarlar.length === 1
-              ? vm.secimler[vm.zarlar[0] - 1]
-              : 3 - +vm.secimler[vm.zarlar[0] - 1];
+              ? vm.choices[vm.zarlar[0] - 1]
+              : 3 - +vm.choices[vm.zarlar[0] - 1];
           zar === 1 ? Sol2() : Sag2();
           vm.zarlar.push(zar);
           setTimeout(() => {
@@ -538,12 +538,12 @@ export default {
       }
     },
     hareketBittiMi() {
-      let rect = this.$refs.futbolTopu.getBoundingClientRect();
+      let rect = this.$refs.footBall.getBoundingClientRect();
       let elemBelow = document.elementFromPoint(
         (rect.left + rect.right) / 2,
         rect.top - 5
       );
-      return !elemBelow.closest(`.temperanceBoru,#buyukBoru`);
+      return !elemBelow.closest(`.temperancePipe,#buyukBoru`);
     },
     ciktiHesapla() {
       let sonucMetin = ``;
@@ -576,7 +576,7 @@ export default {
   gap: 109px;
 }
 
-#futbolTopu,
+#footBall,
 #fakeBall {
   display: flex;
   align-items: flex-end;
@@ -587,7 +587,7 @@ export default {
   display: block;
 }
 
-.kirmiziKenarli {
+.redBordered {
   border: 10px solid red;
 }
 
