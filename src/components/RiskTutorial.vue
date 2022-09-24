@@ -59,7 +59,7 @@
         ]"
       >
         <div
-          :class="[{ gorunur: step === 7 }, { gorunmez: step !== 7 }]"
+          :class="[{ canbeseen: step === 7 }, { notseen: step !== 7 }]"
           class="phaseIn redArrows"
         >
           <div>◄</div>
@@ -89,7 +89,7 @@
         </div>
       </div>
 
-      <div id="smallPipelar" class="gorunur" :class="[{ gorulmez: step >= 6 }]">
+      <div id="smallPipelar" class="canbeseen" :class="[{ nottoseen: step >= 6 }]">
         <div
           id="smallPipe1"
           oncontextmenu="return false"
@@ -406,7 +406,7 @@ export default {
 .redBordered {
   border: 10px solid red;
 }
-.gorunmez {
+.notseen {
   display: none !important;
 }
 

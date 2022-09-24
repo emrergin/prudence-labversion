@@ -35,14 +35,14 @@
         <div
           class="droppable2"
           id="i0"
-          :class="{ gorulmez: choices[0] || asama !== `baslangic` }"
+          :class="{ nottoseen: choices[0] || asama !== `baslangic` }"
         >
           A
         </div>
         <div
           class="droppable2"
           id="i1"
-          :class="{ gorulmez: choices[1] || asama !== `baslangic` }"
+          :class="{ nottoseen: choices[1] || asama !== `baslangic` }"
         >
           B
         </div>
@@ -52,7 +52,7 @@
           class="droppable2"
           id="i2"
           :class="{
-            gorulmez: !choices[0] || choices[2] || asama !== `baslangic`,
+            nottoseen: !choices[0] || choices[2] || asama !== `baslangic`,
           }"
         >
           C
@@ -61,7 +61,7 @@
           class="droppable2"
           id="i3"
           :class="{
-            gorulmez: !choices[1] || choices[3] || asama !== `baslangic`,
+            nottoseen: !choices[1] || choices[3] || asama !== `baslangic`,
           }"
         >
           D
@@ -239,7 +239,7 @@ function convertNumbertoString(number) {
   display: flex;
 }
 
-.gorulmez {
+.nottoseen {
   visibility: hidden;
 }
 </style>

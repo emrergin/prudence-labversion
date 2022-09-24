@@ -62,7 +62,7 @@
         ]"
       >
         <div
-          :class="[{ gorunur: step === 8 }, { gorunmez: step !== 8 }]"
+          :class="[{ canbeseen: step === 8 }, { notseen: step !== 8 }]"
           class="phaseIn redArrows"
         >
           <div>◄</div>
@@ -98,7 +98,7 @@
             { redBordered: step === 3 },
             { focused: step > 2 },
             { unfocused: step <= 2 },
-            { gorulmez: choices[0] },
+            { nottoseen: choices[0] },
           ]"
         >
           A
@@ -110,7 +110,7 @@
             { redBordered: step === 3 },
             { focused: step > 2 },
             { unfocused: step <= 2 },
-            { gorulmez: choices[1] },
+            { nottoseen: choices[1] },
           ]"
         >
           B
@@ -124,7 +124,7 @@
             { redBordered: step === 3 },
             { focused: step > 2 },
             { unfocused: step <= 2 },
-            { gorulmez: (!choices[0] || choices[2]) && step !== 3 },
+            { nottoseen: (!choices[0] || choices[2]) && step !== 3 },
           ]"
         >
           C
@@ -136,7 +136,7 @@
             { redBordered: step === 3 },
             { focused: step > 2 },
             { unfocused: step <= 2 },
-            { gorulmez: (!choices[1] || choices[3]) && step !== 3 },
+            { nottoseen: (!choices[1] || choices[3]) && step !== 3 },
           ]"
         >
           D
@@ -214,7 +214,7 @@ export default {
     return {
       step: 1,
       choices: [null, null, null, null],
-      zarlar: [],
+      dices: [],
       currentDroppable: null,
       remainingPlaces: ``,
     };
@@ -253,8 +253,6 @@ export default {
       }
 
       smallPipe.style.cursor = "grabbing";
-      // vm.choices[vm.choices.findIndex((a) => a === smallPipe.id.slice(9))] =
-      //   null;
 
       let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
       let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
@@ -263,6 +261,7 @@ export default {
         var fakePipe = smallPipe.cloneNode(true);
         fakePipe.id = `fakePipe`;
         fakePipe.style.visibility = "hidden";
+        fakePipe.classList.remove("temperancePipe");
         smallPipe.after(fakePipe);
       }
 
@@ -282,10 +281,9 @@ export default {
 
         smallPipe.hidden = true;
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-
         smallPipe.hidden = false;
 
-        if (!elemBelow) return;
+        if (!elemBelow) {return};
 
         let droppableBelow = elemBelow.closest(".droppable2");
 
@@ -301,8 +299,9 @@ export default {
       }
 
       document.addEventListener("mousemove", onMouseMove);
+      smallPipe.addEventListener("mouseup", onMouseUp);
 
-      smallPipe.onmouseup = function () {
+      function onMouseUp() {
         document.removeEventListener("mousemove", onMouseMove);
         smallPipe.style.cursor = "grab";
 
@@ -326,7 +325,7 @@ export default {
               }            
           }
         }
-        smallPipe.onmouseup = null;
+        smallPipe.removeEventListener("mouseup", onMouseUp);
       };
       function enterDroppable(elem) {
         elem.style.background = "#F0FFF0";
@@ -380,7 +379,7 @@ export default {
       let zar = Math.floor(Math.random() * 2) + 1;
       zar === 1 ? Left1() : Right1();
       zar === 1 ? setTimeout(leftBTag, 1100) : setTimeout(rightBTag, 1100);
-      vm.zarlar.push(zar);
+      vm.dices.push(zar);
       function Left1() {
         footBall
           .animate(
@@ -512,15 +511,15 @@ export default {
         if (vm.isMovementOver()) {
           vm.step++;
         } else {
-          let zar = Math.floor(Math.random() * 2) + 1;
-          let ilgiliKucukBoru =
-            vm.zarlar.length === 1
-              ? vm.choices[vm.zarlar[0] - 1]
-              : 3 - +vm.choices[vm.zarlar[0] - 1];
-          zar === 1 ? Left2() : Right2();
-          vm.zarlar.push(zar);
+          let dice = Math.floor(Math.random() * 2) + 1;
+          let relatedSmallPipe =
+            vm.dices.length === 1
+              ? vm.choices[vm.dices[0] - 1]
+              : 3 - +vm.choices[vm.dices[0] - 1];
+          dice === 1 ? Left2() : Right2();
+          vm.dices.push(dice);
           setTimeout(() => {
-            smallTags(ilgiliKucukBoru, zar);
+            smallTags(relatedSmallPipe, dice);
           }, 750);
         }
       }
@@ -573,6 +572,10 @@ export default {
 <style scoped>
 .bigInputs {
   gap: 109px;
+}
+
+.tutorialBox{
+  position: relative;
 }
 
 #footBall,

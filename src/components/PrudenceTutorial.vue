@@ -59,7 +59,7 @@
         @click="movement()"
       >
         <div
-          :class="[{ gorunur: step === 8 }, { gorunmez: step !== 8 }]"
+          :class="[{ canbeseen: step === 8 }, { notseen: step !== 8 }]"
           class="phaseIn redArrows"
         >
           <div>◄</div>
@@ -423,10 +423,10 @@ export default {
   justify-content: space-between;
 }
 
-.gorunur {
+.canbeseen {
   display: flex;
 }
-.gorunmez {
+.notseen {
   display: none;
 }
 .asagiHareketli0PT {
