@@ -42,7 +42,7 @@
      @end="currentPhase = 'gps'"/>
     <GPSQuestions v-if="currentPhase === `gps`"
      @end="currentPhase = 'son'"/>
-    <SonucEkrani
+    <ResultScreen
       v-if="currentPhase === `son`"
       @end="endOfExperiment = true"
     />
@@ -65,7 +65,7 @@ import TemperanceTutorial from "./components/TemperanceTutorial.vue";
 import TemperanceGame from "./components/TemperanceGamev2.vue";
 import RiskGame from "./components/RiskGamev2.vue";
 import RiskTutorial from "./components/RiskTutorial.vue";
-import SonucEkrani from "./components/SonucEkrani.vue";
+import ResultScreen from "./components/ResultScreen.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
 import GPSQuestions from "./components/GPSQuestions.vue";
 import { store } from "./store.js";
@@ -80,7 +80,7 @@ export default {
     TemperanceTutorial,
     RiskGame,
     RiskTutorial,
-    SonucEkrani,
+    ResultScreen,
     DemographicQuestions,
     GPSQuestions
   },

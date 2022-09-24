@@ -12,16 +12,16 @@
           :class="{
             clickReminder: secim && currentRound === 0 && asama === `baslangic`,
           }" -->
-        <div id="buyukBoru">
+        <div id="bigPipe">
           <div id="largeTags">
-            <div id="leftLargeTag" class="buyukEtiket etiket soletiket">
+            <div id="leftLargeTag" class="largeTag tag soletiket">
               +7
             </div>
-            <div id="rightLargeTag" class="buyukEtiket etiket sagetiket">
+            <div id="rightLargeTag" class="largeTag tag sagetiket">
               +4
             </div>
           </div>
-          <img src="../assets/buyukboru.svg" />
+          <img src="../assets/bigpipe.svg" />
         </div>
         <div id="inputlar">
           <div
@@ -51,15 +51,15 @@
             data-intro="Bu oyunda bu boruyu"
           >
             <div id="smallTags">
-              <div id="solKucukEtiket" class="kucukEtiket etiket soletiket">
+              <div id="leftSmallTag" class="kucukEtiket tag soletiket">
                 +2
               </div>
-              <div id="sagKucukEtiket" class="kucukEtiket etiket sagetiket">
+              <div id="rightSmallTag" class="kucukEtiket tag sagetiket">
                 -2
               </div>
             </div>
             <img
-              src="../assets/kucukboru.svg"
+              src="../assets/smallpipe.svg"
               class="draggable"
               oncontextmenu="return false"
             />
@@ -72,7 +72,7 @@
   <script setup>
   import { ref } from "vue";
   import carryPipe from "../functions/carryPipe";
-  import hareket from "../functions/hareket";
+  import movement from "../functions/movement";
   import { defineEmits as defineEmits } from "@vue/runtime-dom";
   // import {introJs} from "intro.js";
 
@@ -96,8 +96,8 @@
     movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
   }
   
-  function siradakiTurE() {
-    siradakiTur(
+  function nextTurnE() {
+    nextTurn(
       `Prudence`,
       store,
       bitis,
@@ -139,7 +139,7 @@
     /* top: 28px; */
   }
   
-  .buyukEtiket {
+  .largeTag {
     border: 2px solid black;
     border-radius: 8px;
     padding: 2px;

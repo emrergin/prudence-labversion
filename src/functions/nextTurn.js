@@ -1,6 +1,6 @@
-import veriGuncelle from "./veriGuncelle";
+import updateData from "./updateData";
 
-function siradakiTur(
+function nextTurn(
   treatment,
   store,
   bitis,
@@ -24,7 +24,7 @@ function siradakiTur(
     choices.value,
     earningForCurrentRound
   ]);
-  veriGuncelle();
+  updateData();
   if (!Array.isArray(choices.value)) {
     choices.value = null;
   } else {
@@ -41,8 +41,8 @@ function siradakiTur(
     return;
   }
 
-  const etiketler = document.querySelectorAll(".etiket");
-  etiketler.forEach((etiket) => etiket.classList.remove(`approached`));
+  const etiketler = document.querySelectorAll(".tag");
+  etiketler.forEach((tag) => tag.classList.remove(`approached`));
 
   document.getElementById(`fakeBall`).remove();
   document.getElementById("footBall").style.visibility = "visible";
@@ -52,4 +52,4 @@ function siradakiTur(
   currentRound.value++;
 }
 
-export default siradakiTur;
+export default nextTurn;

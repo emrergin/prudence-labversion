@@ -60,7 +60,7 @@
       >
         <div
           :class="[{ gorunur: step === 8 }, { gorunmez: step !== 8 }]"
-          class="phaseIn kirmiziOklar"
+          class="phaseIn redArrows"
         >
           <div>◄</div>
           <div>►</div>
@@ -71,19 +71,19 @@
           id="topResim"
           :class="[
             { redBordered: step === 7 },
-            { odakli: step > 6 },
-            { odaksiz: step <= 6 },
+            { focused: step > 6 },
+            { unfocused: step <= 6 },
           ]"
           class="phaseIn"
         />
       </div>
       <div
-        id="buyukBoru"
+        id="bigPipe"
         class="phaseIn"
         :class="[
           { redBordered: step === 3 },
-          { odakli: step > 2 },
-          { odaksiz: step <= 2 },
+          { focused: step > 2 },
+          { unfocused: step <= 2 },
         ]"
       >
         <div
@@ -91,14 +91,14 @@
           class="phaseIn"
           :class="[
             { redBordered: step === 10 },
-            { odakli: step > 9 },
-            { odaksiz: step <= 9 },
+            { focused: step > 9 },
+            { unfocused: step <= 9 },
           ]"
         >
-          <div id="leftLargeTag" class="buyukEtiket etiket">+7</div>
-          <div id="rightLargeTag" class="buyukEtiket etiket">+4</div>
+          <div id="leftLargeTag" class="largeTag tag">+7</div>
+          <div id="rightLargeTag" class="largeTag tag">+4</div>
         </div>
-        <img src="../assets/buyukboru.svg" />
+        <img src="../assets/bigpipe.svg" />
       </div>
       <div id="inputlar">
         <div
@@ -106,8 +106,8 @@
           id="i1"
           :class="[
             { redBordered: step === 4 },
-            { odakli: step > 3 },
-            { odaksiz: step <= 3 },
+            { focused: step > 3 },
+            { unfocused: step <= 3 },
           ]"
         >
           A
@@ -117,8 +117,8 @@
           id="i2"
           :class="[
             { redBordered: step === 4 },
-            { odakli: step > 3 },
-            { odaksiz: step <= 3 },
+            { focused: step > 3 },
+            { unfocused: step <= 3 },
           ]"
         >
           B
@@ -133,8 +133,8 @@
         class="draggable phaseIn"
         :class="[
           { redBordered: step === 2 },
-          { odakli: step > 1 },
-          { odaksiz: step <= 1 },
+          { focused: step > 1 },
+          { unfocused: step <= 1 },
         ]"
       >
         <div
@@ -142,14 +142,14 @@
           class="phaseIn"
           :class="[
             { redBordered: step === 10 },
-            { odakli: step > 9 },
-            { odaksiz: step <= 9 },
+            { focused: step > 9 },
+            { unfocused: step <= 9 },
           ]"
         >
-          <div id="solKucukEtiket" class="kucukEtiket etiket">+2</div>
-          <div id="sagKucukEtiket" class="kucukEtiket etiket">-2</div>
+          <div id="leftSmallTag" class="kucukEtiket tag">+2</div>
+          <div id="rightSmallTag" class="kucukEtiket tag">-2</div>
         </div>
-        <img src="../assets/kucukboru.svg" />
+        <img src="../assets/smallpipe.svg" />
       </div>
     </div>
   </div>
@@ -337,10 +337,10 @@ export default {
         document.getElementById(`rightLargeTag`).classList.add(`approached`);
       }
       function solKEtiket() {
-        document.getElementById(`solKucukEtiket`).classList.add(`approached`);
+        document.getElementById(`leftSmallTag`).classList.add(`approached`);
       }
       function sagKEtiket() {
-        document.getElementById(`sagKucukEtiket`).classList.add(`approached`);
+        document.getElementById(`rightSmallTag`).classList.add(`approached`);
       }
     },
   },
@@ -401,18 +401,18 @@ export default {
   border: 10px solid red;
 }
 
-.odakli {
+.focused {
   opacity: 1;
 }
 
-.odaksiz {
+.unfocused {
   opacity: 0.5;
 }
 
 .phaseIn {
   transition: all 0.5s ease-in;
 }
-.kirmiziOklar {
+.redArrows {
   color: red;
   font-size: 50px;
   position: absolute;

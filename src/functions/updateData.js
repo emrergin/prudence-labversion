@@ -1,6 +1,6 @@
 import { store } from "../store.js";
 
-function veriGuncelle() {
+function updateData() {
   const someData = {
     title: "kisi verileri",
     kisiVerisi: store.veriler,
@@ -24,4 +24,4 @@ function veriGuncelle() {
   console.log(someData);
 }
 
-export default veriGuncelle;
+export default updateData;

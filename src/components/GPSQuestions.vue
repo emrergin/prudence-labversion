@@ -598,7 +598,7 @@
     import { defineEmits as defineEmits } from "@vue/runtime-dom";
     import {checkValidityOfAllInputs} from '../functions/utilities';
     import { store } from "../store.js";
-    import veriGuncelle from "../functions/veriGuncelle";
+    import updateData from "../functions/updateData";
     const emit = defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
@@ -700,7 +700,7 @@
         // console.log(store.gps);
         if(questionIndex.value>=7){
             // store.gps= {};
-            veriGuncelle();
+            updateData();
             emit('end', true);
         }
 

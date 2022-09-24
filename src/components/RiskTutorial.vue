@@ -54,13 +54,13 @@
         class="phaseIn"
         :class="[
           { redBordered: step === 6 },
-          { odakli: step > 5 },
-          { odaksiz: step <= 5 },
+          { focused: step > 5 },
+          { unfocused: step <= 5 },
         ]"
       >
         <div
           :class="[{ gorunur: step === 7 }, { gorunmez: step !== 7 }]"
-          class="phaseIn kirmiziOklar"
+          class="phaseIn redArrows"
         >
           <div>◄</div>
           <div>►</div>
@@ -70,9 +70,9 @@
 
       <img
         id="girisBoru"
-        src="../assets/kucukboru3.svg"
+        src="../assets/smallpipe3.svg"
         class="phaseIn"
-        :class="[{ odakli: step > 2 }, { odaksiz: step <= 2 }]"
+        :class="[{ focused: step > 2 }, { unfocused: step <= 2 }]"
       />
       <div class="inputlar">
         <div
@@ -80,8 +80,8 @@
           id="i1"
           :class="[
             { redBordered: step === 3 },
-            { odakli: step > 2 },
-            { odaksiz: step <= 2 },
+            { focused: step > 2 },
+            { unfocused: step <= 2 },
           ]"
           :style="{ visibility: !secim ? `visible` : `hidden` }"
         >
@@ -102,21 +102,21 @@
             class="phaseIn"
             :class="[
               { redBordered: step === 10 },
-              { odakli: step > 9 },
-              { odaksiz: step <= 9 },
+              { focused: step > 9 },
+              { unfocused: step <= 9 },
             ]"
           >
-            <div id="solKucukEtiket1" class="kucukEtiket etiket">+3</div>
-            <div id="sagKucukEtiket1" class="kucukEtiket etiket">+14</div>
+            <div id="leftSmallTag1" class="kucukEtiket tag">+3</div>
+            <div id="rightSmallTag1" class="kucukEtiket tag">+14</div>
           </div>
           <img
-            src="../assets/kucukboru.svg"
+            src="../assets/smallpipe.svg"
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
               { redBordered: step === 2 },
-              { odakli: step > 1 },
-              { odaksiz: step <= 1 },
+              { focused: step > 1 },
+              { unfocused: step <= 1 },
             ]"
           />
         </div>
@@ -132,21 +132,21 @@
             class="phaseIn"
             :class="[
               { redBordered: step === 10 },
-              { odakli: step > 9 },
-              { odaksiz: step <= 9 },
+              { focused: step > 9 },
+              { unfocused: step <= 9 },
             ]"
           >
-            <div id="solKucukEtiket2" class="kucukEtiket etiket">+10</div>
-            <div id="sagKucukEtiket2" class="kucukEtiket etiket">+7</div>
+            <div id="leftSmallTag2" class="kucukEtiket tag">+10</div>
+            <div id="rightSmallTag2" class="kucukEtiket tag">+7</div>
           </div>
           <img
-            src="../assets/kucukboru.svg"
+            src="../assets/smallpipe.svg"
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
               { redBordered: step === 2 },
-              { odakli: step > 1 },
-              { odaksiz: step <= 1 },
+              { focused: step > 1 },
+              { unfocused: step <= 1 },
             ]"
           />
         </div>
@@ -319,7 +319,7 @@ export default {
       let zar = Math.floor(Math.random() * 2) + 1;
       zar === 1 ? Sol() : Sag();
       let ilgiliEtiket = ``;
-      ilgiliEtiket = zar === 1 ? `solKucukEtiket` : `sagKucukEtiket`;
+      ilgiliEtiket = zar === 1 ? `leftSmallTag` : `rightSmallTag`;
       ilgiliEtiket += vm.secim;
       setTimeout(() => {
         smallTags(ilgiliEtiket);

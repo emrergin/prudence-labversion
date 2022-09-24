@@ -20,16 +20,16 @@
             asama === `baslangic`,
         }"
       />
-      <div id="buyukBoru">
+      <div id="bigPipe">
         <div id="largeTags">
-          <div id="leftLargeTag" class="buyukEtiket etiket soletiket">
+          <div id="leftLargeTag" class="largeTag tag soletiket">
             {{ convertNumbertoString(payOffs[currentRound][0]) }}
           </div>
-          <div id="rightLargeTag" class="buyukEtiket etiket sagetiket">
+          <div id="rightLargeTag" class="largeTag tag sagetiket">
             {{ convertNumbertoString(payOffs[currentRound][1]) }}
           </div>
         </div>
-        <img src="../assets/buyukboru.svg" />
+        <img src="../assets/bigpipe.svg" />
       </div>
       <div class="bigInputs">
         <div
@@ -76,15 +76,15 @@
           ondragstart="return false"
         >
           <div id="smallTags1">
-            <div id="solKucukEtiket1" class="kucukEtiket etiket soletiket">
+            <div id="leftSmallTag1" class="kucukEtiket tag soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
-            <div id="sagKucukEtiket1" class="kucukEtiket etiket sagetiket">
+            <div id="rightSmallTag1" class="kucukEtiket tag sagetiket">
               {{ convertNumbertoString(payOffs[currentRound][3]) }}
             </div>
           </div>
           <img
-            src="../assets/kucukboru2.svg"
+            src="../assets/smallpipe2.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -97,15 +97,15 @@
           ondragstart="return false"
         >
           <div id="smallTags2">
-            <div id="solKucukEtiket2" class="kucukEtiket etiket soletiket">
+            <div id="leftSmallTag2" class="kucukEtiket tag soletiket">
               {{ convertNumbertoString(payOffs[currentRound][4]) }}
             </div>
-            <div id="sagKucukEtiket2" class="kucukEtiket etiket sagetiket">
+            <div id="rightSmallTag2" class="kucukEtiket tag sagetiket">
               {{ convertNumbertoString(payOffs[currentRound][5]) }}
             </div>
           </div>
           <img
-            src="../assets/kucukboru2.svg"
+            src="../assets/smallpipe2.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -115,7 +115,7 @@
         <button
           class="stepButton"
           id="nextRound"
-          @click="siradakiTurE()"
+          @click="nextTurnE()"
         >
           {{
             currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
@@ -138,8 +138,8 @@ import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
 import carryPipe from "../functions/carryPipe";
-import hareket from "../functions/hareket";
-import siradakiTur from "../functions/siradakiTur";
+import movement from "../functions/movement";
+import nextTurn from "../functions/nextTurn";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 
 defineEmits(["end"]);
@@ -181,8 +181,8 @@ function hareketE(e) {
   movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
-function siradakiTurE() {
-  siradakiTur(
+function nextTurnE() {
+  nextTurn(
     `Temperance`,
     store,
     bitis,

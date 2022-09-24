@@ -256,15 +256,15 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
 
     asama.value = `roundsonu`;
     const collection = document.getElementsByClassName("approached");
-    for (let etiket of collection) {
-      if (+etiket.textContent > 0) {
-        totalRevenue.value += +etiket.textContent;
-        // store.kazanc += +etiket.textContent;
-        earningForCurrentRound.value += +etiket.textContent;
+    for (let tag of collection) {
+      if (+tag.textContent > 0) {
+        totalRevenue.value += +tag.textContent;
+        // store.kazanc += +tag.textContent;
+        earningForCurrentRound.value += +tag.textContent;
       } else {
-        totalLoss.value += -etiket.textContent;
-        // store.kazanc += +etiket.textContent;
-        earningForCurrentRound.value += +etiket.textContent;
+        totalLoss.value += -tag.textContent;
+        // store.kazanc += +tag.textContent;
+        earningForCurrentRound.value += +tag.textContent;
       }
     }
 
@@ -275,9 +275,9 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
 
   function etiketBoya(obje, yon, time) {
     setTimeout(() => {
-      obje.querySelector(`.${yon}etiket`).classList.add(`approached`);
+      obje.querySelector(`.${yon}tag`).classList.add(`approached`);
     }, time);
   }
 }
 
-export default hareket;
+export default movement;

@@ -17,7 +17,7 @@
           clickReminder: secim && currentRound === 0 && asama === `baslangic`,
         }"
       />
-      <img id="girisBoru" src="../assets/kucukboru3.svg" />
+      <img id="girisBoru" src="../assets/smallpipe3.svg" />
       <div id="inputlar">
         <div
           class="droppable"
@@ -39,15 +39,15 @@
           }"
         >
           <div id="smallTags1">
-            <div id="solKucukEtiket1" class="kucukEtiket etiket soletiket">
+            <div id="leftSmallTag1" class="kucukEtiket tag soletiket">
               {{ convertNumbertoString(payOffs[currentRound][0]) }}
             </div>
-            <div id="sagKucukEtiket1" class="kucukEtiket etiket sagetiket">
+            <div id="rightSmallTag1" class="kucukEtiket tag sagetiket">
               {{ convertNumbertoString(payOffs[currentRound][1]) }}
             </div>
           </div>
           <img
-            src="../assets/kucukboru.svg"
+            src="../assets/smallpipe.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -63,15 +63,15 @@
           }"
         >
           <div id="smallTags2">
-            <div id="solKucukEtiket2" class="kucukEtiket etiket soletiket">
+            <div id="leftSmallTag2" class="kucukEtiket tag soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
-            <div id="sagKucukEtiket2" class="kucukEtiket etiket sagetiket">
+            <div id="rightSmallTag2" class="kucukEtiket tag sagetiket">
               {{ convertNumbertoString(payOffs[currentRound][3]) }}
             </div>
           </div>
           <img
-            src="../assets/kucukboru.svg"
+            src="../assets/smallpipe.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -81,7 +81,7 @@
         <button
           class="stepButton"
           id="nextRound"
-          @click="siradakiTurE()"
+          @click="nextTurnE()"
         >
           {{
             currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
@@ -104,8 +104,8 @@ import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
 import carryPipe from "../functions/carryPipe";
-import hareket from "../functions/hareket";
-import siradakiTur from "../functions/siradakiTur";
+import movement from "../functions/movement";
+import nextTurn from "../functions/nextTurn";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 
 defineEmits(["end"]);
@@ -141,8 +141,8 @@ function hareketE(e) {
   movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
-function siradakiTurE() {
-  siradakiTur(
+function nextTurnE() {
+  nextTurn(
     `Risk`,
     store,
     bitis,

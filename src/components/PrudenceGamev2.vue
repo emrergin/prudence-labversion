@@ -17,16 +17,16 @@
           clickReminder: secim && currentRound === 0 && asama === `baslangic`,
         }"
       />
-      <div id="buyukBoru">
+      <div id="bigPipe">
         <div id="largeTags">
-          <div id="leftLargeTag" class="buyukEtiket etiket soletiket">
+          <div id="leftLargeTag" class="largeTag tag soletiket">
             {{ convertNumbertoString(payOffs[currentRound][0]) }}
           </div>
-          <div id="rightLargeTag" class="buyukEtiket etiket sagetiket">
+          <div id="rightLargeTag" class="largeTag tag sagetiket">
             {{ convertNumbertoString(payOffs[currentRound][1]) }}
           </div>
         </div>
-        <img src="../assets/buyukboru.svg" />
+        <img src="../assets/bigpipe.svg" />
       </div>
       <div id="inputlar">
         <div
@@ -53,15 +53,15 @@
           ondragstart="return false"
         >
           <div id="smallTags">
-            <div id="solKucukEtiket" class="kucukEtiket etiket soletiket">
+            <div id="leftSmallTag" class="kucukEtiket tag soletiket">
               {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
-            <div id="sagKucukEtiket" class="kucukEtiket etiket sagetiket">
+            <div id="rightSmallTag" class="kucukEtiket tag sagetiket">
               {{ convertNumbertoString(payOffs[currentRound][3]) }}
             </div>
           </div>
           <img
-            src="../assets/kucukboru.svg"
+            src="../assets/smallpipe.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -71,7 +71,7 @@
         class="stepButton"
         id="nextRound"
         v-if="asama === `roundsonu`"
-        @click="siradakiTurE()"
+        @click="nextTurnE()"
       >
         {{
           currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
@@ -93,8 +93,8 @@ import ScoreTable from "./ScoreTable.vue";
 import { store } from "../store.js";
 import { ref } from "vue";
 import carryPipe from "../functions/carryPipe";
-import hareket from "../functions/hareket";
-import siradakiTur from "../functions/siradakiTur";
+import movement from "../functions/movement";
+import nextTurn from "../functions/nextTurn";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 
 defineEmits(["end"]);
@@ -130,8 +130,8 @@ function hareketE(e) {
   movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
 }
 
-function siradakiTurE() {
-  siradakiTur(
+function nextTurnE() {
+  nextTurn(
     `Prudence`,
     store,
     bitis,
@@ -179,7 +179,7 @@ function convertNumbertoString(number) {
   /* top: 28px; */
 }
 
-.buyukEtiket {
+.largeTag {
   border: 2px solid black;
   border-radius: 8px;
   padding: 2px;
