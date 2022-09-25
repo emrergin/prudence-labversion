@@ -1,4 +1,5 @@
 <template>
+    <!-- <div>{{choices}}</div> -->
   <div class="tutorialBox">
     <div class="column1" >
       <transition-group tag="div" name="tutorial" class="tutorialText">
@@ -251,19 +252,18 @@ export default {
       if (index !== -1) {
         return false;
       }
-
-      smallPipe.style.cursor = "grabbing";
-
-      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
-      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
-
       if (!document.getElementById(`fakePipe`)) {
         var fakePipe = smallPipe.cloneNode(true);
         fakePipe.id = `fakePipe`;
         fakePipe.style.visibility = "hidden";
-        fakePipe.classList.remove("temperancePipe");
+        // fakePipe.classList.remove("temperancePipe");
         smallPipe.after(fakePipe);
       }
+      
+      smallPipe.style.cursor = "grabbing";
+
+      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
+      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
 
       smallPipe.style.position = "absolute";
       smallPipe.style.zIndex = 3;
@@ -537,11 +537,19 @@ export default {
     },
     isMovementOver() {
       let rect = this.$refs.footBall.getBoundingClientRect();
-      let elemBelow = document.elementFromPoint(
-        (rect.left + rect.right) / 2,
-        rect.top - 5
-      );
-      return !elemBelow.closest(`.temperancePipe,#bigPipe`);
+
+      let pipes = document.querySelectorAll('.temperancePipe');
+      for (let pipe of pipes) {
+       
+        let rect2 = pipe.getBoundingClientRect();
+        let distance = Math.hypot(rect.top-rect2.top,
+        (rect.left + rect.right)-(rect2.left + rect2.right));
+        console.log(pipe, distance);
+        if (distance<25){
+          return false;
+        }
+      }
+      return true;
     },
     calculateOutcome() {
       let outcomeText = ``;
