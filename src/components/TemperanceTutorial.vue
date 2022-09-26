@@ -57,7 +57,7 @@
         @click="movement()"
         class="phaseIn"
         :class="[
-          { redBordered: step === 7 },
+          { redOutline: step === 7 },
           { focused: step > 6 },
           { unfocused: step <= 6 },
         ]"
@@ -256,14 +256,13 @@ export default {
         var fakePipe = smallPipe.cloneNode(true);
         fakePipe.id = `fakePipe`;
         fakePipe.style.visibility = "hidden";
-        // fakePipe.classList.remove("temperancePipe");
         smallPipe.after(fakePipe);
       }
       
       smallPipe.style.cursor = "grabbing";
 
-      let shiftX = e.clientX - smallPipe.getBoundingClientRect().left;
-      let shiftY = e.clientY - smallPipe.getBoundingClientRect().top;
+      let shiftX = 0.8*(e.clientX - smallPipe.getBoundingClientRect().left);
+      let shiftY = 0.8*(e.clientY - smallPipe.getBoundingClientRect().top);
 
       smallPipe.style.position = "absolute";
       smallPipe.style.zIndex = 3;
@@ -343,8 +342,7 @@ export default {
       }
       let vm = this;
       let footBall = this.$refs.footBall;
-      footBall.style.zIndex = 4;
-      footBall.classList.remove(`redBordered`);
+      footBall.classList.remove(`redOutline`);
       let fakeBall = footBall.cloneNode(true);
       fakeBall.id = `fakeBall`;
       fakeBall.style.visibility = "hidden";
@@ -536,15 +534,14 @@ export default {
       }
     },
     isMovementOver() {
-      let rect = this.$refs.footBall.getBoundingClientRect();
+      const rect = this.$refs.footBall.getBoundingClientRect();
 
-      let pipes = document.querySelectorAll('.temperancePipe');
+      const pipes = document.querySelectorAll('.temperancePipe');
       for (let pipe of pipes) {
        
         let rect2 = pipe.getBoundingClientRect();
         let distance = Math.hypot(rect.top-rect2.top,
-        (rect.left + rect.right)-(rect2.left + rect2.right));
-        console.log(pipe, distance);
+            (rect.left + rect.right)-(rect2.left + rect2.right));
         if (distance<25){
           return false;
         }
@@ -581,16 +578,17 @@ export default {
 .bigInputs {
   gap: 109px;
 }
-
+/* 
 .tutorialBox{
   position: relative;
-}
+} */
 
 #footBall,
 #fakeBall {
   display: flex;
   align-items: flex-end;
   position: relative;
+  z-index:4;
 }
 
 .stepButton {
@@ -601,6 +599,9 @@ export default {
   border: 10px solid red;
 }
 
+.redOutline{
+  outline: 10px solid red;
+}
 .tutorialBox {
   min-height: 618px;
 }

@@ -14,6 +14,17 @@ Ready to use version for the experiment whose full details are [here](https://gi
 
 ### What I learned
 - You can make individual elements fullscreen, destroying depending CSS structure on these elements meanwhile.
+- `findIndex()` returns -1 if no match is found.
+- `closest()` is not about closeness in terms of pixel location, it checks only the parents.
+- For sequential animations, default browser behaviour of removing filling animations should be evaded by `persist()`.
+- For nodes removed with `v-if` condition, any dynamic class assignments will not work for child elements, even if they are not children of the original parent anymore.
+- Accurately modifying data with event listeners is best done with passing the relevant data as an object property.
+- For multiple components referencing the same functions, Composition API is a better fit.
+- There is no universally consistent way to send data if the user just prefers to exit.
+  - https://volument.com/blog/sendbeacon-is-broken
+- An image is rendered inline by default, thus have extra space below it to account for descenders.
+- Persisting animations and Vue components don't behave well together.
+- `getBoundingClientRect` behaves differently on Firefox and Chrome, resulting in inconsistencies for pixel perfect animations.
 
 ## Thanks
 

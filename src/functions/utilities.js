@@ -11,3 +11,15 @@ export const checkValidityOfAllInputs = () =>{
 
         return true;
 }
+
+export const getElementBelow = (node)=>{
+    let rect = node.getBoundingClientRect();
+    node.style.display = "none";
+    let elemBelow = document.elementFromPoint(
+      (rect.left + rect.right) / 2,
+      (rect.top + rect.bottom) / 2
+    );
+    node.style.display = "initial";
+
+    return elemBelow;
+}

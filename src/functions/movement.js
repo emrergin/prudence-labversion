@@ -1,3 +1,5 @@
+import { getElementBelow } from "./utilities";
+
 function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, willBePaid, earningForCurrentRound) {
   if (!Array.isArray(choices.value)) {
     if (!choices.value) {
@@ -214,15 +216,14 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
   }
 
   function nextAnimation() {
-    let rect = fakeBall.getBoundingClientRect();
-    fakeBall.style.display = "none";
-    let elemBelow = document.elementFromPoint(
-      // rect.left - 5,
-      // (rect.top + rect.bottom) / 2
-      (rect.left + rect.right) / 2,
-      (rect.top + rect.bottom) / 2
-    );
-    fakeBall.style.display = "block";
+    let elemBelow = getElementBelow(fakeBall);
+    // let rect = fakeBall.getBoundingClientRect();
+    // fakeBall.style.display = "none";
+    // let elemBelow = document.elementFromPoint(
+    //   (rect.left + rect.right) / 2,
+    //   (rect.top + rect.bottom) / 2
+    // );
+    // fakeBall.style.display = "block";
     let zar = Math.floor(Math.random() * 2) + 1;
 
     if (elemBelow.closest(`.smallPipe,.riskPipe`)) {
@@ -248,7 +249,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       zar === 1 ? Left1() : Right1();
       let etiketler = document.getElementById(`largeTags`);
       zar === 1
-        ? etiketBoya(etiketler, `sol`, 1100)
+        ? etiketBoya(etiketler, `left`, 1100)
         : etiketBoya(etiketler, `sag`, 1100);
 
       return false;
@@ -275,7 +276,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
 
   function etiketBoya(obje, yon, time) {
     setTimeout(() => {
-      obje.querySelector(`.${yon}tag`).classList.add(`approached`);
+      obje.querySelector(`.${yon}etiket`).classList.add(`approached`);
     }, time);
   }
 }
