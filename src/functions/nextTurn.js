@@ -22,7 +22,7 @@ function nextTurn(
     bitis.value - baslangic.value,
     payOffs[currentRound.value],
     choices.value,
-    earningForCurrentRound
+    earningForCurrentRound.value
   ]);
   updateData();
   if (!Array.isArray(choices.value)) {

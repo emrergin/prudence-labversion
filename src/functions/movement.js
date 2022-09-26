@@ -249,7 +249,7 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
       zar === 1 ? Left1() : Right1();
       let etiketler = document.getElementById(`largeTags`);
       zar === 1
-        ? etiketBoya(etiketler, `left`, 1100)
+        ? etiketBoya(etiketler, `sol`, 1100)
         : etiketBoya(etiketler, `sag`, 1100);
 
       return false;

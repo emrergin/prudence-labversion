@@ -584,7 +584,7 @@
 </div>
 
 <div>
-    <button @click="nextQuestion" class="stepButton">
+    <button @click="nextQuestion" class="stepButton" id="gpsStep">
         <span v-if="stairPatienceSelections.length<5">Sıradaki Soru</span>
         <span v-else>Deneyi Bitir</span>
     </button>
@@ -613,6 +613,7 @@
         if(questionList[questionIndex.value]===`stairrisk`){
             let nextValue;//For value to be rendered after the animation.
             stairRiskSelections.value.push(currentStairValue.value);
+            document.getElementById("gpsStep").disabled = true;
             if(stairRiskSelections.value[stairRiskSelections.value.length-1]==='1'){
                 nextValue=currentSure.value+1/(2**stairRiskSelections.value.length)*stair1StartingValue;
             }
@@ -627,17 +628,22 @@
                 ()=>{
                     document.getElementById('stairStep').classList.remove("faded-out");
                     currentSure.value = nextValue;
+                    document.getElementById("gpsStep").disabled = false;
                 }    
                     , 750);
             }
             
             if(stairRiskSelections.value.length<5){
                 return false;
+            }
+            else{
+                document.getElementById("gpsStep").disabled = false;
             }          
             
         }
         if(questionList[questionIndex.value]===`stairpatience` ){
             stairPatienceSelections.value.push(currentStairValue.value);  
+            document.getElementById("gpsStep").disabled = true;
             let nextValue; //For value to be rendered after the animation.
             if (stairPatienceMap.get(valueNow.value)){
                 nextValue = stairPatienceMap.get(valueNow.value)[currentStairValue.value];
@@ -651,12 +657,16 @@
                 ()=>{
                     document.getElementById('stairStep').classList.remove("faded-out");
                     valueNow.value=nextValue;
+                    document.getElementById("gpsStep").disabled = false;
                 }    
                     , 750);
             }
 
             if(stairPatienceSelections.value.length<5){
                 return false;
+            }
+            else{
+                document.getElementById("gpsStep").disabled = false;
             }
         }
 
