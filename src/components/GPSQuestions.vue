@@ -504,9 +504,9 @@
         <p>Hangisini tercih ederdiniz:</p> 
         <p id="stairStep" class="stair-step">%50 şansla <strong>{{inflationMultiplier * stair1SureOutcome}} TL</strong> para kazandıran ve %50 şansla hiçbir şey kazandırmayan bir çekilişi mi yahut <strong>{{currentSure * inflationMultiplier}} TL</strong>’lik kesin bir nakit para ödemesini mi? </p>
         <input type="radio" id="stairRiskA" name="stairRisk" v-model="currentStairValue" value="1" required>
-        <label for="lottery"> 50/50 çekiliş</label>
+        <label for="stairRiskA"> 50/50 çekiliş</label>
         <input type="radio" id="stairRiskB" name="stairRisk" v-model="currentStairValue" value="0">
-        <label for="sure"> Kesin ödeme</label>
+        <label for="stairRiskB"> Kesin ödeme</label>
     </div>
 </div>
 <div v-if="question==='gift'">
@@ -519,37 +519,37 @@
     </div>
     <div >
         <input type="radio" id="gifter" name="gift" value="next" v-model="currentGiftSelection" required>
-        <label for="kadin">Evet</label>
+        <label for="gifter">Evet</label>
         <input type="radio" id="nongifter" name="gift" value="0" v-model="currentGiftSelection">
-        <label for="erkek">Hayır</label>
+        <label for="nongifter">Hayır</label>
     </div>
     <div class="subdiv" v-if="currentGiftSelection==='next'">       
 
         <label class="statement">Yabancıya hangi hediyeyi verirsiniz?</label>
         <ul class='likert sixmemberlikert'>
             <li>
-                <input type="radio" name="giftvalue" value="2" required>
-                <label>{{2*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g2" type="radio" name="giftvalue" value="2" required>
+                <label for="g2">{{2*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="4">
-                <label>{{4*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g4" type="radio" name="giftvalue" value="4">
+                <label for="g4">{{4*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="6">
-                <label>{{6*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g6" type="radio" name="giftvalue" value="6">
+                <label for="g6">{{6*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="8">
-                <label>{{8*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g8" type="radio" name="giftvalue" value="8">
+                <label for="g8">{{8*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="10">
-                <label>{{10*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g10" type="radio" name="giftvalue" value="10">
+                <label for="g12">{{10*inflationMultiplier}} TL değerinde hediye</label>
             </li>
             <li>
-                <input type="radio" name="giftvalue" value="12">
-                <label>{{12*inflationMultiplier}} TL değerinde hediye</label>
+                <input id="g12" type="radio" name="giftvalue" value="12">
+                <label for="g12">{{12*inflationMultiplier}} TL değerinde hediye</label>
             </li>
         </ul>
     </div>
@@ -626,9 +626,9 @@
                 document.getElementById('stairStep').classList.add("faded-out");
                 const myTimeout = setTimeout(
                 ()=>{
-                    document.getElementById('stairStep').classList.remove("faded-out");
+                    document.getElementById('stairStep')?.classList.remove("faded-out");
                     currentSure.value = nextValue;
-                    document.getElementById("gpsStep").disabled = false;
+                    if(document.getElementById("gpsStep")){document.getElementById("gpsStep").disabled = false;}
                 }    
                     , 750);
             }
@@ -655,9 +655,9 @@
                 document.getElementById('stairStep').classList.add("faded-out");
                 const myTimeout = setTimeout(
                 ()=>{
-                    document.getElementById('stairStep').classList.remove("faded-out");
+                    document.getElementById('stairStep')?.classList.remove("faded-out");
                     valueNow.value=nextValue;
-                    document.getElementById("gpsStep").disabled = false;
+                    if(document.getElementById("gpsStep")){document.getElementById("gpsStep").disabled = false;}                    
                 }    
                     , 750);
             }
