@@ -5,51 +5,50 @@
         isteksiz" ve 10, "risk almaya çok istekli" anlamına gelir. Ölçekte nereye düştüğünüzü
         belirtmek için 0 ile 10 arasında herhangi bir sayı kullanabilirsiniz.
     </p>
-    <!-- <label class="statement">Genel olarak, risk almaya istekli bir kişi mi yoksa risk almaktan sakınan biri misiniz? </label> -->
     <ul class='likert'>
         <li>
-            <input type="radio" name="risk_istegi" value="0" required>
-            <label>0 - Risk almaya tamamen isteksiz</label>
+            <input id="ri0" type="radio" name="risk_istegi" value="0" required>
+            <label for="ri0">0 - Risk almaya tamamen isteksiz</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="1">
-            <label>1</label>
+            <input id="ri1" type="radio" name="risk_istegi" value="1">
+            <label for="ri1">1</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="2">
-            <label>2</label>
+            <input id="ri2" type="radio" name="risk_istegi" value="2">
+            <label for="ri2">2</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="3">
-            <label>3</label>
+            <input id="ri3" type="radio" name="risk_istegi" value="3">
+            <label for="ri3">3</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="4">
-            <label>4</label>
+            <input id="ri4" type="radio" name="risk_istegi" value="4">
+            <label for="ri4">4</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="5">
-            <label>5</label>
+            <input id="ri5" type="radio" name="risk_istegi" value="5">
+            <label for="ri5">5</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="6">
-            <label>6</label>
+            <input id="ri6" type="radio" name="risk_istegi" value="6">
+            <label for="ri6">6</label>
         </li>
             <li>
-            <input type="radio" name="risk_istegi" value="7">
-            <label>7</label>
+            <input id="ri7" type="radio" name="risk_istegi" value="7">
+            <label for="ri7">7</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="8">
-            <label>8</label>
+            <input id="ri8" type="radio" name="risk_istegi" value="8">
+            <label for="ri8">8</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="9">
-            <label>9</label>
+            <input id="ri9" type="radio" name="risk_istegi" value="9">
+            <label for="ri9">9</label>
         </li>
         <li>
-            <input type="radio" name="risk_istegi" value="10">
-            <label>10 - Risk almaya çok istekli</label>
+            <input id="ri10" type="radio" name="risk_istegi" value="10">
+            <label for="ri10">10 - Risk almaya çok istekli</label>
         </li>
     </ul>
 </div>
@@ -65,189 +64,189 @@
         <label class="statement">Gelecekte daha fazla faydasını görebilmek adına bugün sizin için faydalı olan bir şeyden vazgeçmeye ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="gelecekfayda" value="0" required>
-                <label>0 - Hiçbir şekilde yapmak istemiyor</label>
+                <input id="gf0" type="radio" name="gelecekfayda" value="0" required>
+                <label for="gf0">0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="1">
-                <label>1</label>
+                <input id="gf1" type="radio" name="gelecekfayda" value="1">
+                <label for="gf1">1</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="2">
-                <label>2</label>
+                <input id="gf2" type="radio" name="gelecekfayda" value="2">
+                <label for="gf2">2</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="3">
-                <label>3</label>
+                <input id="gf3" type="radio" name="gelecekfayda" value="3">
+                <label for="gf3">3</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="4">
-                <label>4</label>
+                <input id="gf4" type="radio" name="gelecekfayda" value="4">
+                <label for="gf4">4</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="5">
-                <label>5</label>
+                <input id="gf5" type="radio" name="gelecekfayda" value="5">
+                <label for="gf5">5</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="6">
-                <label>6</label>
+                <input id="gf6" type="radio" name="gelecekfayda" value="6">
+                <label for="gf6">6</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="7">
-                <label>7</label>
+                <input id="gf7" type="radio" name="gelecekfayda" value="7">
+                <label for="gf7">7</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="8">
-                <label>8</label>
+                <input id="gf8" type="radio" name="gelecekfayda" value="8">
+                <label for="gf8">8</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="9">
-                <label>9</label>
+                <input id="gf9" type="radio" name="gelecekfayda" value="9">
+                <label for="gf9">9</label>
             </li>
             <li>
-                <input type="radio" name="gelecekfayda" value="10">
-                <label>10 - Bunu yapmaya çok istekli</label>
+                <input id="gf10" type="radio" name="gelecekfayda" value="10">
+                <label for="gf10">10 - Bunu yapmaya çok istekli</label>
             </li>
         </ul>
         <label class="statement">Size maliyetleri olsa bile, size karşı haksız davranışları cezalandırmaya ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="cezakendi" value="0" required>
-                <label>0 - Hiçbir şekilde yapmak istemiyor</label>
+                <input id="ck0" type="radio" name="cezakendi" value="0" required>
+                <label for="ck0">0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="1">
-                <label>1</label>
+                <input id="ck1" type="radio" name="cezakendi" value="1">
+                <label for="ck1">1</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="2">
-                <label>2</label>
+                <input id="ck2" type="radio" name="cezakendi" value="2">
+                <label for="ck2">2</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="3">
-                <label>3</label>
+                <input id="ck3" type="radio" name="cezakendi" value="3">
+                <label for="ck3">3</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="4">
-                <label>4</label>
+                <input id="ck4" type="radio" name="cezakendi" value="4">
+                <label for="ck4">4</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="5">
-                <label>5</label>
+                <input id="ck5" type="radio" name="cezakendi" value="5">
+                <label for="ck5">5</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="6">
-                <label>6</label>
+                <input id="ck6" type="radio" name="cezakendi" value="6">
+                <label for="ck6">6</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="7">
-                <label>7</label>
+                <input id="ck7" type="radio" name="cezakendi" value="7">
+                <label for="ck7">7</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="8">
-                <label>8</label>
+                <input id="ck8" type="radio" name="cezakendi" value="8">
+                <label for="ck8">8</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="9">
-                <label>9</label>
+                <input id="ck9" type="radio" name="cezakendi" value="9">
+                <label for="ck9">9</label>
             </li>
             <li>
-                <input type="radio" name="cezakendi" value="10">
-                <label>10 - Bunu yapmaya çok istekli</label>
+                <input id="ck10" type="radio" name="cezakendi" value="10">
+                <label for="ck10">10 - Bunu yapmaya çok istekli</label>
             </li>
         </ul>
         <label class="statement">Size maliyetleri olsa bile, başkalarına haksızlık yapan birini cezalandırmaya ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="cezabaskasi" value="0" required>
-                <label>0 - Hiçbir şekilde yapmak istemiyor</label>
+                <input id="cb0" type="radio" name="cezabaskasi" value="0" required>
+                <label for="cb0">0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="1">
-                <label>1</label>
+                <input id="cb1" type="radio" name="cezabaskasi" value="1">
+                <label for="cb1">1</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="2">
-                <label>2</label>
+                <input id="cb2" type="radio" name="cezabaskasi" value="2">
+                <label for="cb2">2</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="3">
-                <label>3</label>
+                <input id="cb3" type="radio" name="cezabaskasi" value="3">
+                <label for="cb3">3</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="4">
-                <label>4</label>
+                <input id="cb4" type="radio" name="cezabaskasi" value="4">
+                <label for="cb4">4</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="5">
-                <label>5</label>
+                <input id="cb5" type="radio" name="cezabaskasi" value="5">
+                <label for="cb5">5</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="6">
-                <label>6</label>
+                <input id="cb6" type="radio" name="cezabaskasi" value="6">
+                <label for="cb6">6</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="7">
-                <label>7</label>
+                <input id="cb7" type="radio" name="cezabaskasi" value="7">
+                <label for="cb7">7</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="8">
-                <label>8</label>
+                <input id="cb8" type="radio" name="cezabaskasi" value="8">
+                <label for="cb8">8</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="9">
-                <label>9</label>
+                <input id="cb9" type="radio" name="cezabaskasi" value="9">
+                <label for="cb9">9</label>
             </li>
             <li>
-                <input type="radio" name="cezabaskasi" value="10">
-                <label>10 - Bunu yapmaya çok istekli</label>
+                <input id="cb10" type="radio" name="cezabaskasi" value="10">
+                <label for="cb10">10 - Bunu yapmaya çok istekli</label>
             </li>
         </ul>
         <label class="statement">Karşılığında hiçbir geri dönüş beklemeden hayır işlerine bir şeyler vermeye ne kadar isteklisiniz?</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="hayir" value="0" required>
-                <label>0 - Hiçbir şekilde yapmak istemiyor</label>
+                <input id="hi0" type="radio" name="hayir" value="0" required>
+                <label for="hi0">0 - Hiçbir şekilde yapmak istemiyor</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="1">
-                <label>1</label>
+                <input id="hi1" type="radio" name="hayir" value="1">
+                <label for="hi1">1</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="2">
-                <label>2</label>
+                <input id="hi2" type="radio" name="hayir" value="2">
+                <label for="hi2">2</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="3">
-                <label>3</label>
+                <input id="hi3" type="radio" name="hayir" value="3">
+                <label for="hi3">3</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="4">
-                <label>4</label>
+                <input id="hi4" type="radio" name="hayir" value="4">
+                <label for="hi4">4</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="5">
-                <label>5</label>
+                <input id="hi5" type="radio" name="hayir" value="5">
+                <label for="hi5">5</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="6">
-                <label>6</label>
+                <input id="hi6" type="radio" name="hayir" value="6">
+                <label for="hi6">6</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="7">
-                <label>7</label>
+                <input id="hi7" type="radio" name="hayir" value="7">
+                <label for="hi7">7</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="8">
-                <label>8</label>
+                <input id="hi8" type="radio" name="hayir" value="8">
+                <label for="hi8">8</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="9">
-                <label>9</label>
+                <input id="hi9" type="radio" name="hayir" value="9">
+                <label for="hi9">9</label>
             </li>
             <li>
-                <input type="radio" name="hayir" value="10">
-                <label>10 - Bunu yapmaya çok istekli</label>
+                <input id="hi10" type="radio" name="hayir" value="10">
+                <label for="hi10">10 - Bunu yapmaya çok istekli</label>
             </li>
         </ul>
 </div>
@@ -261,236 +260,236 @@
         <label class="statement smalltoppadding">Bana iyilikte bulunan birisine karşılık vermeye hazırım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d1" value="0" required>
-                <label>0 - Beni hiç ifade etmiyor</label>
+                <input id="de1_0" type="radio" name="d1" value="0" required>
+                <label for="de1_0">0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="1">
-                <label>1</label>
+                <input id="de1_1" type="radio" name="d1" value="1">
+                <label for="de1_1">1</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="2">
-                <label>2</label>
+                <input id="de1_2" type="radio" name="d1" value="2">
+                <label for="de1_2">2</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="3">
-                <label>3</label>
+                <input id="de1_3" type="radio" name="d1" value="3">
+                <label for="de1_3">3</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="4">
-                <label>4</label>
+                <input id="de1_4" type="radio" name="d1" value="4">
+                <label for="de1_4">4</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="5">
-                <label>5</label>
+                <input id="de1_5" type="radio" name="d1" value="5">
+                <label for="de1_5">5</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="6">
-                <label>6</label>
+                <input id="de1_6" type="radio" name="d1" value="6">
+                <label for="de1_6">6</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="7">
-                <label>7</label>
+                <input id="de1_7" type="radio" name="d1" value="7">
+                <label for="de1_7">7</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="8">
-                <label>8</label>
+                <input id="de1_8" type="radio" name="d1" value="8">
+                <label for="de1_8">8</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="9">
-                <label>9</label>
+                <input id="de1_9" type="radio" name="d1" value="9">
+                <label for="de1_9">9</label>
             </li>
             <li>
-                <input type="radio" name="d1" value="10">
-                <label>10 - Beni mükemmel şekilde ifade ediyor</label>
+                <input id="de1_10" type="radio" name="d1" value="10">
+                <label for="de1_10">10 - Beni mükemmel şekilde ifade ediyor</label>
             </li>
         </ul>
         <label class="statement smalltoppadding">Eğer çok haksız bir muamele görürsem, bunu yapmak için bir bedel olsa bile ilk fırsatta bunun intikamını alırım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d2" value="0" required>
-                <label>0 - Beni hiç ifade etmiyor</label>
+                <input id="de2_0" type="radio" name="d2" value="0" required>
+                <label for="de2_0">0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="1">
-                <label>1</label>
+                <input id="de2_1" type="radio" name="d2" value="1">
+                <label for="de2_1">1</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="2">
-                <label>2</label>
+                <input id="de2_2" type="radio" name="d2" value="2">
+                <label for="de2_2">2</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="3">
-                <label>3</label>
+                <input id="de2_3" type="radio" name="d2" value="3">
+                <label for="de2_3">3</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="4">
-                <label>4</label>
+                <input id="de2_4" type="radio" name="d2" value="4">
+                <label for="de2_4">4</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="5">
-                <label>5</label>
+                <input id="de2_5" type="radio" name="d2" value="5">
+                <label for="de2_5">5</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="6">
-                <label>6</label>
+                <input id="de2_6" type="radio" name="d2" value="6">
+                <label for="de2_6">6</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="7">
-                <label>7</label>
+                <input id="de2_7" type="radio" name="d2" value="7">
+                <label for="de2_7">7</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="8">
-                <label>8</label>
+                <input id="de2_8" type="radio" name="d2" value="8">
+                <label for="de2_8">8</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="9">
-                <label>9</label>
+                <input id="de2_9" type="radio" name="d2" value="9">
+                <label for="de2_9">9</label>
             </li>
             <li>
-                <input type="radio" name="d2" value="10">
-                <label>10 - Beni mükemmel şekilde ifade ediyor</label>
+                <input id="de2_10" type="radio" name="d2" value="10">
+                <label for="de2_10">10 - Beni mükemmel şekilde ifade ediyor</label>
             </li>
         </ul>
         <label class="statement smalltoppadding">Ben insanların sadece en iyi niyetlerle davrandıklarını varsayarım.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d3" value="0" required>
-                <label>0 - Beni hiç ifade etmiyor</label>
+                <input id="de3_0" type="radio" name="d3" value="0" required>
+                <label for="de3_0">0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="1">
-                <label>1</label>
+                <input id="de3_1" type="radio" name="d3" value="1">
+                <label for="de3_1">1</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="2">
-                <label>2</label>
+                <input id="de3_2" type="radio" name="d3" value="2">
+                <label for="de3_2">2</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="3">
-                <label>3</label>
+                <input id="de3_3" type="radio" name="d3" value="3">
+                <label for="de3_3">3</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="4">
-                <label>4</label>
+                <input id="de3_4" type="radio" name="d3" value="4">
+                <label for="de3_4">4</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="5">
-                <label>5</label>
+                <input id="de3_5" type="radio" name="d3" value="5">
+                <label for="de3_5">5</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="6">
-                <label>6</label>
+                <input id="de3_6" type="radio" name="d3" value="6">
+                <label for="de3_6">6</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="7">
-                <label>7</label>
+                <input id="de3_7" type="radio" name="d3" value="7">
+                <label for="de3_7">7</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="8">
-                <label>8</label>
+                <input id="de3_8" type="radio" name="d3" value="8">
+                <label for="de3_8">8</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="9">
-                <label>9</label>
+                <input id="de3_9" type="radio" name="d3" value="9">
+                <label for="de3_9">9</label>
             </li>
             <li>
-                <input type="radio" name="d3" value="10">
-                <label>10 - Beni mükemmel şekilde ifade ediyor</label>
+                <input id="de3_10" type="radio" name="d3" value="10">
+                <label for="de3_10">10 - Beni mükemmel şekilde ifade ediyor</label>
             </li>
         </ul>
         <label class="statement smalltoppadding">Matematikte iyiyim.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d4" value="0" required>
-                <label>0 - Beni hiç ifade etmiyor</label>
+                <input id="de4_0" type="radio" name="d4" value="0" required>
+                <label for="de4_0">0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="1">
-                <label>1</label>
+                <input id="de4_1" type="radio" name="d4" value="1">
+                <label for="de4_1">1</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="2">
-                <label>2</label>
+                <input id="de4_2" type="radio" name="d4" value="2">
+                <label for="de4_2">2</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="3">
-                <label>3</label>
+                <input id="de4_3" type="radio" name="d4" value="3">
+                <label for="de4_3">3</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="4">
-                <label>4</label>
+                <input id="de4_4" type="radio" name="d4" value="4">
+                <label for="de4_4">4</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="5">
-                <label>5</label>
+                <input id="de4_5" type="radio" name="d4" value="5">
+                <label for="de4_5">5</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="6">
-                <label>6</label>
+                <input id="de4_6" type="radio" name="d4" value="6">
+                <label for="de4_6">6</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="7">
-                <label>7</label>
+                <input id="de4_7" type="radio" name="d4" value="7">
+                <label for="de4_7">7</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="8">
-                <label>8</label>
+                <input id="de4_8" type="radio" name="d4" value="8">
+                <label for="de4_8">8</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="9">
-                <label>9</label>
+                <input id="de4_9" type="radio" name="d4" value="9">
+                <label for="de4_9">9</label>
             </li>
             <li>
-                <input type="radio" name="d4" value="10">
-                <label>10 - Beni mükemmel şekilde ifade ediyor</label>
+                <input id="de4_10" type="radio" name="d4" value="10">
+                <label for="de4_10">10 - Beni mükemmel şekilde ifade ediyor</label>
             </li>
         </ul>
         <label class="statement smalltoppadding">Görevleri hemen yapmanın daha iyi olacağını bilsem bile erteleme eğilimindeyim.</label>
         <ul class='likert'>
             <li>
-                <input type="radio" name="d5" value="0" required>
-                <label>0 - Beni hiç ifade etmiyor</label>
+                <input id="de5_0" type="radio" name="d5" value="0" required>
+                <label for="de5_0">0 - Beni hiç ifade etmiyor</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="1">
-                <label>1</label>
+                <input id="de5_1" type="radio" name="d5" value="1">
+                <label for="de5_1">1</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="2">
-                <label>2</label>
+                <input id="de5_2" type="radio" name="d5" value="2">
+                <label for="de5_2">2</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="3">
-                <label>3</label>
+                <input id="de5_3" type="radio" name="d5" value="3">
+                <label for="de5_3">3</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="4">
-                <label>4</label>
+                <input id="de5_4" type="radio" name="d5" value="4">
+                <label for="de5_4">4</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="5">
-                <label>5</label>
+                <input id="de5_5" type="radio" name="d5" value="5">
+                <label for="de5_5">5</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="6">
-                <label>6</label>
+                <input id="de5_6" type="radio" name="d5" value="6">
+                <label for="de5_6">6</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="7">
-                <label>7</label>
+                <input id="de5_7" type="radio" name="d5" value="7">
+                <label for="de5_7">7</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="8">
-                <label>8</label>
+                <input id="de5_8" type="radio" name="d5" value="8">
+                <label for="de5_8">8</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="9">
-                <label>9</label>
+                <input id="de5_9" type="radio" name="d5" value="9">
+                <label for="de5_9">9</label>
             </li>
             <li>
-                <input type="radio" name="d5" value="10">
-                <label>10 - Beni mükemmel şekilde ifade ediyor</label>
+                <input id="de5_10" type="radio" name="d5" value="10">
+                <label for="de5_10">10 - Beni mükemmel şekilde ifade ediyor</label>
             </li>
         </ul>
     </div>
