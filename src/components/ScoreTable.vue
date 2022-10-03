@@ -1,6 +1,6 @@
 <template>
   <ul class="plainList" id="oyunVerileri">
-    <li>
+    <!-- <li>
       <span>Toplam Kazanç </span
       ><span class="veriKare" id="topKazanc">{{ totalRevenue }}</span>
     </li>
@@ -13,11 +13,17 @@
       ><span class="veriKare" id="netKazanc">{{
         totalRevenue - totalLoss
       }}</span>
-    </li>
+    </li> -->
     <li>
-      <span>Oyun </span
+      <span>Tur </span
       ><span class="veriKare" id="oyunRound">{{
         currentRound + 1 + `/` + totalRounds
+      }}</span>
+    </li>
+    <li>
+    <span>Deney </span
+      ><span class="veriKare" id="currentGame">{{
+        currentGame + `/` + `3`
       }}</span>
     </li>
   </ul>
@@ -25,8 +31,9 @@
 <script>
 export default {
   props: [
-    `totalRevenue`,
-    `totalLoss`,
+    // `totalRevenue`,
+    // `totalLoss`,
+    `currentGame`,
     `currentRound`,
     `totalRounds`,
   ],

@@ -1,8 +1,7 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :totalRevenue="totalRevenue"
-      :totalLoss="totalLoss"
+      :currentGame=1
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
@@ -91,7 +90,7 @@
     </div>
   </div>
   <div v-if="oyunSonu" class="oyunKutusu">
-    <p>Oyunu tamamladınız. Toplam kazancınız: {{ totalRevenue - totalLoss }}</p>
+    <!-- <p>Oyunu tamamladınız. Toplam kazancınız: {{ totalRevenue - totalLoss }}</p> -->
     <button @click="$emit('end', true)" class="stepButton">
       <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>
@@ -120,6 +119,7 @@ const props = defineProps({
 const totalRounds = props.payOffs.length;
 
 const roundToPay = Math.floor(Math.random() * totalRounds);
+store.chosenRounds.push(roundToPay+1);
 
 const currentDroppable = ref(null);
 const secim = ref(null);

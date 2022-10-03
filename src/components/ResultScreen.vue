@@ -17,9 +17,15 @@
     <h3>Verileriniz</h3>    
     <p>Kullanıcı ID: {{ store._id }}</p>    
     <p>İsminiz: {{ store.isim }}</p>    
+    
+
+    <p>Birinci oyundan {{ store.chosenRounds[0] }} tur ödeme yapmak üzere seçildi.</p>
+    <p>İkinci oyundan {{ store.chosenRounds[1] }} tur ödeme yapmak üzere seçildi.</p>
+    <p>Üçüncü oyundan {{ store.chosenRounds[2] }} tur ödeme yapmak üzere seçildi.</p>
+
     <p>Toplam kazancınız: {{ store.kazanc }}</p>
     
-    <table>
+    <!-- <table>
       <tr>
         <th>Deney</th>        
         <th>Karar Süresi (ms)</th>        
@@ -58,9 +64,9 @@
       <p> Ekonomi Dersi: {{store.demografi.econ}}</p>
       <p> Algılanan zorluk: {{store.demografi.diff}}</p>
       <p>Eminlik: {{store.demografi.sure}}</p>
-    </div>
+    </div> -->
     
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 <script setup>

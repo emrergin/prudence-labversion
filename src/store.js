@@ -5,6 +5,7 @@ let KisiVerileri = [];
 let toplamKazanc = 0;
 let KisiIsmi = "";
 const uuID = uuid.v1();
+const chosenRounds=[];
 
 export const store = reactive({
   veriler: KisiVerileri,
@@ -12,5 +13,6 @@ export const store = reactive({
   isim: KisiIsmi,
   _id: uuID,
   demografi: {},
-  gps: {}
+  gps: {},
+  chosenRounds
 });
