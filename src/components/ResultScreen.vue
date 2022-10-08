@@ -19,9 +19,9 @@
     <p>İsminiz: {{ store.isim }}</p>    
     
 
-    <p>Birinci oyundan {{ store.chosenRounds[0] }} tur ödeme yapmak üzere seçildi.</p>
-    <p>İkinci oyundan {{ store.chosenRounds[1] }} tur ödeme yapmak üzere seçildi.</p>
-    <p>Üçüncü oyundan {{ store.chosenRounds[2] }} tur ödeme yapmak üzere seçildi.</p>
+    <p>Birinci oyundan ödeme yapmak üzere {{ store.chosenRounds[0] }}. tur seçildi.</p>
+    <p>İkinci oyundan ödeme yapmak üzere {{ store.chosenRounds[1] }}. tur seçildi.</p>
+    <p>Üçüncü oyundan ödeme yapmak üzere {{ store.chosenRounds[2] }}. tur seçildi.</p>
 
     <p>Toplam kazancınız: {{ store.kazanc }}</p>
     
