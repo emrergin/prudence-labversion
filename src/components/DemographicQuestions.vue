@@ -41,7 +41,7 @@
         </div>
         <div >
             <label for="bolum" class="label">Bölümünüz: </label> 
-            <input id="bolum" v-model="dep"/>
+            <input id="bolum" v-model="dep" required/>
         </div>
         <div >
             <label for="ders" class="label">Bugüne kadar kaç ekonomi dersi aldınız?</label>
@@ -153,7 +153,7 @@
         </ul>
         <div>
             <button type="button" @click="finishPart" class="stepButton"
-            :disabled="age === '' || gpa === '' || preExp=== '' || sex === '' || econ==='' || diff==='' || sure === ''" 
+            :disabled="age === '' || gpa === '' || preExp=== '' || sex === '' || econ==='' || diff==='' || sure === '' || dep=== ''" 
             >
                 <span>Devam</span>
             </button>

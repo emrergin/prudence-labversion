@@ -86,7 +86,7 @@ export default {
   },
   data() {
     return {
-      currentPhase: `intro`,
+      currentPhase: `dem`,
       store,
       endOfExperiment: false,
       treatments: null,

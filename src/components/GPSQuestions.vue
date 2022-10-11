@@ -744,7 +744,7 @@
     stairPatienceMap.set(65,[63,66]);
     stairPatienceMap.set(71,[69,72]);
     stairPatienceMap.set(77,[76,79]);
-    stairPatienceMap.set(84,[86,92]);
+    stairPatienceMap.set(84,[82,86]);
 
 
 </script>

@@ -21,7 +21,7 @@ function updateData() {
     `https://prudencetemperance.herokuapp.com/api/kisiveri`,
     putMethod
   ).catch((err) => console.log(err));
-  console.log(someData);
+  // console.log(someData);
 }
 
 export default updateData;
