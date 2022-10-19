@@ -681,7 +681,7 @@
             }
             else{
                 // console.log(stairPatienceSelections.value);  
-                store.gps.stairpatience = stairPatienceSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);  
+                store.gps.stairpatience = 33-stairPatienceSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);  
                 
                 alert(`stair patience: `+store.gps.stairpatience);
             }
