@@ -601,11 +601,11 @@
     const emit = defineEmits(["end"]);
 
     const questionList= [`generalrisk`,`willingnesstoact`,`describe`,`stairrisk`,`gift`,`hypodonation`,`stairpatience`];
-    // const question = ref(`generalrisk`);
-    const question = ref(`stairrisk`);
+    const question = ref(`generalrisk`);
+    // const question = ref(`stairrisk`);
 
-    // const questionIndex = ref(0);
-    const questionIndex = ref(3);
+    const questionIndex = ref(0);
+    // const questionIndex = ref(3);
 
     function nextQuestion(){
 
@@ -677,13 +677,13 @@
                 // console.log(stairRiskSelections.value);
                 store.gps.stairrisk = stairRiskSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);
 
-                alert(`stair risk: `+store.gps.stairrisk);
+                // alert(`stair risk: `+store.gps.stairrisk);
             }
             else{
                 // console.log(stairPatienceSelections.value);  
                 store.gps.stairpatience = 33-stairPatienceSelections.value.reduce((prev,curr,index)=>prev+curr*(16/(2**index)),1);  
                 
-                alert(`stair patience: `+store.gps.stairpatience);
+                // alert(`stair patience: `+store.gps.stairpatience);
             }
         }
         else if (questionList[questionIndex.value]==='gift'){
