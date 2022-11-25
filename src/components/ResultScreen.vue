@@ -24,7 +24,7 @@
     <p>Üçüncü oyundan ödeme yapmak üzere {{ store.chosenRounds[2] }}. tur seçildi. O turdaki kazancınız: {{store.veriler[2*(store.veriler.length)/3+store.chosenRounds[2]-1][4]}}</p>
 
     <p>Toplam puanınız: {{ store.kazanc }}</p>
-    <p>Parasal kazancınız: {{ store.kazanc }}x 1,5 + 20 = {{store.kazanc*1.5+20}}</p>
+    <p>Parasal kazancınız: {{ store.kazanc }}x 1,5 + 20 = {{store.kazanc*1.5+20}} TL</p>
     
   </div>
 </template>
