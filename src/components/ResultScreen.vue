@@ -24,49 +24,8 @@
     <p>Üçüncü oyundan ödeme yapmak üzere {{ store.chosenRounds[2] }}. tur seçildi. O turdaki kazancınız: {{store.veriler[2*(store.veriler.length)/3+store.chosenRounds[2]-1][4]}}</p>
 
     <p>Toplam kazancınız: {{ store.kazanc }}</p>
+    <p>Parasal kazancınız: {{ store.kazanc }}x 1,5 + 20 = {{store.kazanc*1.5+20}}</p>
     
-    <!-- <table>
-      <tr>
-        <th>Deney</th>        
-        <th>Karar Süresi (ms)</th>        
-        <th>Değerler</th>        
-        <th>Seçim</th>
-        <th>Kazanç</th>
-        
-      </tr>
-      <tr v-for="veriSatiri in store.veriler" :key="veriSatiri[3]">
-        <td>{{ veriSatiri[0] }}</td>
-        <td>{{ veriSatiri[1] }}</td>
-        <td>{{ veriSatiri[2] }}</td>
-        <td>{{ veriSatiri[3] }}</td>
-        <td>{{ veriSatiri[4] }}</td>
-      </tr>
-
-    </table>
-    <div style="display:flex;padding-inline:10ch;gap:2rem;justify-content: center;">
-    <div>
-      <h3>GPS</h3>  
-        <p>general risk: {{store.gps.risk_istegi}}</p>
-        <p>willingness to act: {{store.gps.gelecekfayda}} - {{store.gps.cezakendi}} - {{store.gps.cezabaskasi}} - {{store.gps.hayir}}</p>
-        <p>describe: {{store.gps.d1}} - {{store.gps.d2}} - {{store.gps.d3}} - {{store.gps.d4}} - {{store.gps.d5}}</p>
-        <p>staircase risk: {{store.gps.stairrisk}}</p>
-        <p>gift exchange: {{store.gps.gift}}</p>
-        <p>hypothetic donation: {{store.gps.donation}}</p>
-        <p>staircase patience: {{store.gps.stairpatience}}</p>
-    </div>
-    <div style="margin-bottom:5ch;">
-      <h3>Demografi</h3>
-      <p>Yaş: {{store.demografi.age}}</p>
-      <p>GNO: {{store.demografi.gpa}}</p>
-      <p>Cinsiyet: {{['kadın','erkek','diger'][store.demografi.sex]}}</p>
-      <p>Deneyim: {{Boolean(Number(store.demografi.preExp))}}</p>
-      <p>Bölüm: {{store.demografi.dep}}</p> 
-      <p> Ekonomi Dersi: {{store.demografi.econ}}</p>
-      <p> Algılanan zorluk: {{store.demografi.diff}}</p>
-      <p>Eminlik: {{store.demografi.sure}}</p>
-    </div> -->
-    
-    <!-- </div> -->
   </div>
 </template>
 <script setup>
