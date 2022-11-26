@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       currentPhase: `intro`,
-      // currentPhase: `gps`,
+      // currentPhase: `son`,
       store,
       endOfExperiment: false,
       treatments: null,

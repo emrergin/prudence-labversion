@@ -24,7 +24,7 @@
     <p>Üçüncü oyundan ödeme yapmak üzere {{ store.chosenRounds[2] }}. tur seçildi. O turdaki kazancınız: {{store.veriler[2*(store.veriler.length)/3+store.chosenRounds[2]-1][4]}}</p>
 
     <p>Toplam puanınız: {{ store.kazanc }}</p>
-    <p>Parasal kazancınız: {{ store.kazanc }}x 1,5 + 20 = {{store.kazanc*1.5+20}} TL</p>
+    <p>Parasal kazancınız: ({{ store.kazanc }} x 1,5) + 20 = {{new Intl.NumberFormat('tr-TR', {minimumFractionDigits: 0}).format(store.kazanc*1.5+20)}} TL</p>
     
   </div>
 </template>
@@ -55,31 +55,5 @@ function exitFullscreen() {
 <style scoped>
 .p-v-15{
   padding-block:15ch;
-}
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  text-align: left;
-}
-
-table td,
-table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-table tr:hover {
-  background-color: #ddd;
-}
-
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: turquoise;
 }
 </style>
