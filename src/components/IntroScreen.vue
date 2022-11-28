@@ -72,7 +72,7 @@ function logData() {
       "Content-type": "application/json  ; charset=UTF-8", // Indicates the content
     },
   };
-  fetch(`http://116.203.66.71/prudence/api/kisiveri`, postMethod);
+  fetch(`https://ekonomideneyleri.com.tr/prudence/api/kisiveri`, postMethod);
 }
 function fullScreen() {
   var requestMethod =

@@ -18,7 +18,7 @@ function updateData() {
     body: JSON.stringify(someData),
   };
   fetch(
-    `http://116.203.66.71/prudence/api/kisiveri`,
+    `https://ekonomideneyleri.com.tr/prudence/api/kisiveri`,
     putMethod
   ).catch((err) => console.log(err));
   // console.log(someData);
