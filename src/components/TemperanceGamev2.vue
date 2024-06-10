@@ -1,7 +1,7 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :currentGame="lastTreatment? 3:2"
+      :currentGame="lastTreatment ? 3 : 2"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
@@ -66,7 +66,7 @@
           D
         </div>
       </div>
-      <div id="smallPipelar" v-if="asama !== `roundsonu`">
+      <div id="smallPipes" v-if="asama !== `roundsonu`">
         <div
           id="smallPipe1"
           class="temperancePipe"
@@ -111,11 +111,7 @@
         </div>
       </div>
       <div v-if="asama === `roundsonu`">
-        <button
-          class="stepButton"
-          id="nextRound"
-          @click="nextTurnE()"
-        >
+        <button class="stepButton" id="nextRound" @click="nextTurnE()">
           {{
             currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
           }}
@@ -152,7 +148,7 @@ const props = defineProps({
 // eslint-disable-next-line
 const totalRounds = props.payOffs.length;
 const roundToPay = Math.floor(Math.random() * totalRounds);
-store.chosenRounds.push(roundToPay+1);
+store.chosenRounds.push(roundToPay + 1);
 
 const currentDroppable = ref(null);
 const choices = ref([null, null, null, null]);
@@ -178,7 +174,17 @@ function carryPipeE(e) {
 }
 
 function hareketE(e) {
-  movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(
+    e,
+    asama,
+    bitis,
+    choices,
+    totalRevenue,
+    totalLoss,
+    store,
+    currentRound.value === roundToPay,
+    earningForCurrentRound
+  );
 }
 
 function nextTurnE() {
@@ -215,7 +221,7 @@ function convertNumbertoString(number) {
   min-height: 167.5px;
 }
 
-#smallPipelar {
+#smallPipes {
   display: flex;
   justify-content: space-evenly;
   gap: 64px;

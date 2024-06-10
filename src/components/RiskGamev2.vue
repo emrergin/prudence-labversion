@@ -1,7 +1,7 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :currentGame=1
+      :currentGame="1"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
@@ -26,7 +26,7 @@
           A
         </div>
       </div>
-      <div id="smallPipelar" v-if="asama !== `roundsonu`">
+      <div id="smallPipes" v-if="asama !== `roundsonu`">
         <div
           id="smallPipe1"
           class="riskPipe"
@@ -77,11 +77,7 @@
         </div>
       </div>
       <div v-if="asama === `roundsonu`">
-        <button
-          class="stepButton"
-          id="nextRound"
-          @click="nextTurnE()"
-        >
+        <button class="stepButton" id="nextRound" @click="nextTurnE()">
           {{
             currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
           }}
@@ -119,7 +115,7 @@ const props = defineProps({
 const totalRounds = props.payOffs.length;
 
 const roundToPay = Math.floor(Math.random() * totalRounds);
-store.chosenRounds.push(roundToPay+1);
+store.chosenRounds.push(roundToPay + 1);
 
 const currentDroppable = ref(null);
 const secim = ref(null);
@@ -138,7 +134,17 @@ function carryPipeE(e) {
 }
 
 function hareketE(e) {
-  movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(
+    e,
+    asama,
+    bitis,
+    secim,
+    totalRevenue,
+    totalLoss,
+    store,
+    currentRound.value === roundToPay,
+    earningForCurrentRound
+  );
 }
 
 function nextTurnE() {
@@ -167,7 +173,7 @@ function convertNumbertoString(number) {
 </script>
 
 <style scoped>
-#smallPipelar {
+#smallPipes {
   align-items: center;
 }
 </style>

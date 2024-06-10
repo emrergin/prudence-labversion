@@ -22,7 +22,7 @@ function nextTurn(
     bitis.value - baslangic.value,
     payOffs[currentRound.value],
     choices.value,
-    earningForCurrentRound.value
+    earningForCurrentRound.value,
   ]);
   updateData();
   if (!Array.isArray(choices.value)) {
@@ -31,10 +31,10 @@ function nextTurn(
     choices.value = [null, null, null, null];
   }
 
-  earningForCurrentRound.value=0;
+  earningForCurrentRound.value = 0;
 
-  const smallPipelar = document.querySelectorAll(`.${boruClass}`);
-  smallPipelar.forEach((smallPipe) => smallPipe.remove());
+  const smallPipes = document.querySelectorAll(`.${boruClass}`);
+  smallPipes.forEach((smallPipe) => smallPipe.remove());
 
   if (currentRound.value >= totalRounds - 1) {
     oyunSonu.value = true;

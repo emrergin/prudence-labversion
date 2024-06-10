@@ -1,6 +1,6 @@
 <template>
   <div class="tutorialBox">
-    <div class="column1" >
+    <div class="column1">
       <transition-group tag="div" name="tutorial" class="tutorialText">
         <p :key="1" v-if="step > 0">
           Bu oyunda,
@@ -30,8 +30,8 @@
         </p>
 
         <p :key="10" v-if="step > 10">
-          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur puanınız
-          böyle belirlenecek.
+          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur
+          puanınız böyle belirlenecek.
         </p>
 
         <div :key="11" v-if="step > 11" class="centered">
@@ -44,7 +44,7 @@
         </div>
       </transition-group>
     </div>
-    
+
     <div class="column2" id="sut2">
       <div
         id="footBall"
@@ -89,7 +89,11 @@
         </div>
       </div>
 
-      <div id="smallPipelar" class="canbeseen" :class="[{ nottoseen: step >= 6 }]">
+      <div
+        id="smallPipes"
+        class="canbeseen"
+        :class="[{ nottoseen: step >= 6 }]"
+      >
         <div
           id="smallPipe1"
           oncontextmenu="return false"
@@ -411,7 +415,7 @@ export default {
   display: none !important;
 }
 
-#smallPipelar {
+#smallPipes {
   min-width: 458px;
 }
 </style>

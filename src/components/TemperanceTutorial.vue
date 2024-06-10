@@ -1,7 +1,7 @@
 <template>
-    <!-- <div>{{choices}}</div> -->
+  <!-- <div>{{choices}}</div> -->
   <div class="tutorialBox">
-    <div class="column1" >
+    <div class="column1">
       <transition-group tag="div" name="tutorial" class="tutorialText">
         <p :key="1" v-if="step > 0">
           Bu oyunda,
@@ -34,8 +34,8 @@
         </p>
 
         <p :key="10" v-if="step > 11">
-          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur puanınız
-          böyle belirlenecek.
+          Bu örnek turda {{ calculateOutcome() }} puan kazandınız. Her tur
+          puanınız böyle belirlenecek.
         </p>
 
         <div :key="11" v-if="step > 12" class="centered">
@@ -48,7 +48,7 @@
         </div>
       </transition-group>
     </div>
-    
+
     <div class="column2" id="sut2">
       <div
         id="footBall"
@@ -143,7 +143,7 @@
           D
         </div>
       </div>
-      <div id="smallPipelar">
+      <div id="smallPipes">
         <div
           id="smallPipe1"
           oncontextmenu="return false"
@@ -258,11 +258,11 @@ export default {
         fakePipe.style.visibility = "hidden";
         smallPipe.after(fakePipe);
       }
-      
+
       smallPipe.style.cursor = "grabbing";
 
-      let shiftX = 0.8*(e.clientX - smallPipe.getBoundingClientRect().left);
-      let shiftY = 0.8*(e.clientY - smallPipe.getBoundingClientRect().top);
+      let shiftX = 0.8 * (e.clientX - smallPipe.getBoundingClientRect().left);
+      let shiftY = 0.8 * (e.clientY - smallPipe.getBoundingClientRect().top);
 
       smallPipe.style.position = "absolute";
       smallPipe.style.zIndex = 3;
@@ -282,7 +282,9 @@ export default {
         let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
         smallPipe.hidden = false;
 
-        if (!elemBelow) {return};
+        if (!elemBelow) {
+          return;
+        }
 
         let droppableBelow = elemBelow.closest(".droppable2");
 
@@ -316,16 +318,16 @@ export default {
           smallPipe.style.position = `relative`;
           vm.step++;
 
-          if (vm.remainingPlaces === ``) {          
-              if (vm.choices[1]) {
-                vm.remainingPlaces = "A'ya veya D";
-              } else {
-                vm.remainingPlaces = "C'ye veya B";
-              }            
+          if (vm.remainingPlaces === ``) {
+            if (vm.choices[1]) {
+              vm.remainingPlaces = "A'ya veya D";
+            } else {
+              vm.remainingPlaces = "C'ye veya B";
+            }
           }
         }
         smallPipe.removeEventListener("mouseup", onMouseUp);
-      };
+      }
       function enterDroppable(elem) {
         elem.style.background = "#F0FFF0";
       }
@@ -536,13 +538,14 @@ export default {
     isMovementOver() {
       const rect = this.$refs.footBall.getBoundingClientRect();
 
-      const pipes = document.querySelectorAll('.temperancePipe');
+      const pipes = document.querySelectorAll(".temperancePipe");
       for (let pipe of pipes) {
-       
         let rect2 = pipe.getBoundingClientRect();
-        let distance = Math.hypot(rect.top-rect2.top,
-            (rect.left + rect.right)-(rect2.left + rect2.right));
-        if (distance<25){
+        let distance = Math.hypot(
+          rect.top - rect2.top,
+          rect.left + rect.right - (rect2.left + rect2.right)
+        );
+        if (distance < 25) {
           return false;
         }
       }
@@ -588,7 +591,7 @@ export default {
   display: flex;
   align-items: flex-end;
   position: relative;
-  z-index:4;
+  z-index: 4;
 }
 
 .stepButton {
@@ -599,11 +602,10 @@ export default {
   border: 10px solid red;
 }
 
-.redOutline{
+.redOutline {
   outline: 10px solid red;
 }
 .tutorialBox {
   min-height: 618px;
 }
-
 </style>
