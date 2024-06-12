@@ -3,9 +3,9 @@ import updateData from "./updateData";
 function nextTurn(
   treatment,
   store,
-  bitis,
-  baslangic,
-  asama,
+  end,
+  start,
+  phase,
   payOffs,
   currentRound,
   choices,
@@ -19,7 +19,7 @@ function nextTurn(
   }
   store.veriler.push([
     treatment,
-    bitis.value - baslangic.value,
+    end.value - start.value,
     payOffs[currentRound.value],
     choices.value,
     earningForCurrentRound.value,
@@ -47,8 +47,8 @@ function nextTurn(
   document.getElementById(`fakeBall`).remove();
   document.getElementById("footBall").style.visibility = "visible";
 
-  baslangic.value = new Date();
-  asama.value = `baslangic`;
+  start.value = new Date();
+  phase.value = `baslangic`;
   currentRound.value++;
 }
 

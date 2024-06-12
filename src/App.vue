@@ -1,10 +1,10 @@
 <template>
   <div id="mobileWarning">
-    <div >Daha geniş bir ekrana ihtiyacınız var.</div>
+    <div>Daha geniş bir ekrana ihtiyacınız var.</div>
   </div>
   <div id="mainWrapper">
     <IntroScreen
-      v-if="currentPhase === `intro`"      
+      v-if="currentPhase === `intro`"
       @end="currentPhase = treatments[`intro`]"
     />
 
@@ -38,22 +38,22 @@
       v-if="currentPhase === `rskGam`"
       @end="currentPhase = treatments[`rskGam`]"
     />
-    <DemographicQuestions v-if="currentPhase === `dem`" 
-     @end="currentPhase = 'gps'"/>
-    <GPSQuestions v-if="currentPhase === `gps`"
-     @end="currentPhase = 'son'"/>
-    <ResultScreen
-      v-if="currentPhase === `son`"
-      @end="endOfExperiment = true"
+    <RiskBleichrodt
+      v-if="currentPhase === `rsk2`"
+      @end="currentPhase = treatments[`intro`]"
+      :payOffs="rskPayOffs"
     />
+    <DemographicQuestions
+      v-if="currentPhase === `dem`"
+      @end="currentPhase = 'gps'"
+    />
+    <GPSQuestions v-if="currentPhase === `gps`" @end="currentPhase = 'son'" />
+    <ResultScreen v-if="currentPhase === `son`" @end="endOfExperiment = true" />
   </div>
 
-  <footer
-    v-if="(endOfExperiment === true || currentPhase === `intro`)"
-  >
-  <a href="https://github.com/emrergin" target="_blank">Emre Ergin</a>
+  <footer v-if="endOfExperiment === true || currentPhase === `intro`">
+    <a href="https://github.com/emrergin" target="_blank">Emre Ergin</a>
     tarafından yapılmıştır.
-
   </footer>
 </template>
 
@@ -64,6 +64,7 @@ import PrudenceGame from "./components/PrudenceGamev2.vue";
 import TemperanceTutorial from "./components/TemperanceTutorial.vue";
 import TemperanceGame from "./components/TemperanceGamev2.vue";
 import RiskGame from "./components/RiskGamev2.vue";
+import RiskBleichrodt from "./components/RiskBleichrodt.vue";
 import RiskTutorial from "./components/RiskTutorial.vue";
 import ResultScreen from "./components/ResultScreen.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
@@ -82,7 +83,8 @@ export default {
     RiskTutorial,
     ResultScreen,
     DemographicQuestions,
-    GPSQuestions
+    GPSQuestions,
+    RiskBleichrodt,
   },
   data() {
     return {
@@ -145,13 +147,20 @@ export default {
           temGam: `pruTut`,
           pruGam: `dem`,
         },
+        {
+          intro: `rsk2`,
+          rskGam: `temTut`,
+          temGam: `pruTut`,
+          pruGam: `dem`,
+        },
       ],
     };
   },
   beforeMount() {
     window.addEventListener("beforeunload", this.preventNav);
-    this.treatments =
-      this.nextTreatment[Math.floor(Math.random() * this.nextTreatment.length)];
+    // this.treatments =
+    //   this.nextTreatment[Math.floor(Math.random() * this.nextTreatment.length)];
+    this.treatments = this.nextTreatment[2];
     for (let row of this.pruPayOffs) {
       if (Math.floor(Math.random() * 2)) {
         let geciciPar = row[0];
@@ -190,7 +199,6 @@ export default {
     this.pruPayOffs = shuffle(this.pruPayOffs);
     this.rskPayOffs = shuffle(this.rskPayOffs);
     this.temPayOffs = shuffle(this.temPayOffs);
-
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);
@@ -222,23 +230,23 @@ export default {
 }
 
 footer {
-  position:fixed;
+  position: fixed;
   width: 100%;
-  bottom:0px;
+  bottom: 0px;
   /* top: calc(100% - 56px); */
   height: 55px;
-  left:0px;
+  left: 0px;
   text-align: right;
   font-weight: 800;
   padding: 20px;
-  padding-bottom:20px;
+  padding-bottom: 20px;
   padding-right: calc(50vw - 600px);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: turquoise;
   margin-top: auto;
 }
 
-#mainWrapper{
+#mainWrapper {
   background-color: #ffffff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -249,7 +257,6 @@ footer {
   display: none;
 }
 
-
 @media (max-width: 1200px) {
   #mobileWarning {
     display: block;
@@ -258,5 +265,4 @@ footer {
     display: none;
   }
 }
-
 </style>
