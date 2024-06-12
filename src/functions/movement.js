@@ -1,6 +1,16 @@
 import { getElementBelow } from "./utilities";
 
-function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, willBePaid, earningForCurrentRound) {
+function movement(
+  e,
+  asama,
+  bitis,
+  choices,
+  totalRevenue,
+  totalLoss,
+  store,
+  willBePaid,
+  earningForCurrentRound
+) {
   if (!Array.isArray(choices.value)) {
     if (!choices.value) {
       return;
@@ -260,16 +270,14 @@ function movement(e, asama, bitis, choices, totalRevenue, totalLoss, store, will
     for (let tag of collection) {
       if (+tag.textContent > 0) {
         totalRevenue.value += +tag.textContent;
-        // store.kazanc += +tag.textContent;
         earningForCurrentRound.value += +tag.textContent;
       } else {
         totalLoss.value += -tag.textContent;
-        // store.kazanc += +tag.textContent;
         earningForCurrentRound.value += +tag.textContent;
       }
     }
 
-    if (willBePaid){
+    if (willBePaid) {
       store.kazanc += earningForCurrentRound.value;
     }
   }
