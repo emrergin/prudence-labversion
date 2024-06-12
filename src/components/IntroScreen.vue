@@ -7,21 +7,25 @@
     <li>
       Deneyde her biri 12 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
       oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için bazen
-      <b><u>metnin istediği şeyi yapmanız</u></b> bazen de <b><u>farenin sol tuşuyla ekrana tıklamanız</u></b>
+      <b><u>metnin istediği şeyi yapmanız</u></b> bazen de
+      <b><u>farenin sol tuşuyla ekrana tıklamanız</u></b>
       bekleniyor.
     </li>
     <li>
-      Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Deney sonunda her üç oyunun rastgele 
-      seçtiğimiz birer turunda kazandığınız puanları toplayacağız. Bu, deneydeki toplam puanınız olacak.
-      Toplam puanınızın parasal değerini (1 puan = 1,5 TL) ve ek olarak 20 TL katılım ücretini size deney
-      sonunda nakit olarak ödeyeceğiz.
+      Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Deney sonunda her
+      üç oyunun rastgele seçtiğimiz birer turunda kazandığınız puanları
+      toplayacağız. Bu, deneydeki toplam puanınız olacak. Toplam puanınızın
+      parasal değerini (1 puan = 1,5 TL) ve ek olarak 20 TL katılım ücretini
+      size deney sonunda nakit olarak ödeyeceğiz.
     </li>
     <li>
-    Ödeme için bütün turların seçilme şansı aynıdır. Dolayısıyla her turda, rastgele seçilecek tur sanki o turmuş gibi kararlar
-    almanız yerinde olacaktır.  
+      Ödeme için bütün turların seçilme şansı aynıdır. Dolayısıyla her turda,
+      rastgele seçilecek tur sanki o turmuş gibi kararlar almanız yerinde
+      olacaktır.
     </li>
     <li>
-      Oyunları tamamladıktan sonra size dair bazı demografik bilgileri, belli durumlardaki tutumlarınızı ve tercihlerinizi sorduğumuz bir anket olacak.
+      Oyunları tamamladıktan sonra size dair bazı demografik bilgileri, belli
+      durumlardaki tutumlarınızı ve tercihlerinizi sorduğumuz bir anket olacak.
     </li>
     <li>
       Deneyden erken ayrılabilirsiniz. Bulunduğunuz sayfayı değiştirmeniz ve
@@ -31,9 +35,9 @@
     </li>
   </ul>
 
-  <p >Çalışmaya katılmayı kabul ediyorum.</p>
+  <p>Çalışmaya katılmayı kabul ediyorum.</p>
   <input
-    style="display: block; margin-inline: auto;"
+    style="display: block; margin-inline: auto"
     v-model="store.isim"
     placeholder="Ad Soyad"
   />
@@ -46,7 +50,7 @@
     "
     class="stepButton"
   >
-    <span >Deneye başla!</span>
+    <span>Deneye başla!</span>
   </button>
 </template>
 
@@ -63,7 +67,7 @@ function logData() {
     isim: store.isim,
     _id: store._id,
     demografi: store.demografi,
-    gps: store.gps
+    gps: store.gps,
   };
   const postMethod = {
     method: `POST`,
@@ -76,10 +80,6 @@ function logData() {
 }
 function fullScreen() {
   var requestMethod =
-    // document.requestFullScreen ||
-    // document.webkitRequestFullScreen ||
-    // document.mozRequestFullScreen ||
-    // document.msRequestFullscreen;
     document.documentElement.requestFullScreen ||
     document.documentElement.webkitRequestFullScreen ||
     document.documentElement.mozRequestFullScreen ||
@@ -101,8 +101,8 @@ function fullScreen() {
   margin-top: 0.75em;
 }
 
-#mainWrapper>input:last-child{
-  margin-bottom:6ch;
+#mainWrapper > input:last-child {
+  margin-bottom: 6ch;
 }
 </style>
 
@@ -110,7 +110,4 @@ function fullScreen() {
 .stepButton {
   margin: 1em auto 20px auto;
 }
-
-
-
 </style>

@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div id="oyunAsagi">
+    <div id="gameBottom">
       <button
         v-if="secim !== null && chosenBall === -1"
         class="stepButton"
@@ -85,6 +85,8 @@ const oyunSonu = ref(false);
 
 defineEmits(["end"]);
 const totalRounds = props.payOffs.length;
+const roundToPay = Math.floor(Math.random() * totalRounds);
+store.chosenRounds.push(roundToPay + 1);
 
 function nextTurnE() {
   nextTurn2(
@@ -98,10 +100,10 @@ function nextTurnE() {
     secim,
     oyunSonu,
     totalRounds,
+    currentRound.value === roundToPay,
     earningForCurrentRound
   );
 
-  secim.value = null;
   chosenBall.value = -1;
 }
 
@@ -154,7 +156,7 @@ function drawBall() {
   border-bottom: 2px solid black;
 }
 
-#oyunAsagi {
+#gameBottom {
   min-height: 120px;
 }
 </style>

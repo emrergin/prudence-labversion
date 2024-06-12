@@ -8,7 +8,7 @@ function updateData() {
     isim: store.isim,
     _id: store._id,
     demografi: store.demografi,
-    gps: store.gps
+    gps: store.gps,
   };
   const putMethod = {
     method: "PUT",
@@ -21,7 +21,6 @@ function updateData() {
     `https://ekonomideneyleri.com.tr/prudence/api/kisiveri`,
     putMethod
   ).catch((err) => console.log(err));
-  // console.log(someData);
 }
 
 export default updateData;

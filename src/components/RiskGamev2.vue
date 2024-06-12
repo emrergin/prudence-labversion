@@ -5,7 +5,7 @@
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
-    <div id="oyunAsagi">
+    <div id="gameBottom">
       <img
         id="footBall"
         ref="footBall"

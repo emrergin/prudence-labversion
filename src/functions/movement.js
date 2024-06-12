@@ -227,13 +227,6 @@ function movement(
 
   function nextAnimation() {
     let elemBelow = getElementBelow(fakeBall);
-    // let rect = fakeBall.getBoundingClientRect();
-    // fakeBall.style.display = "none";
-    // let elemBelow = document.elementFromPoint(
-    //   (rect.left + rect.right) / 2,
-    //   (rect.top + rect.bottom) / 2
-    // );
-    // fakeBall.style.display = "block";
     let zar = Math.floor(Math.random() * 2) + 1;
 
     if (elemBelow.closest(`.smallPipe,.riskPipe`)) {

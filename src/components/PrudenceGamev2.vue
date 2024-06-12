@@ -1,11 +1,11 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :currentGame="lastTreatment? 3:2"
+      :currentGame="lastTreatment ? 3 : 2"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
-    <div id="oyunAsagi">
+    <div id="gameBottom">
       <img
         id="footBall"
         ref="footBall"
@@ -79,7 +79,6 @@
     </div>
   </div>
   <div v-if="oyunSonu" class="oyunKutusu">
-    <!-- <p>Oyunu tamamladınız. Toplam kazancınız: {{ totalRevenue - totalLoss }}</p> -->
     <button @click="$emit('end', true)" class="stepButton">
       <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>
@@ -108,7 +107,7 @@ const props = defineProps({
 const totalRounds = props.payOffs.length;
 
 const roundToPay = Math.floor(Math.random() * totalRounds);
-store.chosenRounds.push(roundToPay+1);
+store.chosenRounds.push(roundToPay + 1);
 
 const currentDroppable = ref(null);
 const secim = ref(null);
@@ -127,7 +126,17 @@ function carryPipeE(e) {
 }
 
 function hareketE(e) {
-  movement(e, asama, bitis, secim, totalRevenue, totalLoss, store, currentRound.value===roundToPay,earningForCurrentRound);
+  movement(
+    e,
+    asama,
+    bitis,
+    secim,
+    totalRevenue,
+    totalLoss,
+    store,
+    currentRound.value === roundToPay,
+    earningForCurrentRound
+  );
 }
 
 function nextTurnE() {
@@ -156,13 +165,13 @@ function convertNumbertoString(number) {
 </script>
 
 <style>
-.oyunKutusu {  
+.oyunKutusu {
   display: flex;
   flex-direction: column;
   margin: 0px;
   min-height: 433px;
 }
-#oyunAsagi {
+#gameBottom {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
