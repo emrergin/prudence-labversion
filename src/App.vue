@@ -7,7 +7,7 @@
       v-if="currentPhase === `intro`"
       @end="currentPhase = treatments[`intro`]"
     />
-
+    <Tutorial2 v-if="currentPhase === `tut2`" @end="currentPhase = `rskGam`" />
     <PrudenceTutorial
       v-if="currentPhase === `pruTut`"
       @end="currentPhase = `pruGam`"
@@ -15,17 +15,29 @@
     <PrudenceGame
       :payOffs="pruPayOffs"
       :lastTreatment="treatments[`pruGam`] === `dem`"
-      v-if="currentPhase === `pruGam`"
+      v-if="currentPhase === `pruGam` && experiment !== `bleich`"
       @end="currentPhase = treatments[`pruGam`]"
+    />
+    <PrudenceBleichrodt
+      v-if="currentPhase === `pruGam` && experiment === `bleich`"
+      @end="currentPhase = treatments[`pruGam`]"
+      :payOffs="pruPayOffs"
+      :lastTreatment="treatments[`pruGam`] === `dem`"
     />
     <TemperanceTutorial
       v-if="currentPhase === `temTut`"
       @end="currentPhase = `temGam`"
     />
+    <TemperanceBleichrodt
+      v-if="currentPhase === `temGam` && experiment === `bleich`"
+      @end="currentPhase = treatments[`temGam`]"
+      :payOffs="temPayOffs"
+      :lastTreatment="treatments[`temGam`] === `dem`"
+    />
     <TemperanceGame
       :payOffs="temPayOffs"
       :lastTreatment="treatments[`temGam`] === `dem`"
-      v-if="currentPhase === `temGam`"
+      v-if="currentPhase === `temGam` && experiment !== `bleich`"
       @end="currentPhase = treatments[`temGam`]"
     />
     <RiskTutorial
@@ -35,13 +47,14 @@
     <RiskGame
       :payOffs="rskPayOffs"
       :lastTreatment="treatments[`rskGam`] === `dem`"
-      v-if="currentPhase === `rskGam`"
+      v-if="currentPhase === `rskGam` && experiment !== `bleich`"
       @end="currentPhase = treatments[`rskGam`]"
     />
     <RiskBleichrodt
-      v-if="currentPhase === `rsk2`"
-      @end="currentPhase = treatments[`intro`]"
+      v-if="currentPhase === `rskGam` && experiment === `bleich`"
+      @end="currentPhase = treatments[`rskGam`]"
       :payOffs="rskPayOffs"
+      :lastTreatment="treatments[`rskGam`] === `dem`"
     />
     <DemographicQuestions
       v-if="currentPhase === `dem`"
@@ -65,10 +78,13 @@ import TemperanceTutorial from "./components/TemperanceTutorial.vue";
 import TemperanceGame from "./components/TemperanceGamev2.vue";
 import RiskGame from "./components/RiskGamev2.vue";
 import RiskBleichrodt from "./components/RiskBleichrodt.vue";
+import PrudenceBleichrodt from "./components/PrudenceBleichrodt.vue";
 import RiskTutorial from "./components/RiskTutorial.vue";
 import ResultScreen from "./components/ResultScreen.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
 import GPSQuestions from "./components/GPSQuestions.vue";
+import Tutorial2 from "./components/Tutorial2.vue";
+import TemperanceBleichrodt from "./components/TemperanceBleichrodt.vue";
 import { store } from "./store.js";
 
 export default {
@@ -85,6 +101,9 @@ export default {
     DemographicQuestions,
     GPSQuestions,
     RiskBleichrodt,
+    PrudenceBleichrodt,
+    TemperanceBleichrodt,
+    Tutorial2,
   },
   data() {
     return {
@@ -95,44 +114,44 @@ export default {
       pruPayOffs: [
         [4, 11, 3, -3],
         [3, 9, 2, -2],
-        [5, 8, 4, -4],
-        [5, 10, 3, -3],
-        [3, 8, 1, -1],
-        [5, 9, 4, -4],
-        [6, 12, 5, -5],
-        [6, 10, 5, -5],
-        [5, 10, 4, -4],
-        [4, 6, 3, -3],
-        [2, 6, 1, -1],
-        [3, 6, 2, -2],
+        // [5, 8, 4, -4],
+        // [5, 10, 3, -3],
+        // [3, 8, 1, -1],
+        // [5, 9, 4, -4],
+        // [6, 12, 5, -5],
+        // [6, 10, 5, -5],
+        // [5, 10, 4, -4],
+        // [4, 6, 3, -3],
+        // [2, 6, 1, -1],
+        // [3, 6, 2, -2],
       ],
       rskPayOffs: [
         [8, 9, 1, 16],
         [7, 9, 2, 14],
-        [9, 11, 4, 16],
-        [7, 9, 3, 13],
-        [4, 5, 1, 8],
-        [5, 7, 2, 10],
-        [6, 7, 3, 10],
-        [7, 9, 4, 12],
-        [6, 8, 3, 11],
-        [8, 9, 5, 12],
-        [8, 9, 3, 14],
-        [6, 7, 1, 12],
+        // [9, 11, 4, 16],
+        // [7, 9, 3, 13],
+        // [4, 5, 1, 8],
+        // [5, 7, 2, 10],
+        // [6, 7, 3, 10],
+        // [7, 9, 4, 12],
+        // [6, 8, 3, 11],
+        // [8, 9, 5, 12],
+        // [8, 9, 3, 14],
+        // [6, 7, 1, 12],
       ],
       temPayOffs: [
         [7, 7, 2, -2, 4, -4],
         [7, 7, 3, -3, 3, -3],
-        [5, 5, 1, -1, 2, -2],
-        [5, 5, 1, -1, 3, -3],
-        [8, 8, 2, -2, 3, -3],
-        [9, 9, 2, -2, 6, -6],
-        [8, 8, 3, -3, 4, -4],
-        [8, 8, 2, -2, 5, -5],
-        [10, 10, 3, -3, 6, -6],
-        [10, 10, 4, -4, 5, -5],
-        [8, 8, 1, -1, 6, -6],
-        [5, 5, 2, -2, 2, -2],
+        // [5, 5, 1, -1, 2, -2],
+        // [5, 5, 1, -1, 3, -3],
+        // [8, 8, 2, -2, 3, -3],
+        // [9, 9, 2, -2, 6, -6],
+        // [8, 8, 3, -3, 4, -4],
+        // [8, 8, 2, -2, 5, -5],
+        // [10, 10, 3, -3, 6, -6],
+        // [10, 10, 4, -4, 5, -5],
+        // [8, 8, 1, -1, 6, -6],
+        // [5, 5, 2, -2, 2, -2],
       ],
       nextTreatment: [
         {
@@ -147,20 +166,37 @@ export default {
           temGam: `pruTut`,
           pruGam: `dem`,
         },
+      ],
+      nextTreatment2: [
         {
-          intro: `rsk2`,
-          rskGam: `temTut`,
-          temGam: `pruTut`,
+          intro: `tut2`,
+          rskGam: `pruGam`,
+          pruGam: `temGam`,
+          temGam: `dem`,
+        },
+        {
+          intro: `tut2`,
+          rskGam: `temGam`,
+          temGam: `pruGam`,
           pruGam: `dem`,
         },
       ],
+      experiment: "bleich",
     };
   },
   beforeMount() {
     window.addEventListener("beforeunload", this.preventNav);
-    // this.treatments =
-    //   this.nextTreatment[Math.floor(Math.random() * this.nextTreatment.length)];
-    this.treatments = this.nextTreatment[2];
+    if (this.experiment === "bleich") {
+      this.treatments = this.treatments =
+        this.nextTreatment2[
+          Math.floor(Math.random() * this.nextTreatment2.length)
+        ];
+    } else {
+      this.treatments =
+        this.nextTreatment[
+          Math.floor(Math.random() * this.nextTreatment.length)
+        ];
+    }
     for (let row of this.pruPayOffs) {
       if (Math.floor(Math.random() * 2)) {
         let geciciPar = row[0];

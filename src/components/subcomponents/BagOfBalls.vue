@@ -35,13 +35,12 @@ const props = defineProps({
   text-align: center;
   vertical-align: center;
   margin-top: -75%;
-  /* transition: outline 0.3s linear; */
 }
 
 .chosen {
   /* outline: 5px solid red; */
-  -webkit-text-stroke: 4px red;
-  text-stroke: 4px red;
+  -webkit-text-stroke: 4px black;
+  text-stroke: 4px black;
 }
 
 .ball-container {

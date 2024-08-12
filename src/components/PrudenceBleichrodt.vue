@@ -10,37 +10,47 @@
       <div class="choices">
         <div class="choice" @click="secim = 1" :class="{ active: secim === 1 }">
           <div class="title">Seçenek A</div>
-          <RiskChoice
+          <PrudenceChoice
             color1="#0000fe"
             color2="#fec800"
+            color3="#e74c3c"
+            color4="#2ecc71"
             :numberOf1="50"
-            :payOff1="payOffs[currentRound][0]"
-            :payOff2="payOffs[currentRound][1]"
-            :chosenBall="secim === 1 ? chosenBall : -1"
+            :payOff1="payOffs[currentRound][1]"
+            :payOff2="payOffs[currentRound][0]"
+            :payOff3="payOffs[currentRound][2]"
+            :payOff4="payOffs[currentRound][3]"
+            :chosenBall1="secim === 1 ? chosenBall1 : -1"
+            :chosenBall2="secim === 1 ? chosenBall2 : -1"
           />
         </div>
         <div class="choice" @click="secim = 2" :class="{ active: secim === 2 }">
           <div class="title">Seçenek B</div>
-          <RiskChoice
+          <PrudenceChoice
             color1="#0000fe"
             color2="#fec800"
+            color3="#e74c3c"
+            color4="#2ecc71"
             :numberOf1="50"
-            :payOff1="payOffs[currentRound][2]"
-            :payOff2="payOffs[currentRound][3]"
-            :chosenBall="secim === 2 ? chosenBall : -1"
+            :payOff1="payOffs[currentRound][0]"
+            :payOff2="payOffs[currentRound][1]"
+            :payOff3="payOffs[currentRound][2]"
+            :payOff4="payOffs[currentRound][3]"
+            :chosenBall1="secim === 2 ? chosenBall1 : -1"
+            :chosenBall2="secim === 2 ? chosenBall2 : -1"
           />
         </div>
       </div>
     </div>
     <div id="gameBottom">
       <button
-        v-if="secim !== null && chosenBall === -1"
+        v-if="secim !== null && chosenBall1 === -1"
         class="stepButton"
         @click="drawBall()"
       >
         Top çek!
       </button>
-      <div v-show="chosenBall !== -1">
+      <div v-show="chosenBall1 !== -1">
         <button class="stepButton" id="nextRound" @click="nextTurnE()">
           {{
             currentRound === totalRounds - 1 ? `Oyunu Bitir` : `Sıradaki Tur >>`
@@ -58,9 +68,9 @@
 </template>
 
 <script setup>
-import RiskChoice from "./subcomponents/RiskChoice.vue";
+import PrudenceChoice from "./subcomponents/PrudenceChoice.vue";
 import ScoreTable from "./ScoreTable.vue";
-import nextTurn2 from "../functions/nextTurn2";
+import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
 import { ref } from "vue";
 
@@ -77,7 +87,8 @@ const currentRound = ref(0);
 const secim = ref(null);
 const baslangic = ref(new Date());
 const bitis = ref(null);
-const chosenBall = ref(-1);
+const chosenBall1 = ref(-1);
+const chosenBall2 = ref(-1);
 
 const earningForCurrentRound = ref(0);
 
@@ -90,7 +101,7 @@ store.chosenRounds.push(roundToPay + 1);
 
 function nextTurnE() {
   nextTurn2(
-    `Risk`,
+    `Prudence`,
     store,
     bitis,
     baslangic,
@@ -104,28 +115,42 @@ function nextTurnE() {
     earningForCurrentRound
   );
 
-  chosenBall.value = -1;
+  chosenBall1.value = -1;
+  chosenBall2.value = -1;
 }
 
 function drawBall() {
-  if (chosenBall.value !== -1) {
+  if (chosenBall1.value !== -1) {
     return;
   }
   asama.value = "cekilis";
   bitis.value = new Date();
-  chosenBall.value = Math.floor(Math.random() * 100);
+  chosenBall1.value = Math.floor(Math.random() * 100);
+  if (chosenBall1.value >= 50) {
+    chosenBall2.value = Math.floor(Math.random() * 100);
+  }
   const currentPayOffs = props.payOffs[currentRound.value];
-  if (secim.value === 1) {
-    if (chosenBall.value < 50) {
-      earningForCurrentRound.value = currentPayOffs[0];
+  if (secim === 1) {
+    if (chosenBall1.value < 50) {
+      earningForCurrentRound.value += currentPayOffs[1];
     } else {
-      earningForCurrentRound.value = currentPayOffs[1];
+      earningForCurrentRound.value += currentPayOffs[0];
+      if (chosenBall2.value < 50) {
+        earningForCurrentRound.value += currentPayOffs[2];
+      } else {
+        earningForCurrentRound.value += currentPayOffs[3];
+      }
     }
   } else {
-    if (chosenBall.value < 50) {
-      earningForCurrentRound.value = currentPayOffs[2];
+    if (chosenBall1.value < 50) {
+      earningForCurrentRound.value += currentPayOffs[0];
     } else {
-      earningForCurrentRound.value = currentPayOffs[3];
+      earningForCurrentRound.value += currentPayOffs[1];
+      if (chosenBall2.value < 50) {
+        earningForCurrentRound.value += currentPayOffs[2];
+      } else {
+        earningForCurrentRound.value += currentPayOffs[3];
+      }
     }
   }
 }

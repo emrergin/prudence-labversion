@@ -65,6 +65,6 @@ p {
 }
 
 .chosen {
-  outline: 5px solid red;
+  outline: 5px solid turquoise;
 }
 </style>
