@@ -8,7 +8,11 @@
     <div class="question">
       <p>Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.</p>
       <div class="choices">
-        <div class="choice" @click="secim = 1" :class="{ active: secim === 1 }">
+        <div
+          class="choice"
+          @click="() => setSelection(1)"
+          :class="{ active: secim === 1 }"
+        >
           <div class="title">Seçenek A</div>
           <PrudenceChoice
             color1="#0000fe"
@@ -24,7 +28,11 @@
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
           />
         </div>
-        <div class="choice" @click="secim = 2" :class="{ active: secim === 2 }">
+        <div
+          class="choice"
+          @click="() => setSelection(2)"
+          :class="{ active: secim === 2 }"
+        >
           <div class="title">Seçenek B</div>
           <PrudenceChoice
             color1="#0000fe"
@@ -152,6 +160,12 @@ function drawBall() {
         earningForCurrentRound.value += currentPayOffs[3];
       }
     }
+  }
+}
+
+function setSelection(a) {
+  if (asama.value === "baslangic") {
+    secim.value = a;
   }
 }
 </script>

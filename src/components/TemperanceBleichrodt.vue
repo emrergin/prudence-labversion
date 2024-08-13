@@ -99,6 +99,12 @@ function drawBall() {
     }
   }
 }
+
+function setSelection(a) {
+  if (asama.value === "baslangic") {
+    secim.value = a;
+  }
+}
 </script>
 
 <template>
@@ -111,7 +117,11 @@ function drawBall() {
     <div class="question">
       <p>Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.</p>
       <div class="choices">
-        <div class="choice" @click="secim = 1" :class="{ active: secim === 1 }">
+        <div
+          class="choice"
+          @click="() => setSelection(1)"
+          :class="{ active: secim === 1 }"
+        >
           <div class="title">Seçenek A</div>
           <TemperanceChoice
             color1="#0000fe"
@@ -133,7 +143,11 @@ function drawBall() {
             :temperate="true"
           />
         </div>
-        <div class="choice" @click="secim = 2" :class="{ active: secim === 2 }">
+        <div
+          class="choice"
+          @click="() => setSelection(2)"
+          :class="{ active: secim === 2 }"
+        >
           <div class="title">Seçenek B</div>
           <TemperanceChoice
             color1="#0000fe"
