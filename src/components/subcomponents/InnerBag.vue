@@ -17,7 +17,7 @@
       />
       <div>
         <p :class="{ chosen: chosenBall < 50 && chosenBall !== -1 }">
-          <span>Eğer kırmızıysa </span>
+          <span>Eğer {{ colorName1 }} </span>
           <span :style="{ color: color1 }" class="ball"> ● </span>
           <span
             >, {{ Math.abs(payOff1) }}
@@ -25,7 +25,7 @@
           >
         </p>
         <p :class="{ chosen: chosenBall >= 50 && chosenBall !== -1 }">
-          <span>Eğer yeşilse </span>
+          <span>Eğer {{ colorName2 }} </span>
           <span :style="{ color: color2 }" class="ball"> ● </span>
           <span
             >, {{ Math.abs(payOff2) }}
@@ -50,6 +50,8 @@ const props = defineProps({
   payOff1: Number,
   payOff2: Number,
   chosenBall: Number,
+  colorName1: String,
+  colorName2: String,
 });
 </script>
 

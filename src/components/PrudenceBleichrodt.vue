@@ -1,7 +1,7 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :currentGame="1"
+      :currentGame="lastTreatment ? 3 : 2"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
