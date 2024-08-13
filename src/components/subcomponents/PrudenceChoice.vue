@@ -58,7 +58,7 @@
                 <span>Eğer kırmızıysa </span>
                 <span :style="{ color: color3 }" class="ball"> ● </span>
                 <span
-                  >, {{ payOff3 }}
+                  >, {{ Math.abs(payOff3) }}
                   {{ payOff3 > 0 ? " kazanırsınız." : " kaybedersiniz." }}.
                 </span>
               </p>
@@ -66,7 +66,7 @@
                 <span>Eğer yeşilse </span>
                 <span :style="{ color: color4 }" class="ball"> ● </span>
                 <span
-                  >, {{ payOff4 }}
+                  >, {{ Math.abs(payOff4) }}
                   {{
                     payOff4 > 0 ? " kazanırsınız." : " kaybedersiniz."
                   }}.</span

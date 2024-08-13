@@ -24,7 +24,7 @@ function nextTurn2(
     choice.value,
     earningForCurrentRound.value,
   ]);
-  // updateData();
+  updateData();
   choice.value = null;
 
   earningForCurrentRound.value = 0;
