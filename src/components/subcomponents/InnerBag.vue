@@ -1,11 +1,11 @@
 <template>
   <div class="inner">
     <div>
-      <span>{{ numberOf1 }}/100: kırmızı </span>
+      <span>{{ numberOf1 }}/100: {{ colorName1short }} </span>
       <span :style="{ color: color1 }" class="ball"> ● </span>
     </div>
     <div>
-      <span>{{ 100 - numberOf1 }}/100: yeşil </span>
+      <span>{{ 100 - numberOf1 }}/100: {{ colorName2short }} </span>
       <span :style="{ color: color2 }" class="ball"> ● </span>
     </div>
     <div class="bag-container">
@@ -52,6 +52,8 @@ const props = defineProps({
   chosenBall: Number,
   colorName1: String,
   colorName2: String,
+  colorName1short: String,
+  colorName2short: String,
 });
 </script>
 

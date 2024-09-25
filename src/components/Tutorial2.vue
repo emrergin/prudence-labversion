@@ -13,16 +13,25 @@
         elli mavi top ve elli sarı top olan bir torbadan rastgele bir top
         çekiyorsunuz.
       </p>
-      <p>Eğer bu ilk top mavi ise <b>4 puan</b> kazanırsınız.</p>
       <p>
-        Eğer bu ilk top sarı ise <b>12 puan</b> kazanırsıniz ve bunun yanında,
+        Eğer bu ilk top mavi ise <b>10 puan</b> kazanırsınız ve bunun yanında,
         içerisinde 50 kırmızı ve 50 yeşil top olan başka bir torbadan bir top
         daha çekersiniz.
       </p>
       <p>
-        Bu ikinci topu çekmeniz durumunda, top kırmızıysa <b>7 puan</b> daha
-        (yani toplam 7+12, 19 puan), top yeşilse <b>9 puan</b> daha (yani toplam
-        9+12, 21 puan) kazanırsınız.
+        Bu ikinci topu çekmeniz durumunda, top kırmızıysa <b>5 puan</b> daha
+        (yani toplam 10+5 = 15 puan) kazanırsınız, top yeşilse
+        <b>5 puan</b> kaybedersiniz (yani toplam 10-5 = 5 puan kazanırsınız) .
+      </p>
+      <p>
+        Eğer bu ilk top sarı ise <b>10 puan</b> kazanırsıniz ve bunun yanında,
+        içerisinde 50 mor ve 50 turuncu top olan başka bir torbadan bir top daha
+        çekersiniz.
+      </p>
+      <p>
+        Bu ikinci topu çekmeniz durumunda, top morsa <b>4 puan</b> daha (yani
+        toplam 10+4 = 14 puan) kazanırsınız, top turuncuysa
+        <b>4 puan</b> kaybedersiniz (yani toplam 10-4 = 6 puan kazanırsınız) .
       </p>
     </div>
   </div>

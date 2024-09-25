@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
-    <div>
-      <span>{{ numberOf1 }}/100: mavi </span>
-      <span :style="{ color: color1 }" class="ball"> ● </span>
-    </div>
-    <div>
-      <span>{{ 100 - numberOf1 }}/100: sarı </span>
-      <span :style="{ color: color2 }" class="ball"> ● </span>
+    <div class="top-bag">
+      <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
+      <div>
+        <span>{{ numberOf1 }}/100: mavi </span>
+        <span :style="{ color: color1 }" class="ball"> ● </span>
+      </div>
+      <div>
+        <span>{{ 100 - numberOf1 }}/100: sarı </span>
+        <span :style="{ color: color2 }" class="ball"> ● </span>
+      </div>
     </div>
     <div class="bag-container">
       <BagOfBalls

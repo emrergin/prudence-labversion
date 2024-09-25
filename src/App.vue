@@ -269,7 +269,6 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0px;
-  /* top: calc(100% - 56px); */
   height: 55px;
   left: 0px;
   text-align: right;

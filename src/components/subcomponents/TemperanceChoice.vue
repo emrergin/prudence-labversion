@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
-    <div>
-      <span>{{ numberOf1 }}/100: mavi </span>
-      <span :style="{ color: color1 }" class="ball"> ● </span>
-    </div>
-    <div>
-      <span>{{ 100 - numberOf1 }}/100: sarı </span>
-      <span :style="{ color: color2 }" class="ball"> ● </span>
+    <div class="top-bag">
+      <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
+      <div>
+        <span>{{ numberOf1 }}/100: mavi </span>
+        <span :style="{ color: color1 }" class="ball"> ● </span>
+      </div>
+      <div>
+        <span>{{ 100 - numberOf1 }}/100: sarı </span>
+        <span :style="{ color: color2 }" class="ball"> ● </span>
+      </div>
     </div>
     <div class="bag-container">
       <BagOfBalls
@@ -71,6 +73,8 @@
           "
           colorName1="kırmızıysa"
           colorName2="yeşilse"
+          colorName1short="kırmızı"
+          colorName2short="yeşil"
         />
         <InnerBag
           :color1="color5"
@@ -83,6 +87,8 @@
           "
           colorName1="morsa"
           colorName2="turuncuysa"
+          colorName1short="mor"
+          colorName2short="turuncu"
         />
       </div>
     </div>
@@ -146,5 +152,12 @@ p {
 
 .result-text {
   text-align: start;
+}
+
+.top-bag {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
 }
 </style>
