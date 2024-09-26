@@ -14,24 +14,24 @@
         çekiyorsunuz.
       </p>
       <p>
-        Eğer bu ilk top mavi ise <b>10 puan</b> kazanırsınız ve bunun yanında,
+        Eğer bu ilk top mavi ise <b>8 puan</b> kazanırsınız ve bunun yanında,
         içerisinde 50 kırmızı ve 50 yeşil top olan başka bir torbadan bir top
         daha çekersiniz.
       </p>
       <p>
-        Bu ikinci topu çekmeniz durumunda, top kırmızıysa <b>5 puan</b> daha
-        (yani toplam 10+5 = 15 puan) kazanırsınız, top yeşilse
-        <b>5 puan</b> kaybedersiniz (yani toplam 10-5 = 5 puan kazanırsınız) .
+        Bu ikinci topu çekmeniz durumunda, top kırmızıysa <b>1 puan</b> daha
+        (yani toplam 8+1 = 9 puan) kazanırsınız, top yeşilse
+        <b>1 puan</b> kaybedersiniz (yani toplam 8-1 = 7 puan kazanırsınız) .
       </p>
       <p>
-        Eğer bu ilk top sarı ise <b>10 puan</b> kazanırsıniz ve bunun yanında,
+        Eğer bu ilk top sarı ise <b>8 puan</b> kazanırsıniz ve bunun yanında,
         içerisinde 50 mor ve 50 turuncu top olan başka bir torbadan bir top daha
         çekersiniz.
       </p>
       <p>
-        Bu ikinci topu çekmeniz durumunda, top morsa <b>4 puan</b> daha (yani
-        toplam 10+4 = 14 puan) kazanırsınız, top turuncuysa
-        <b>4 puan</b> kaybedersiniz (yani toplam 10-4 = 6 puan kazanırsınız) .
+        Bu ikinci topu çekmeniz durumunda, top morsa <b>6 puan</b> daha (yani
+        toplam 8+6 = 14 puan) kazanırsınız, top turuncuysa
+        <b>6 puan</b> kaybedersiniz (yani toplam 8-6 = 2 puan kazanırsınız) .
       </p>
     </div>
   </div>
@@ -46,7 +46,7 @@
 .tutorial-flex {
   display: flex;
   margin: 2rem;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .tutorial-image {
