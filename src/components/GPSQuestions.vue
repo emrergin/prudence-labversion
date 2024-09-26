@@ -735,10 +735,8 @@ const questionList = [
   `stairpatience`,
 ];
 const question = ref(`generalrisk`);
-// const question = ref(`stairrisk`);
 
 const questionIndex = ref(0);
-// const questionIndex = ref(3);
 
 function nextQuestion() {
   if (!checkValidityOfAllInputs()) {
@@ -848,9 +846,7 @@ function nextQuestion() {
 
   questionIndex.value++;
 
-  // console.log(store.gps);
   if (questionIndex.value >= 7) {
-    // store.gps= {};
     updateData();
     emit("end", true);
   }
