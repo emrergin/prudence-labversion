@@ -40,7 +40,8 @@ const props = defineProps({
   color2: String,
   numberOf1: {
     type: Number,
-    required: true,
+    required: false,
+    default: 50,
   },
   payOff1: Number,
   payOff2: Number,

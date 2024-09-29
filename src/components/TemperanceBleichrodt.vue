@@ -14,17 +14,18 @@ const props = defineProps({
 });
 
 const asama = ref(`baslangic`);
-const currentRound = ref(0);
+const currentRound = ref(-1);
 const secim = ref(null);
-const baslangic = ref(new Date());
-const bitis = ref(null);
+const startTime = ref(new Date());
+const endTime = ref(null);
 const chosenBall1 = ref(-1);
 const chosenBall2 = ref(-1);
 const chosenBall3 = ref(-1);
+const practiceValues = [13, 13, 2, -2, 7, -7];
 
 const earningForCurrentRound = ref(0);
 
-const oyunSonu = ref(false);
+const endOfGame = ref(false);
 
 defineEmits(["end"]);
 const totalRounds = props.payOffs.length;
@@ -35,16 +36,17 @@ function nextTurnE() {
   nextTurn2(
     `Temperance`,
     store,
-    bitis,
-    baslangic,
+    endTime,
+    startTime,
     asama,
     props.payOffs,
     currentRound,
     secim,
-    oyunSonu,
+    endOfGame,
     totalRounds,
     currentRound.value === roundToPay,
-    earningForCurrentRound
+    earningForCurrentRound,
+    currentRound === -1
   );
 
   chosenBall1.value = -1;
@@ -57,7 +59,7 @@ function drawBall() {
     return;
   }
   asama.value = "cekilis";
-  bitis.value = new Date();
+  endTime.value = new Date();
   chosenBall1.value = Math.floor(Math.random() * 100);
   chosenBall2.value = Math.floor(Math.random() * 100);
   chosenBall3.value = Math.floor(Math.random() * 100);
@@ -108,14 +110,23 @@ function setSelection(a) {
 </script>
 
 <template>
-  <div class="oyunKutusu" v-if="!oyunSonu">
+  <div class="oyunKutusu" v-if="!endOfGame">
     <ScoreTable
       :currentGame="lastTreatment ? 3 : 2"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
+      v-if="currentRound !== -1"
     />
     <div class="question">
-      <p>Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.</p>
+      <p v-if="currentRound !== -1">
+        Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.
+      </p>
+      <p v-else>
+        <b>Deneme Turu:</b> Gerçek deney turlarından önce, bir deneme sorusuyla
+        başlayalım. Lütfen tercih ettiğiniz seçeneğe tıklayın. Diğer seçeneğe
+        tıklayarak seçiminizi değiştirebilirsiniz. Parasal ödül için rastgele
+        seçeceğimiz tur bu olmayacak.
+      </p>
       <div class="choices">
         <div
           class="choice"
@@ -130,13 +141,24 @@ function setSelection(a) {
             color4="#2ecc71"
             color5="#A020F0"
             color6="#ffA500"
-            :numberOf1="50"
-            :payOff1="payOffs[currentRound][0]"
-            :payOff2="payOffs[currentRound][1]"
-            :payOff3="payOffs[currentRound][2]"
-            :payOff4="payOffs[currentRound][3]"
-            :payOff5="payOffs[currentRound][4]"
-            :payOff6="payOffs[currentRound][5]"
+            :payOff1="
+              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
+            "
+            :payOff2="
+              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
+            "
+            :payOff3="
+              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
+            "
+            :payOff4="
+              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
+            "
+            :payOff5="
+              currentRound !== -1 ? payOffs[currentRound][4] : practiceValues[4]
+            "
+            :payOff6="
+              currentRound !== -1 ? payOffs[currentRound][5] : practiceValues[5]
+            "
             :chosenBall1="secim === 1 ? chosenBall1 : -1"
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
             :chosenBall3="secim === 1 ? chosenBall3 : -1"
@@ -156,13 +178,24 @@ function setSelection(a) {
             color4="#2ecc71"
             color5="#A020F0"
             color6="#ffA500"
-            :numberOf1="50"
-            :payOff1="payOffs[currentRound][0]"
-            :payOff2="payOffs[currentRound][1]"
-            :payOff3="payOffs[currentRound][2]"
-            :payOff4="payOffs[currentRound][3]"
-            :payOff5="payOffs[currentRound][4]"
-            :payOff6="payOffs[currentRound][5]"
+            :payOff1="
+              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
+            "
+            :payOff2="
+              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
+            "
+            :payOff3="
+              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
+            "
+            :payOff4="
+              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
+            "
+            :payOff5="
+              currentRound !== -1 ? payOffs[currentRound][4] : practiceValues[4]
+            "
+            :payOff6="
+              currentRound !== -1 ? payOffs[currentRound][5] : practiceValues[5]
+            "
             :chosenBall1="secim === 2 ? chosenBall1 : -1"
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
             :chosenBall3="secim === 2 ? chosenBall3 : -1"
@@ -188,7 +221,7 @@ function setSelection(a) {
       </div>
     </div>
   </div>
-  <div v-if="oyunSonu" class="oyunKutusu">
+  <div v-if="endOfGame" class="oyunKutusu">
     <button @click="$emit('end', true)" class="stepButton">
       <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>

@@ -12,19 +12,22 @@ function nextTurn2(
   oyunSonu,
   totalRounds,
   willBePaid,
-  earningForCurrentRound
+  earningForCurrentRound,
+  deneme = false
 ) {
-  if (willBePaid) {
-    store.kazanc += earningForCurrentRound.value;
+  if (!deneme) {
+    if (willBePaid) {
+      store.kazanc += earningForCurrentRound.value;
+    }
+    store.veriler.push([
+      treatment,
+      end.value - start.value,
+      payOffs[currentRound.value],
+      choice.value,
+      earningForCurrentRound.value,
+    ]);
+    updateData();
   }
-  store.veriler.push([
-    treatment,
-    end.value - start.value,
-    payOffs[currentRound.value],
-    choice.value,
-    earningForCurrentRound.value,
-  ]);
-  updateData();
   choice.value = null;
 
   earningForCurrentRound.value = 0;

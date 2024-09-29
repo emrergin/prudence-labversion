@@ -1,12 +1,21 @@
 <template>
-  <div class="oyunKutusu" v-if="!oyunSonu">
+  <div class="oyunKutusu" v-if="!endOfGame">
     <ScoreTable
       :currentGame="1"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
+      v-if="currentRound !== -1"
     />
     <div class="question">
-      <p>Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.</p>
+      <p v-if="currentRound !== -1">
+        Lütfen sağdaki ya da soldaki seçeneklerden birisini seçin.
+      </p>
+      <p v-else>
+        <b>Deneme Turu:</b> Gerçek deney turlarından önce, bir deneme sorusuyla
+        başlayalım. Lütfen tercih ettiğiniz seçeneğe tıklayın. Diğer seçeneğe
+        tıklayarak seçiminizi değiştirebilirsiniz. Parasal ödül için rastgele
+        seçeceğimiz tur bu olmayacak.
+      </p>
       <div class="choices">
         <div
           class="choice"
@@ -17,9 +26,12 @@
           <RiskChoice
             color1="#0000fe"
             color2="#fec800"
-            :numberOf1="50"
-            :payOff1="payOffs[currentRound][0]"
-            :payOff2="payOffs[currentRound][1]"
+            :payOff1="
+              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
+            "
+            :payOff2="
+              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
+            "
             :chosenBall="secim === 1 ? chosenBall : -1"
           />
         </div>
@@ -32,9 +44,12 @@
           <RiskChoice
             color1="#0000fe"
             color2="#fec800"
-            :numberOf1="50"
-            :payOff1="payOffs[currentRound][2]"
-            :payOff2="payOffs[currentRound][3]"
+            :payOff1="
+              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
+            "
+            :payOff2="
+              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
+            "
             :chosenBall="secim === 2 ? chosenBall : -1"
           />
         </div>
@@ -57,7 +72,7 @@
       </div>
     </div>
   </div>
-  <div v-if="oyunSonu" class="oyunKutusu">
+  <div v-if="endOfGame" class="oyunKutusu">
     <button @click="$emit('end', true)" class="stepButton">
       <span v-if="lastTreatment">Anketlere Geç</span>
       <span v-else>Diğer Oyuna Geç!</span>
@@ -81,15 +96,16 @@ const props = defineProps({
 });
 
 const asama = ref(`baslangic`);
-const currentRound = ref(0);
+const currentRound = ref(-1);
 const secim = ref(null);
-const baslangic = ref(new Date());
-const bitis = ref(null);
+const startTime = ref(new Date());
+const endTime = ref(null);
 const chosenBall = ref(-1);
+const practiceValues = [3, 17, 7, 13];
 
 const earningForCurrentRound = ref(0);
 
-const oyunSonu = ref(false);
+const endOfGame = ref(false);
 
 defineEmits(["end"]);
 const totalRounds = props.payOffs.length;
@@ -100,16 +116,17 @@ function nextTurnE() {
   nextTurn2(
     `Risk`,
     store,
-    bitis,
-    baslangic,
+    endTime,
+    startTime,
     asama,
     props.payOffs,
     currentRound,
     secim,
-    oyunSonu,
+    endOfGame,
     totalRounds,
     currentRound.value === roundToPay,
-    earningForCurrentRound
+    earningForCurrentRound,
+    currentRound === -1
   );
 
   chosenBall.value = -1;
@@ -120,7 +137,7 @@ function drawBall() {
     return;
   }
   asama.value = "cekilis";
-  bitis.value = new Date();
+  endTime.value = new Date();
   chosenBall.value = Math.floor(Math.random() * 100);
   const currentPayOffs = props.payOffs[currentRound.value];
   if (secim.value === 1) {
@@ -172,5 +189,18 @@ function setSelection(a) {
 
 #gameBottom {
   min-height: 120px;
+}
+</style>
+
+<style>
+.question p {
+  margin-inline: 5ch;
+  max-width: 1000px;
+}
+.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2ch;
 }
 </style>
