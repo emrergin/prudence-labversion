@@ -22,6 +22,7 @@ const chosenBall1 = ref(-1);
 const chosenBall2 = ref(-1);
 const chosenBall3 = ref(-1);
 const practiceValues = [13, 13, 2, -2, 7, -7];
+const sessionValues = [practiceValues, ...props.payOffs];
 
 const earningForCurrentRound = ref(0);
 
@@ -43,10 +44,9 @@ function nextTurnE() {
     currentRound,
     secim,
     endOfGame,
-    totalRounds,
     currentRound.value === roundToPay,
     earningForCurrentRound,
-    currentRound === -1
+    currentRound.value === -1
   );
 
   chosenBall1.value = -1;
@@ -64,7 +64,7 @@ function drawBall() {
   chosenBall2.value = Math.floor(Math.random() * 100);
   chosenBall3.value = Math.floor(Math.random() * 100);
 
-  const currentPayOffs = props.payOffs[currentRound.value];
+  const currentPayOffs = sessionValues[currentRound.value + 1];
   if (secim === 1) {
     // temperate case
     if (chosenBall1.value < 50) {
@@ -141,24 +141,12 @@ function setSelection(a) {
             color4="#2ecc71"
             color5="#A020F0"
             color6="#ffA500"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
-            "
-            :payOff3="
-              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
-            "
-            :payOff4="
-              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
-            "
-            :payOff5="
-              currentRound !== -1 ? payOffs[currentRound][4] : practiceValues[4]
-            "
-            :payOff6="
-              currentRound !== -1 ? payOffs[currentRound][5] : practiceValues[5]
-            "
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :payOff5="sessionValues[currentRound + 1][4]"
+            :payOff6="sessionValues[currentRound + 1][5]"
             :chosenBall1="secim === 1 ? chosenBall1 : -1"
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
             :chosenBall3="secim === 1 ? chosenBall3 : -1"
@@ -178,24 +166,12 @@ function setSelection(a) {
             color4="#2ecc71"
             color5="#A020F0"
             color6="#ffA500"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
-            "
-            :payOff3="
-              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
-            "
-            :payOff4="
-              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
-            "
-            :payOff5="
-              currentRound !== -1 ? payOffs[currentRound][4] : practiceValues[4]
-            "
-            :payOff6="
-              currentRound !== -1 ? payOffs[currentRound][5] : practiceValues[5]
-            "
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :payOff5="sessionValues[currentRound + 1][4]"
+            :payOff6="sessionValues[currentRound + 1][5]"
             :chosenBall1="secim === 2 ? chosenBall1 : -1"
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
             :chosenBall3="secim === 2 ? chosenBall3 : -1"

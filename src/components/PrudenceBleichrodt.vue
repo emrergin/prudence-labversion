@@ -28,18 +28,10 @@
             color2="#fec800"
             color3="#e74c3c"
             color4="#2ecc71"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
-            "
-            :payOff3="
-              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
-            "
-            :payOff4="
-              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
-            "
+            :payOff1="sessionValues[currentRound + 1][1]"
+            :payOff2="sessionValues[currentRound + 1][0]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
             :chosenBall1="secim === 1 ? chosenBall1 : -1"
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
           />
@@ -55,18 +47,10 @@
             color2="#fec800"
             color3="#e74c3c"
             color4="#2ecc71"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
-            "
-            :payOff3="
-              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
-            "
-            :payOff4="
-              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
-            "
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
             :chosenBall1="secim === 2 ? chosenBall1 : -1"
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
           />
@@ -121,6 +105,7 @@ const endTime = ref(null);
 const chosenBall1 = ref(-1);
 const chosenBall2 = ref(-1);
 const practiceValues = [7, 6, 2, -2];
+const sessionValues = [practiceValues, ...props.payOffs];
 
 const earningForCurrentRound = ref(0);
 
@@ -142,10 +127,9 @@ function nextTurnE() {
     currentRound,
     secim,
     endOfGame,
-    totalRounds,
     currentRound.value === roundToPay,
     earningForCurrentRound,
-    currentRound === -1
+    currentRound.value === -1
   );
 
   chosenBall1.value = -1;
@@ -162,7 +146,7 @@ function drawBall() {
   if (chosenBall1.value >= 50) {
     chosenBall2.value = Math.floor(Math.random() * 100);
   }
-  const currentPayOffs = props.payOffs[currentRound.value];
+  const currentPayOffs = sessionValues[currentRound.value + 1];
   if (secim === 1) {
     if (chosenBall1.value < 50) {
       earningForCurrentRound.value += currentPayOffs[1];

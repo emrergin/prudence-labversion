@@ -10,10 +10,9 @@ function nextTurn2(
   currentRound,
   choice,
   oyunSonu,
-  totalRounds,
   willBePaid,
   earningForCurrentRound,
-  deneme = false
+  deneme
 ) {
   if (!deneme) {
     if (willBePaid) {
@@ -23,16 +22,19 @@ function nextTurn2(
       treatment,
       end.value - start.value,
       payOffs[currentRound.value],
-      choice.value,
+      treatment !== "Temperance"
+        ? choice.value
+        : [choice.value, null, null, null],
       earningForCurrentRound.value,
     ]);
+    console.log(store.veriler);
     updateData();
   }
   choice.value = null;
 
   earningForCurrentRound.value = 0;
 
-  if (currentRound.value >= totalRounds - 1) {
+  if (currentRound.value >= payOffs.length - 1) {
     oyunSonu.value = true;
     return;
   }

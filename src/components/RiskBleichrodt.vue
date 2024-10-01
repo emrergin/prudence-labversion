@@ -26,12 +26,8 @@
           <RiskChoice
             color1="#0000fe"
             color2="#fec800"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][0] : practiceValues[0]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][1] : practiceValues[1]
-            "
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
             :chosenBall="secim === 1 ? chosenBall : -1"
           />
         </div>
@@ -44,12 +40,8 @@
           <RiskChoice
             color1="#0000fe"
             color2="#fec800"
-            :payOff1="
-              currentRound !== -1 ? payOffs[currentRound][2] : practiceValues[2]
-            "
-            :payOff2="
-              currentRound !== -1 ? payOffs[currentRound][3] : practiceValues[3]
-            "
+            :payOff1="sessionValues[currentRound + 1][2]"
+            :payOff2="sessionValues[currentRound + 1][3]"
             :chosenBall="secim === 2 ? chosenBall : -1"
           />
         </div>
@@ -102,6 +94,7 @@ const startTime = ref(new Date());
 const endTime = ref(null);
 const chosenBall = ref(-1);
 const practiceValues = [3, 17, 7, 13];
+const sessionValues = [practiceValues, ...props.payOffs];
 
 const earningForCurrentRound = ref(0);
 
@@ -123,10 +116,9 @@ function nextTurnE() {
     currentRound,
     secim,
     endOfGame,
-    totalRounds,
     currentRound.value === roundToPay,
     earningForCurrentRound,
-    currentRound === -1
+    currentRound.value === -1
   );
 
   chosenBall.value = -1;
@@ -139,7 +131,7 @@ function drawBall() {
   asama.value = "cekilis";
   endTime.value = new Date();
   chosenBall.value = Math.floor(Math.random() * 100);
-  const currentPayOffs = props.payOffs[currentRound.value];
+  const currentPayOffs = sessionValues[currentRound.value + 1];
   if (secim.value === 1) {
     if (chosenBall.value < 50) {
       earningForCurrentRound.value = currentPayOffs[0];
