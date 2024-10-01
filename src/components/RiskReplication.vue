@@ -24,11 +24,16 @@
         >
           <div class="title">Seçenek A</div>
           <RiskChoice
-            color1="#0000fe"
-            color2="#fec800"
+            v-if="experiment === `bleich`"
             :payOff1="sessionValues[currentRound + 1][0]"
             :payOff2="sessionValues[currentRound + 1][1]"
             :chosenBall="secim === 1 ? chosenBall : -1"
+          />
+          <RiskChoiceTrautmann
+            v-else
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :chosenNumber="secim === 1 ? chosenBall : -1"
           />
         </div>
         <div
@@ -38,11 +43,16 @@
         >
           <div class="title">Seçenek B</div>
           <RiskChoice
-            color1="#0000fe"
-            color2="#fec800"
+            v-if="experiment === `bleich`"
             :payOff1="sessionValues[currentRound + 1][2]"
             :payOff2="sessionValues[currentRound + 1][3]"
             :chosenBall="secim === 2 ? chosenBall : -1"
+          />
+          <RiskChoiceTrautmann
+            v-else
+            :payOff1="sessionValues[currentRound + 1][2]"
+            :payOff2="sessionValues[currentRound + 1][3]"
+            :chosenNumber="secim === 2 ? chosenBall : -1"
           />
         </div>
       </div>
@@ -75,9 +85,10 @@
 <script setup>
 import RiskChoice from "./subcomponents/RiskChoice.vue";
 import ScoreTable from "./ScoreTable.vue";
-import nextTurn2 from "../functions/nextTurn2";
+import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
 import { ref } from "vue";
+import RiskChoiceTrautmann from "./subcomponents/RiskChoiceTrautmann.vue";
 
 const props = defineProps({
   payOffs: undefined,
@@ -85,6 +96,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  experiment: String,
 });
 
 const asama = ref(`baslangic`);
@@ -131,6 +143,7 @@ function drawBall() {
   asama.value = "cekilis";
   endTime.value = new Date();
   chosenBall.value = Math.floor(Math.random() * 100);
+
   const currentPayOffs = sessionValues[currentRound.value + 1];
   if (secim.value === 1) {
     if (chosenBall.value < 50) {

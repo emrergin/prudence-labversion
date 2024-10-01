@@ -36,8 +36,16 @@
 import BagOfBalls from "./BagOfBalls.vue";
 
 const props = defineProps({
-  color1: String,
-  color2: String,
+  color1: {
+    type: String,
+    required: false,
+    default: "#0000fe",
+  },
+  color2: {
+    type: String,
+    required: false,
+    default: "#fec800",
+  },
   numberOf1: {
     type: Number,
     required: false,

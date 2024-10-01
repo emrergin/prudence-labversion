@@ -9,12 +9,12 @@ function nextTurn2(
   payOffs,
   currentRound,
   choice,
-  oyunSonu,
+  endOfGame,
   willBePaid,
   earningForCurrentRound,
-  deneme
+  practice
 ) {
-  if (!deneme) {
+  if (!practice) {
     if (willBePaid) {
       store.kazanc += earningForCurrentRound.value;
     }
@@ -27,7 +27,6 @@ function nextTurn2(
         : [choice.value, null, null, null],
       earningForCurrentRound.value,
     ]);
-    console.log(store.veriler);
     updateData();
   }
   choice.value = null;
@@ -35,7 +34,7 @@ function nextTurn2(
   earningForCurrentRound.value = 0;
 
   if (currentRound.value >= payOffs.length - 1) {
-    oyunSonu.value = true;
+    endOfGame.value = true;
     return;
   }
 

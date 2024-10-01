@@ -4,6 +4,7 @@ import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
 import { ref } from "vue";
+import TemperanceChoiceTrautmann from "./subcomponents/TemperanceChoiceTrautmann.vue";
 
 const props = defineProps({
   payOffs: undefined,
@@ -11,6 +12,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  experiment: String,
 });
 
 const asama = ref(`baslangic`);
@@ -135,12 +137,6 @@ function setSelection(a) {
         >
           <div class="title">Seçenek A</div>
           <TemperanceChoice
-            color1="#0000fe"
-            color2="#fec800"
-            color3="#e74c3c"
-            color4="#2ecc71"
-            color5="#A020F0"
-            color6="#ffA500"
             :payOff1="sessionValues[currentRound + 1][0]"
             :payOff2="sessionValues[currentRound + 1][1]"
             :payOff3="sessionValues[currentRound + 1][2]"
@@ -151,21 +147,30 @@ function setSelection(a) {
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
             :chosenBall3="secim === 1 ? chosenBall3 : -1"
             :temperate="true"
+            v-if="experiment === `bleich`"
+          />
+          <TemperanceChoiceTrautmann
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :payOff5="sessionValues[currentRound + 1][4]"
+            :payOff6="sessionValues[currentRound + 1][5]"
+            :chosenNumber1="secim === 1 ? chosenBall1 : -1"
+            :chosenNumber2="secim === 1 ? chosenBall2 : -1"
+            :chosenNumber3="secim === 1 ? chosenBall3 : -1"
+            :temperate="true"
+            v-else
           />
         </div>
         <div
           class="choice"
           @click="() => setSelection(2)"
           :class="{ active: secim === 2 }"
+          style=""
         >
           <div class="title">Seçenek B</div>
           <TemperanceChoice
-            color1="#0000fe"
-            color2="#fec800"
-            color3="#e74c3c"
-            color4="#2ecc71"
-            color5="#A020F0"
-            color6="#ffA500"
             :payOff1="sessionValues[currentRound + 1][0]"
             :payOff2="sessionValues[currentRound + 1][1]"
             :payOff3="sessionValues[currentRound + 1][2]"
@@ -176,6 +181,20 @@ function setSelection(a) {
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
             :chosenBall3="secim === 2 ? chosenBall3 : -1"
             :temperate="false"
+            v-if="experiment === `bleich`"
+          />
+          <TemperanceChoiceTrautmann
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :payOff5="sessionValues[currentRound + 1][4]"
+            :payOff6="sessionValues[currentRound + 1][5]"
+            :chosenNumber1="secim === 2 ? chosenBall1 : -1"
+            :chosenNumber2="secim === 2 ? chosenBall2 : -1"
+            :chosenNumber3="secim === 2 ? chosenBall3 : -1"
+            :temperate="false"
+            v-else
           />
         </div>
       </div>
@@ -216,6 +235,7 @@ function setSelection(a) {
 .choice {
   border: 2px solid black;
   transition: outline 0.3s linear;
+  /* width: 50%; */
 }
 
 .choice.active {

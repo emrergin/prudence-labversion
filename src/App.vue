@@ -7,55 +7,43 @@
       v-if="currentPhase === `intro`"
       @end="currentPhase = treatments[`intro`]"
     />
-    <Tutorial2 v-if="currentPhase === `tut2`" @end="currentPhase = `rskGam`" />
-    <PrudenceTutorial
-      v-if="currentPhase === `pruTut`"
-      @end="currentPhase = `pruGam`"
+    <Tutorial2
+      v-if="currentPhase === `tut2`"
+      @end="currentPhase = `rskGam`"
+      experiment="traut"
     />
-    <PrudenceGame
-      :payOffs="pruPayOffs"
-      :lastTreatment="treatments[`pruGam`] === `dem`"
-      v-if="currentPhase === `pruGam` && experiment !== `bleich`"
-      @end="currentPhase = treatments[`pruGam`]"
-    />
-    <PrudenceBleichrodt
-      v-if="currentPhase === `pruGam` && experiment === `bleich`"
-      @end="currentPhase = treatments[`pruGam`]"
-      :payOffs="pruPayOffs"
-      :lastTreatment="treatments[`pruGam`] === `dem`"
-    />
-    <TemperanceTutorial
-      v-if="currentPhase === `temTut`"
-      @end="currentPhase = `temGam`"
-    />
-    <TemperanceBleichrodt
-      v-if="currentPhase === `temGam` && experiment === `bleich`"
-      @end="currentPhase = treatments[`temGam`]"
-      :payOffs="temPayOffs"
-      :lastTreatment="treatments[`temGam`] === `dem`"
-    />
-    <TemperanceGame
-      :payOffs="temPayOffs"
-      :lastTreatment="treatments[`temGam`] === `dem`"
-      v-if="currentPhase === `temGam` && experiment !== `bleich`"
-      @end="currentPhase = treatments[`temGam`]"
-    />
+
     <RiskTutorial
       v-if="currentPhase === `rskTut`"
       @end="currentPhase = `rskGam`"
     />
-    <RiskGame
-      :payOffs="rskPayOffs"
-      :lastTreatment="treatments[`rskGam`] === `dem`"
-      v-if="currentPhase === `rskGam` && experiment !== `bleich`"
+    <RiskRounds
+      :experiment="experiment"
+      v-if="currentPhase === `rskGam`"
       @end="currentPhase = treatments[`rskGam`]"
     />
-    <RiskBleichrodt
-      v-if="currentPhase === `rskGam` && experiment === `bleich`"
-      @end="currentPhase = treatments[`rskGam`]"
-      :payOffs="rskPayOffs"
-      :lastTreatment="treatments[`rskGam`] === `dem`"
+
+    <PrudenceTutorial
+      v-if="currentPhase === `pruTut`"
+      @end="currentPhase = `pruGam`"
     />
+    <PrudenceRounds
+      :experiment="experiment"
+      v-if="currentPhase === `pruGam`"
+      @end="currentPhase = treatments[`pruGam`]"
+    />
+
+    <TemperanceRounds
+      :experiment="experiment"
+      v-if="currentPhase === `temGam`"
+      @end="currentPhase = treatments[`temGam`]"
+    />
+
+    <TemperanceTutorial
+      v-if="currentPhase === `temTut`"
+      @end="currentPhase = `temGam`"
+    />
+
     <DemographicQuestions
       v-if="currentPhase === `dem`"
       @end="currentPhase = 'gps'"
@@ -73,37 +61,31 @@
 <script>
 import IntroScreen from "./components/IntroScreen.vue";
 import PrudenceTutorial from "./components/PrudenceTutorial.vue";
-import PrudenceGame from "./components/PrudenceGamev2.vue";
 import TemperanceTutorial from "./components/TemperanceTutorial.vue";
-import TemperanceGame from "./components/TemperanceGamev2.vue";
-import RiskGame from "./components/RiskGamev2.vue";
-import RiskBleichrodt from "./components/RiskBleichrodt.vue";
-import PrudenceBleichrodt from "./components/PrudenceBleichrodt.vue";
 import RiskTutorial from "./components/RiskTutorial.vue";
 import ResultScreen from "./components/ResultScreen.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
 import GPSQuestions from "./components/GPSQuestions.vue";
 import Tutorial2 from "./components/Tutorial2.vue";
-import TemperanceBleichrodt from "./components/TemperanceBleichrodt.vue";
+import RiskRounds from "./components/RiskRounds.vue";
+import PrudenceRounds from "./components/PrudenceRounds.vue";
+import TemperanceRounds from "./components/TemperanceRounds.vue";
 import { store } from "./store.js";
 
 export default {
   name: "App",
   components: {
     IntroScreen,
-    PrudenceGame,
     PrudenceTutorial,
-    TemperanceGame,
     TemperanceTutorial,
-    RiskGame,
     RiskTutorial,
     ResultScreen,
     DemographicQuestions,
     GPSQuestions,
-    RiskBleichrodt,
-    PrudenceBleichrodt,
-    TemperanceBleichrodt,
     Tutorial2,
+    RiskRounds,
+    PrudenceRounds,
+    TemperanceRounds,
   },
   data() {
     return {
@@ -111,48 +93,7 @@ export default {
       store,
       endOfExperiment: false,
       treatments: null,
-      pruPayOffs: [
-        [4, 11, 3, -3],
-        [3, 9, 2, -2],
-        [5, 8, 4, -4],
-        [5, 10, 3, -3],
-        [3, 8, 1, -1],
-        [5, 9, 4, -4],
-        [6, 12, 5, -5],
-        [6, 10, 5, -5],
-        [5, 10, 4, -4],
-        [4, 6, 3, -3],
-        [2, 6, 1, -1],
-        [3, 6, 2, -2],
-      ],
-      rskPayOffs: [
-        [8, 9, 1, 16],
-        [7, 9, 2, 14],
-        [9, 11, 4, 16],
-        [7, 9, 3, 13],
-        [4, 5, 1, 8],
-        [5, 7, 2, 10],
-        [6, 7, 3, 10],
-        [7, 9, 4, 12],
-        [6, 8, 3, 11],
-        [8, 9, 5, 12],
-        [8, 9, 3, 14],
-        [6, 7, 1, 12],
-      ],
-      temPayOffs: [
-        [7, 7, 2, -2, 4, -4],
-        [7, 7, 3, -3, 3, -3],
-        [5, 5, 1, -1, 2, -2],
-        [5, 5, 1, -1, 3, -3],
-        [8, 8, 2, -2, 3, -3],
-        [9, 9, 2, -2, 6, -6],
-        [8, 8, 3, -3, 4, -4],
-        [8, 8, 2, -2, 5, -5],
-        [10, 10, 3, -3, 6, -6],
-        [10, 10, 4, -4, 5, -5],
-        [8, 8, 1, -1, 6, -6],
-        [5, 5, 2, -2, 2, -2],
-      ],
+
       nextTreatment: [
         {
           intro: `rskTut`,
@@ -180,14 +121,21 @@ export default {
           temGam: `pruGam`,
           pruGam: `dem`,
         },
+        // {
+        //   intro: `pruGam`,
+        //   rskGam: `temGam`,
+        //   temGam: `pruGam`,
+        //   pruGam: `dem`,
+        // },
       ],
-      experiment: "bleich",
+      // traut || bleich || ours
+      experiment: "traut",
     };
   },
   beforeMount() {
     window.addEventListener("beforeunload", this.preventNav);
-    if (this.experiment === "bleich") {
-      this.treatments = this.treatments =
+    if (this.experiment !== "ours") {
+      this.treatments =
         this.nextTreatment2[
           Math.floor(Math.random() * this.nextTreatment2.length)
         ];
@@ -197,44 +145,6 @@ export default {
           Math.floor(Math.random() * this.nextTreatment.length)
         ];
     }
-    for (let row of this.pruPayOffs) {
-      if (Math.floor(Math.random() * 2)) {
-        let geciciPar = row[0];
-        row[0] = row[1];
-        row[1] = geciciPar;
-      }
-    }
-    for (let row of this.rskPayOffs) {
-      if (Math.floor(Math.random() * 2)) {
-        let geciciPar1 = row[0];
-        let geciciPar2 = row[1];
-        row[0] = row[2];
-        row[1] = row[3];
-        row[2] = geciciPar1;
-        row[3] = geciciPar2;
-      }
-    }
-    for (let row of this.temPayOffs) {
-      if (Math.floor(Math.random() * 2)) {
-        let geciciPar1 = row[2];
-        let geciciPar2 = row[3];
-        row[2] = row[4];
-        row[3] = row[5];
-        row[4] = geciciPar1;
-        row[5] = geciciPar2;
-      }
-    }
-    function shuffle(array) {
-      let resArray = array;
-      for (let i = resArray.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [resArray[i], resArray[j]] = [resArray[j], resArray[i]];
-      }
-      return resArray;
-    }
-    this.pruPayOffs = shuffle(this.pruPayOffs);
-    this.rskPayOffs = shuffle(this.rskPayOffs);
-    this.temPayOffs = shuffle(this.temPayOffs);
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);
