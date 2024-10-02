@@ -15,8 +15,14 @@
       Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Deney sonunda her
       üç oyunun rastgele seçtiğimiz birer turunda kazandığınız puanları
       toplayacağız. Bu, deneydeki toplam puanınız olacak. Toplam puanınızın
-      parasal değerini (1 puan = 1,5 TL) ve ek olarak 20 TL katılım ücretini
-      size deney sonunda nakit olarak ödeyeceğiz.
+      parasal değerini (1 puan =
+      {{
+        new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 0 }).format(
+          pointsToMoneyMultiplier
+        )
+      }}
+      TL) ve ek olarak {{ participationReward }} TL katılım ücretini size deney
+      sonunda nakit olarak ödeyeceğiz.
     </li>
     <li>
       Ödeme için bütün turların seçilme şansı aynıdır. Dolayısıyla her turda,
@@ -57,6 +63,8 @@
 <script setup>
 import { store } from "../store.js";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
+import { participationReward } from "../constants.js";
+import { pointsToMoneyMultiplier } from "../constants.js";
 
 defineEmits(["end"]);
 function logData() {

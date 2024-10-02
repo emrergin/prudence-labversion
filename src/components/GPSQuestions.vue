@@ -721,6 +721,7 @@
 import { ref } from "vue";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 import { checkValidityOfAllInputs } from "../functions/utilities";
+import { inflationMultiplier } from "../constants.js";
 import { store } from "../store.js";
 import updateData from "../functions/updateData";
 const emit = defineEmits(["end"]);
@@ -859,7 +860,8 @@ const stair1StartingValue = 80;
 const currentSure = ref(stair1StartingValue);
 const stair1SureOutcome = 150;
 const currentStairValue = ref("");
-const inflationMultiplier = 5;
+// const inflationMultiplier = 5;
+
 // const stairRiskIndex = 0;
 const currentGiftSelection = ref("");
 

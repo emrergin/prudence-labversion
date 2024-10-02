@@ -41,10 +41,15 @@
 
     <p>Toplam puanınız: {{ store.kazanc }}</p>
     <p>
-      Parasal kazancınız: ({{ store.kazanc }} x 1,5) + 20 =
+      Parasal kazancınız: ({{ store.kazanc }} x
       {{
         new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 0 }).format(
-          store.kazanc * 1.5 + 20
+          pointsToMoneyMultiplier
+        )
+      }}) + {{ participationReward }} =
+      {{
+        new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 0 }).format(
+          store.kazanc * pointsToMoneyMultiplier + participationReward
         )
       }}
       TL
@@ -55,6 +60,7 @@
 import { store } from "../store.js";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 import { ref } from "vue";
+import { participationReward, pointsToMoneyMultiplier } from "../constants.js";
 
 defineEmits(["end"]);
 
