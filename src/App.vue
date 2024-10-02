@@ -10,7 +10,7 @@
     <Tutorial2
       v-if="currentPhase === `tut2`"
       @end="currentPhase = `rskGam`"
-      experiment="traut"
+      :experiment="experiment"
     />
 
     <RiskTutorial
