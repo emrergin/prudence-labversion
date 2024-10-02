@@ -69,11 +69,11 @@
           <div>◄</div>
           <div>►</div>
         </div>
-        <img src="../assets/soccer_ball.svg" style="align-self: flex-end" />
+        <img src="../../assets/soccer_ball.svg" style="align-self: flex-end" />
       </div>
       <div
         id="bigPipe"
-        src="../assets/bigpipe.svg"
+        src="../../assets/bigpipe.svg"
         class="phaseIn"
         :class="[{ focused: step > 2 }, { unfocused: step <= 2 }]"
       >
@@ -89,7 +89,7 @@
           <div id="leftLargeTag" class="largeTag tag">+9</div>
           <div id="rightLargeTag" class="largeTag tag">+9</div>
         </div>
-        <img src="../assets/bigpipe.svg" />
+        <img src="../../assets/bigpipe.svg" />
       </div>
       <div class="bigInputs">
         <div
@@ -164,7 +164,7 @@
             <div id="rightSmallTag1" class="kucukEtiket tag">-2</div>
           </div>
           <img
-            src="../assets/smallpipe2.svg"
+            src="../../assets/smallpipe2.svg"
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[
@@ -194,7 +194,7 @@
             <div id="rightSmallTag2" class="kucukEtiket tag">-3</div>
           </div>
           <img
-            src="../assets/smallpipe2.svg"
+            src="../../assets/smallpipe2.svg"
             class="draggable phaseIn"
             oncontextmenu="return false"
             :class="[

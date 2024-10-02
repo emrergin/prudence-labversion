@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import TemperanceGame from "./TemperanceGamev2.vue";
+import TemperanceGame from "./our_experiment/TemperanceGamev2.vue";
 import TemperanceReplication from "./TemperanceReplication.vue";
 
 import { defineEmits as defineEmits } from "@vue/runtime-dom";

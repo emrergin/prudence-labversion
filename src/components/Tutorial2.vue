@@ -32,7 +32,7 @@
   </template>
 
   <template v-else>
-    <div>
+    <div v-if="step === 1">
       Bu deneyde, Seçenek A ve Seçenek B olarak adlandırılan iki seçenek
       arasında bir dizi seçim yapmanız istenecektir. Her iki seçenek de
       bilgisayar tarafından atılan üç standart 6 yüzlü zara (kırmızı, siyah ve
@@ -44,7 +44,22 @@
       Hazırsanız başlayalım mı?
     </div>
     <div class="centered">
-      <button @click="$emit('end', true)" class="stepButton">Hazırım!</button>
+      <button
+        v-if="step === 4"
+        :disabled="disabled[2]"
+        @click="$emit('end', true)"
+        class="stepButton"
+      >
+        Hazırım!
+      </button>
+      <button
+        v-if="step < 4"
+        :disabled="disabled[step - 2]"
+        @click="nextStep"
+        class="stepButton"
+      >
+        Sıradaki slayt
+      </button>
     </div>
   </template>
 </template>
@@ -52,10 +67,10 @@
 <script setup>
 import { ref } from "vue";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
-import BleichInstruction from "./subcomponents/BleichInstruction.vue";
-import Comprehension3 from "./subcomponents/Comprehension3.vue";
-import Comprehension2 from "./subcomponents/Comprehension2.vue";
-import Comprehension1 from "./subcomponents/Comprehension1.vue";
+import BleichInstruction from "./bleichrodt/BleichInstruction.vue";
+import Comprehension3 from "./bleichrodt/Comprehension3.vue";
+import Comprehension2 from "./bleichrodt/Comprehension2.vue";
+import Comprehension1 from "./bleichrodt/Comprehension1.vue";
 
 const props = defineProps({
   experiment: String,

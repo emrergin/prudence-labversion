@@ -83,12 +83,12 @@
 </template>
 
 <script setup>
-import RiskChoice from "./subcomponents/RiskChoice.vue";
+import RiskChoice from "./bleichrodt/RiskChoice.vue";
 import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
 import { ref } from "vue";
-import RiskChoiceTrautmann from "./subcomponents/RiskChoiceTrautmann.vue";
+import RiskChoiceTrautmann from "./trautmann/RiskChoiceTrautmann.vue";
 
 const props = defineProps({
   payOffs: undefined,

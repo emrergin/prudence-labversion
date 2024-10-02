@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import RiskGame from "./RiskGamev2.vue";
+import RiskGame from "./our_experiment/RiskGamev2.vue";
 import RiskReplication from "./RiskReplication.vue";
 
 import { defineEmits as defineEmits } from "@vue/runtime-dom";

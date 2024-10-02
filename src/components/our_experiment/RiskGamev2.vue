@@ -1,7 +1,7 @@
 <template>
   <div class="oyunKutusu" v-if="!oyunSonu">
     <ScoreTable
-      :currentGame="lastTreatment ? 3 : 2"
+      :currentGame="1"
       :totalRounds="totalRounds"
       :currentRound="currentRound"
     />
@@ -9,102 +9,68 @@
       <img
         id="footBall"
         ref="footBall"
-        src="../assets/soccer_ball.svg"
+        src="../../assets/soccer_ball.svg"
         oncontextmenu="return false"
         @click="hareketE($event)"
         :class="{
-          clickReminder:
-            choices.filter((a) => a).length === 2 &&
-            currentRound === 0 &&
-            asama === `baslangic`,
+          clickReminder: secim && currentRound === 0 && asama === `baslangic`,
         }"
       />
-      <div id="bigPipe">
-        <div id="largeTags">
-          <div id="leftLargeTag" class="largeTag tag soletiket">
-            {{ convertNumbertoString(payOffs[currentRound][0]) }}
-          </div>
-          <div id="rightLargeTag" class="largeTag tag sagetiket">
-            {{ convertNumbertoString(payOffs[currentRound][1]) }}
-          </div>
-        </div>
-        <img src="../assets/bigpipe.svg" />
-      </div>
-      <div class="bigInputs">
+      <img id="girisBoru" src="../../assets/smallpipe3.svg" />
+      <div id="inputlar">
         <div
-          class="droppable2"
-          id="i0"
-          :class="{ nottoseen: choices[0] || asama !== `baslangic` }"
+          class="droppable"
+          id="i1"
+          :style="{ visibility: !secim ? `visible` : `hidden` }"
         >
           A
-        </div>
-        <div
-          class="droppable2"
-          id="i1"
-          :class="{ nottoseen: choices[1] || asama !== `baslangic` }"
-        >
-          B
-        </div>
-      </div>
-      <div class="bigInputs">
-        <div
-          class="droppable2"
-          id="i2"
-          :class="{
-            nottoseen: !choices[0] || choices[2] || asama !== `baslangic`,
-          }"
-        >
-          C
-        </div>
-        <div
-          class="droppable2"
-          id="i3"
-          :class="{
-            nottoseen: !choices[1] || choices[3] || asama !== `baslangic`,
-          }"
-        >
-          D
         </div>
       </div>
       <div id="smallPipes" v-if="asama !== `roundsonu`">
         <div
           id="smallPipe1"
-          class="temperancePipe"
+          class="riskPipe"
           oncontextmenu="return false"
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
+          :style="{
+            visibility: secim === `2` ? `hidden` : `visible`,
+          }"
         >
           <div id="smallTags1">
             <div id="leftSmallTag1" class="kucukEtiket tag soletiket">
-              {{ convertNumbertoString(payOffs[currentRound][2]) }}
+              {{ convertNumbertoString(payOffs[currentRound][0]) }}
             </div>
             <div id="rightSmallTag1" class="kucukEtiket tag sagetiket">
-              {{ convertNumbertoString(payOffs[currentRound][3]) }}
+              {{ convertNumbertoString(payOffs[currentRound][1]) }}
             </div>
           </div>
           <img
-            src="../assets/smallpipe2.svg"
+            src="../../assets/smallpipe.svg"
             class="draggable"
             oncontextmenu="return false"
           />
         </div>
         <div
           id="smallPipe2"
-          class="temperancePipe"
+          class="riskPipe"
           oncontextmenu="return false"
           @mousedown.left="carryPipeE($event)"
           ondragstart="return false"
+          :style="{
+            visibility: secim === `1` ? `hidden` : `visible`,
+          }"
         >
           <div id="smallTags2">
             <div id="leftSmallTag2" class="kucukEtiket tag soletiket">
-              {{ convertNumbertoString(payOffs[currentRound][4]) }}
+              {{ convertNumbertoString(payOffs[currentRound][2]) }}
             </div>
             <div id="rightSmallTag2" class="kucukEtiket tag sagetiket">
-              {{ convertNumbertoString(payOffs[currentRound][5]) }}
+              {{ convertNumbertoString(payOffs[currentRound][3]) }}
             </div>
           </div>
           <img
-            src="../assets/smallpipe2.svg"
+            src="../../assets/smallpipe.svg"
             class="draggable"
             oncontextmenu="return false"
           />
@@ -129,11 +95,11 @@
 
 <script setup>
 import ScoreTable from "./ScoreTable.vue";
-import { store } from "../store.js";
+import { store } from "../../store.js";
 import { ref } from "vue";
-import carryPipe from "../functions/carryPipe";
-import movement from "../functions/movement";
-import nextTurn from "../functions/nextTurn";
+import carryPipe from "../../functions/carryPipe.js";
+import movement from "../../functions/movement.js";
+import nextTurn from "../../functions/nextTurn.js";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 
 defineEmits(["end"]);
@@ -146,11 +112,12 @@ const props = defineProps({
 });
 // eslint-disable-next-line
 const totalRounds = props.payOffs.length;
+
 const roundToPay = Math.floor(Math.random() * totalRounds);
 store.chosenRounds.push(roundToPay + 1);
 
 const currentDroppable = ref(null);
-const choices = ref([null, null, null, null]);
+const secim = ref(null);
 const asama = ref(`baslangic`);
 const baslangic = ref(new Date());
 const bitis = ref(null);
@@ -162,14 +129,7 @@ const currentRound = ref(0);
 const oyunSonu = ref(false);
 
 function carryPipeE(e) {
-  carryPipe(
-    e,
-    `droppable2`,
-    asama.value,
-    `temperancePipe`,
-    currentDroppable,
-    choices
-  );
+  carryPipe(e, `droppable`, asama.value, `riskPipe`, currentDroppable, secim);
 }
 
 function hareketE(e) {
@@ -177,7 +137,7 @@ function hareketE(e) {
     e,
     asama,
     bitis,
-    choices,
+    secim,
     totalRevenue,
     totalLoss,
     store,
@@ -188,15 +148,15 @@ function hareketE(e) {
 
 function nextTurnE() {
   nextTurn(
-    `Temperance`,
+    `Risk`,
     store,
     bitis,
     baslangic,
     asama,
     props.payOffs,
     currentRound,
-    choices,
-    `temperancePipe`,
+    secim,
+    `riskPipe`,
     oyunSonu,
     totalRounds,
     earningForCurrentRound
@@ -205,52 +165,23 @@ function nextTurnE() {
 
 function convertNumbertoString(number) {
   if (number === 0) {
-    return `${number}`;
+    return ` ` + number;
   }
   return number > 0 ? `+` + number : `-` + Math.abs(number);
 }
 </script>
 
-<style>
-.bigInputs {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  gap: 105px;
-  min-height: 167.5px;
-}
-
+<style scoped>
 #smallPipes {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 64px;
-  min-height: 167.5px;
-}
-
-.temperancePipe {
-  height: 167.5px;
-}
-
-.droppable2 {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  width: 197px;
-  height: 167.5px;
-  font-size: 3em;
-  font-weight: bold;
-  border: 2px dashed turquoise;
   align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.nottoseen {
-  visibility: hidden;
 }
 </style>
 
-<style scoped>
-.oyunKutusu {
-  min-height: 700px;
+<style>
+.clickReminder {
+  filter: drop-shadow(0 0 0.5rem turquoise);
+  border: 2px solid turquoise;
+  border-radius: 50%;
+  margin: -2px;
 }
 </style>

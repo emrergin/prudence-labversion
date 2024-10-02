@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import PrudenceGame from "./PrudenceGamev2.vue";
+import PrudenceGame from "./our_experiment/PrudenceGamev2.vue";
 import PrudenceReplication from "./PrudenceReplication.vue";
 
 import { defineEmits as defineEmits } from "@vue/runtime-dom";

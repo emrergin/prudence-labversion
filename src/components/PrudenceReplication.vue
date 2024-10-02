@@ -97,8 +97,8 @@
 </template>
 
 <script setup>
-import PrudenceChoice from "./subcomponents/PrudenceChoice.vue";
-import PrudenceChoiceTrautmann from "./subcomponents/PrudenceChoiceTrautmann.vue";
+import PrudenceChoice from "./bleichrodt/PrudenceChoice.vue";
+import PrudenceChoiceTrautmann from "./trautmann/PrudenceChoiceTrautmann.vue";
 import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";

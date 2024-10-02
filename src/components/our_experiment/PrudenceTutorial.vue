@@ -66,7 +66,7 @@
           <div>►</div>
         </div>
         <img
-          src="../assets/soccer_ball.svg"
+          src="../../assets/soccer_ball.svg"
           style="align-self: flex-end"
           id="topResim"
           :class="[
@@ -98,7 +98,7 @@
           <div id="leftLargeTag" class="largeTag tag">+7</div>
           <div id="rightLargeTag" class="largeTag tag">+4</div>
         </div>
-        <img src="../assets/bigpipe.svg" />
+        <img src="../../assets/bigpipe.svg" />
       </div>
       <div id="inputlar">
         <div
@@ -149,7 +149,7 @@
           <div id="leftSmallTag" class="kucukEtiket tag">+2</div>
           <div id="rightSmallTag" class="kucukEtiket tag">-2</div>
         </div>
-        <img src="../assets/smallpipe.svg" />
+        <img src="../../assets/smallpipe.svg" />
       </div>
     </div>
   </div>
@@ -782,7 +782,6 @@ export default {
 </style>
 
 <style scoped>
-
 .centered {
   margin-top: 30px;
   margin-bottom: -40px;

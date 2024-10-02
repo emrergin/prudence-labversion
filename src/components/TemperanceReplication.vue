@@ -1,10 +1,10 @@
 <script setup>
-import TemperanceChoice from "./subcomponents/TemperanceChoice.vue";
+import TemperanceChoice from "./bleichrodt/TemperanceChoice.vue";
 import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
 import { ref } from "vue";
-import TemperanceChoiceTrautmann from "./subcomponents/TemperanceChoiceTrautmann.vue";
+import TemperanceChoiceTrautmann from "./trautmann/TemperanceChoiceTrautmann.vue";
 
 const props = defineProps({
   payOffs: undefined,

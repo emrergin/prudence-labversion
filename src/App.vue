@@ -60,9 +60,9 @@
 
 <script>
 import IntroScreen from "./components/IntroScreen.vue";
-import PrudenceTutorial from "./components/PrudenceTutorial.vue";
-import TemperanceTutorial from "./components/TemperanceTutorial.vue";
-import RiskTutorial from "./components/RiskTutorial.vue";
+import PrudenceTutorial from "./components/our_experiment/PrudenceTutorial.vue";
+import TemperanceTutorial from "./components/our_experiment/TemperanceTutorial.vue";
+import RiskTutorial from "./components/our_experiment/RiskTutorial.vue";
 import ResultScreen from "./components/ResultScreen.vue";
 import DemographicQuestions from "./components/DemographicQuestions.vue";
 import GPSQuestions from "./components/GPSQuestions.vue";
