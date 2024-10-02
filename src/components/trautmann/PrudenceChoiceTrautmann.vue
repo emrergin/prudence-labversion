@@ -130,4 +130,9 @@ p {
   font-size: 30px;
   gap: 2em;
 }
+
+.trautmann-image-1 {
+  height: 100px;
+  width: auto;
+}
 </style>

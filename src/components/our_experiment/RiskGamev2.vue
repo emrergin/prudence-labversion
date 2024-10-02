@@ -94,7 +94,7 @@
 </template>
 
 <script setup>
-import ScoreTable from "./ScoreTable.vue";
+import ScoreTable from "../ScoreTable.vue";
 import { store } from "../../store.js";
 import { ref } from "vue";
 import carryPipe from "../../functions/carryPipe.js";
