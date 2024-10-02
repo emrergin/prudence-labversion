@@ -145,18 +145,6 @@ export default {
           Math.floor(Math.random() * this.nextTreatment.length)
         ];
     }
-
-    const url = window.location.href;
-    if (url.endsWith("/fork/") || url.endsWith("/fork")) {
-      this.experiment = "ours";
-    }
-    if (url.endsWith("/trautmann/") || url.endsWith("/trautmann")) {
-      this.experiment = "traut";
-    }
-    if (url.endsWith("/bleichrodt/") || url.endsWith("/bleichrodt")) {
-      this.experiment = "bleich";
-    }
-    console.log(location.href);
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);
