@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <p>{{ chosenNumber1 }}</p>
-    <p>{{ chosenNumber2 }}</p>
     <img src="../../assets/reddice.png" class="trautmann-image-1" />
     <img src="../../assets/onetwothree.png" class="trautmann-image" />
     <div class="payoff-container">

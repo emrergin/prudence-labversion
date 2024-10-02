@@ -67,7 +67,7 @@ function drawBall() {
   chosenBall3.value = Math.floor(Math.random() * 100);
 
   const currentPayOffs = sessionValues[currentRound.value + 1];
-  if (secim === 1) {
+  if (secim.value === 1) {
     // temperate case
     if (chosenBall1.value < 50) {
       earningForCurrentRound.value += currentPayOffs[0];

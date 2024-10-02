@@ -159,30 +159,59 @@ function drawBall() {
   asama.value = "cekilis";
   endTime.value = new Date();
   chosenBall1.value = Math.floor(Math.random() * 100);
-  if (chosenBall1.value >= 50) {
-    chosenBall2.value = Math.floor(Math.random() * 100);
-  }
-  const currentPayOffs = sessionValues[currentRound.value + 1];
-  if (secim === 1) {
-    if (chosenBall1.value < 50) {
-      earningForCurrentRound.value += currentPayOffs[1];
-    } else {
-      earningForCurrentRound.value += currentPayOffs[0];
-      if (chosenBall2.value < 50) {
-        earningForCurrentRound.value += currentPayOffs[2];
+
+  if (props.experiment === "bleich") {
+    if (chosenBall1.value >= 50) {
+      chosenBall2.value = Math.floor(Math.random() * 100);
+    }
+    const currentPayOffs = sessionValues[currentRound.value + 1];
+    if (secim.value === 1) {
+      if (chosenBall1.value < 50) {
+        earningForCurrentRound.value += currentPayOffs[1];
       } else {
-        earningForCurrentRound.value += currentPayOffs[3];
+        earningForCurrentRound.value += currentPayOffs[0];
+        if (chosenBall2.value < 50) {
+          earningForCurrentRound.value += currentPayOffs[2];
+        } else {
+          earningForCurrentRound.value += currentPayOffs[3];
+        }
+      }
+    } else {
+      if (chosenBall1.value < 50) {
+        earningForCurrentRound.value += currentPayOffs[0];
+      } else {
+        earningForCurrentRound.value += currentPayOffs[1];
+        if (chosenBall2.value < 50) {
+          earningForCurrentRound.value += currentPayOffs[2];
+        } else {
+          earningForCurrentRound.value += currentPayOffs[3];
+        }
       }
     }
   } else {
-    if (chosenBall1.value < 50) {
-      earningForCurrentRound.value += currentPayOffs[0];
-    } else {
-      earningForCurrentRound.value += currentPayOffs[1];
-      if (chosenBall2.value < 50) {
-        earningForCurrentRound.value += currentPayOffs[2];
+    if (secim.value === 1) {
+      if (chosenBall1.value < 50) {
+        chosenBall2.value = Math.floor(Math.random() * 100);
+        earningForCurrentRound.value += currentPayOffs[0];
+        if (chosenBall2.value < 50) {
+          earningForCurrentRound.value += currentPayOffs[2];
+        } else {
+          earningForCurrentRound.value += currentPayOffs[3];
+        }
       } else {
-        earningForCurrentRound.value += currentPayOffs[3];
+        earningForCurrentRound.value += currentPayOffs[1];
+      }
+    } else {
+      if (chosenBall1.value >= 50) {
+        chosenBall2.value = Math.floor(Math.random() * 100);
+        earningForCurrentRound.value += currentPayOffs[1];
+        if (chosenBall2.value < 50) {
+          earningForCurrentRound.value += currentPayOffs[2];
+        } else {
+          earningForCurrentRound.value += currentPayOffs[3];
+        }
+      } else {
+        earningForCurrentRound.value += currentPayOffs[0];
       }
     }
   }

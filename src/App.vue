@@ -109,24 +109,24 @@ export default {
         },
       ],
       nextTreatment2: [
-        // {
-        //   intro: `tut2`,
-        //   rskGam: `pruGam`,
-        //   pruGam: `temGam`,
-        //   temGam: `dem`,
-        // },
-        // {
-        //   intro: `tut2`,
-        //   rskGam: `temGam`,
-        //   temGam: `pruGam`,
-        //   pruGam: `dem`,
-        // },
         {
-          intro: `pruGam`,
+          intro: `tut2`,
+          rskGam: `pruGam`,
+          pruGam: `temGam`,
+          temGam: `dem`,
+        },
+        {
+          intro: `tut2`,
           rskGam: `temGam`,
           temGam: `pruGam`,
           pruGam: `dem`,
         },
+        // {
+        //   intro: `pruGam`,
+        //   rskGam: `temGam`,
+        //   temGam: `pruGam`,
+        //   pruGam: `dem`,
+        // },
       ],
       // traut || bleich || ours
       experiment: "traut",
