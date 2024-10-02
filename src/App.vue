@@ -145,6 +145,20 @@ export default {
           Math.floor(Math.random() * this.nextTreatment.length)
         ];
     }
+
+    const urlParams = new URLSearchParams(window.location.search); // Get URL params
+    const experimentTag = urlParams.get("experiment"); // Get the value of 'param'
+
+    if (experimentTag === "fork") {
+      this.experiment = "ours";
+    }
+    if (experimentTag === "trautmann") {
+      this.experiment = "traut";
+    }
+    if (experimentTag === "bleichrodt") {
+      this.experiment = "bleich";
+    }
+    console.log(location.href);
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);
