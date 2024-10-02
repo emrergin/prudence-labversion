@@ -24,16 +24,23 @@
         >
           <div class="title">Seçenek A</div>
           <PrudenceChoice
-            color1="#0000fe"
-            color2="#fec800"
-            color3="#e74c3c"
-            color4="#2ecc71"
             :payOff1="sessionValues[currentRound + 1][1]"
             :payOff2="sessionValues[currentRound + 1][0]"
             :payOff3="sessionValues[currentRound + 1][2]"
             :payOff4="sessionValues[currentRound + 1][3]"
             :chosenBall1="secim === 1 ? chosenBall1 : -1"
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
+            v-if="experiment === `bleich`"
+          />
+          <PrudenceChoiceTrautmann
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :chosenNumber1="secim === 1 ? chosenBall1 : -1"
+            :chosenNumber2="secim === 1 ? chosenBall2 : -1"
+            :down="false"
+            v-else
           />
         </div>
         <div
@@ -43,16 +50,23 @@
         >
           <div class="title">Seçenek B</div>
           <PrudenceChoice
-            color1="#0000fe"
-            color2="#fec800"
-            color3="#e74c3c"
-            color4="#2ecc71"
             :payOff1="sessionValues[currentRound + 1][0]"
             :payOff2="sessionValues[currentRound + 1][1]"
             :payOff3="sessionValues[currentRound + 1][2]"
             :payOff4="sessionValues[currentRound + 1][3]"
             :chosenBall1="secim === 2 ? chosenBall1 : -1"
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
+            v-if="experiment === `bleich`"
+          />
+          <PrudenceChoiceTrautmann
+            :payOff1="sessionValues[currentRound + 1][0]"
+            :payOff2="sessionValues[currentRound + 1][1]"
+            :payOff3="sessionValues[currentRound + 1][2]"
+            :payOff4="sessionValues[currentRound + 1][3]"
+            :chosenNumber1="secim === 2 ? chosenBall1 : -1"
+            :chosenNumber2="secim === 2 ? chosenBall2 : -1"
+            :down="true"
+            v-else
           />
         </div>
       </div>
@@ -84,6 +98,7 @@
 
 <script setup>
 import PrudenceChoice from "./subcomponents/PrudenceChoice.vue";
+import PrudenceChoiceTrautmann from "./subcomponents/PrudenceChoiceTrautmann.vue";
 import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
@@ -95,6 +110,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  experiment: String,
 });
 
 const asama = ref(`baslangic`);

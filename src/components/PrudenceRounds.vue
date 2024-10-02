@@ -1,21 +1,22 @@
 <template>
   <PrudenceGame
     :payOffs="pruPayOffs"
-    :lastTreatment="treatments[`pruGam`] === `dem`"
-    v-if="currentPhase === `pruGam` && experiment !== `bleich`"
-    @end="currentPhase = treatments[`pruGam`]"
+    :lastTreatment="lastTreatment"
+    v-if="experiment === `ours`"
+    @end="$emit('end', true)"
   />
-  <PrudenceBleichrodt
-    v-if="currentPhase === `pruGam` && experiment === `bleich`"
-    @end="currentPhase = treatments[`pruGam`]"
+  <PrudenceReplication
+    v-else
+    @end="$emit('end', true)"
     :payOffs="pruPayOffs"
-    :lastTreatment="treatments[`pruGam`] === `dem`"
+    :lastTreatment="lastTreatment"
+    :experiment="experiment"
   />
 </template>
 
 <script setup>
 import PrudenceGame from "./PrudenceGamev2.vue";
-import PrudenceBleichrodt from "./PrudenceBleichrodt.vue";
+import PrudenceReplication from "./PrudenceReplication.vue";
 
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 import shuffle from "../functions/shuffle";

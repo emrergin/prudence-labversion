@@ -42,7 +42,7 @@
         </div>
       </div>
       <div class="sublottery sublottery2">
-        <div :class="{ chosen: chosenNumber1 >= 50 && chosenNumber1 !== -1 }">
+        <div :class="{ chosen: chosenNumber1 >= 50 }">
           {{ payOff2 }}
         </div>
         <div>&</div>
