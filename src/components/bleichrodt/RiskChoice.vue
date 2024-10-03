@@ -1,14 +1,17 @@
 <template>
   <div class="container">
-    <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
-    <div>
-      <span>{{ numberOf1 }}/100: mavi </span>
-      <span :style="{ color: color1 }" class="ball"> ● </span>
+    <div class="bag-text">
+      <p>Aşağıdaki torbadan bir top çekiyorsunuz.</p>
+      <div>
+        <span>{{ numberOf1 }}/100: mavi </span>
+        <span :style="{ color: color1 }" class="ball"> ● </span>
+      </div>
+      <div>
+        <span>{{ 100 - numberOf1 }}/100: sarı </span>
+        <span :style="{ color: color2 }" class="ball"> ● </span>
+      </div>
     </div>
-    <div>
-      <span>{{ 100 - numberOf1 }}/100: sarı </span>
-      <span :style="{ color: color2 }" class="ball"> ● </span>
-    </div>
+    <!-- <div></div> -->
     <div class="bag-container">
       <BagOfBalls
         :color1="color1"
@@ -75,5 +78,11 @@ p {
 
 .chosen {
   outline: 5px solid turquoise;
+}
+
+.bag-text {
+  align-items: flex-start;
+  text-align: start;
+  margin-left: 25px;
 }
 </style>

@@ -148,4 +148,11 @@ p {
 .result-text {
   text-align: start;
 }
+
+.top-bag {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+}
 </style>
