@@ -6,6 +6,7 @@
     <IntroScreen
       v-if="currentPhase === `intro`"
       @end="currentPhase = treatments[`intro`]"
+      :experiment="experiment"
     />
     <Tutorial2
       v-if="currentPhase === `tut2`"
@@ -31,12 +32,14 @@
       :experiment="experiment"
       v-if="currentPhase === `pruGam`"
       @end="currentPhase = treatments[`pruGam`]"
+      :lastTreatment="treatments[`pruGam`] === `dem`"
     />
 
     <TemperanceRounds
       :experiment="experiment"
       v-if="currentPhase === `temGam`"
       @end="currentPhase = treatments[`temGam`]"
+      :lastTreatment="treatments[`temGam`] === `dem`"
     />
 
     <TemperanceTutorial
@@ -146,8 +149,8 @@ export default {
         ];
     }
 
-    const urlParams = new URLSearchParams(window.location.search); // Get URL params
-    const experimentTag = urlParams.get("experiment"); // Get the value of 'param'
+    const urlParams = new URLSearchParams(window.location.search);
+    const experimentTag = urlParams.get("experiment");
 
     if (experimentTag === "fork") {
       this.experiment = "ours";
@@ -158,7 +161,6 @@ export default {
     if (experimentTag === "bleichrodt") {
       this.experiment = "bleich";
     }
-    console.log(location.href);
   },
   beforeUnmount() {
     window.removeEventListener("beforeunload", this.preventNav);

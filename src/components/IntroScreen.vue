@@ -4,12 +4,16 @@
       Hoş geldiniz. Bu deneyi belli durumlarda alınan ekonomik kararları anlamak
       için hazırladık.
     </li>
-    <li>
+    <li v-if="experiment === `ours`">
       Deneyde her biri 12 tur sürecek 3 oyun bulunuyor. Her oyunun öncesinde o
       oyunu anlatan bir yönerge olacak. Yönergeyi okurken devam etmek için bazen
       <b><u>metnin istediği şeyi yapmanız</u></b> bazen de
       <b><u>farenin sol tuşuyla ekrana tıklamanız</u></b>
       bekleniyor.
+    </li>
+    <li v-else>
+      Deneyde her biri 12 tur sürecek 3 oyun bulunuyor. Az sonraki ekranlarda bu
+      deneyler hakkında daha fazla bilgi edineceksiniz.
     </li>
     <li>
       Oyunlarda kazancınızı "puan" cinsinden hesaplayacağız. Deney sonunda her
@@ -65,6 +69,10 @@ import { store } from "../store.js";
 import { defineEmits as defineEmits } from "@vue/runtime-dom";
 import { participationReward } from "../constants.js";
 import { pointsToMoneyMultiplier } from "../constants.js";
+
+const props = defineProps({
+  experiment: String,
+});
 
 defineEmits(["end"]);
 function logData() {

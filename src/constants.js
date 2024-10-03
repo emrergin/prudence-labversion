@@ -1,3 +1,3 @@
-export const inflationMultiplier = 11;
-export const pointsToMoneyMultiplier = 2.25;
-export const participationReward = 30;
+export const inflationMultiplier = 10;
+export const pointsToMoneyMultiplier = 3;
+export const participationReward = 40;
