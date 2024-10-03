@@ -11,7 +11,6 @@
         <span :style="{ color: color2 }" class="ball"> ● </span>
       </div>
     </div>
-    <!-- <div></div> -->
     <div class="bag-container">
       <BagOfBalls
         :color1="color1"

@@ -27,6 +27,15 @@ function nextTurn2(
         : [choice.value, null, null, null],
       earningForCurrentRound.value,
     ]);
+    console.log({
+      round: currentRound.value + 1,
+      payOffs: payOffs[currentRound.value],
+      choice:
+        treatment !== "Temperance"
+          ? choice.value
+          : [choice.value, null, null, null],
+      earningForCurrentRound: earningForCurrentRound.value,
+    });
     updateData();
   }
   choice.value = null;

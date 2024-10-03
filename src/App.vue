@@ -125,10 +125,10 @@ export default {
           pruGam: `dem`,
         },
         // {
-        //   intro: `pruGam`,
+        //   intro: `rskGam`,
         //   rskGam: `temGam`,
         //   temGam: `pruGam`,
-        //   pruGam: `dem`,
+        //   pruGam: `son`,
         // },
       ],
       // traut || bleich || ours

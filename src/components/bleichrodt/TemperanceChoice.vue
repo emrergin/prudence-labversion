@@ -44,6 +44,8 @@
           "
           colorName1="kırmızıysa"
           colorName2="yeşilse"
+          colorName1short="kırmızı"
+          colorName2short="yeşil"
         />
         <hr />
         <p
@@ -82,9 +84,7 @@
           :payOff1="payOff5"
           :payOff2="payOff6"
           :numberOf1="50"
-          :chosenBall="
-            chosenBall1 >= 50 && chosenBall1 !== -1 ? chosenBall2 : -1
-          "
+          :chosenBall="chosenBall1 >= 50 ? chosenBall3 : -1"
           colorName1="morsa"
           colorName2="turuncuysa"
           colorName1short="mor"

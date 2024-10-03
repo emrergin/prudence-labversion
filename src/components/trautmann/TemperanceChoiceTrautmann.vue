@@ -94,10 +94,7 @@
           </div>
           <div
             :class="{
-              chosen:
-                chosenNumber3 >= 50 &&
-                chosenNumber3 !== -1 &&
-                chosenNumber1 >= 50,
+              chosen: chosenNumber3 >= 50 && chosenNumber1 >= 50,
             }"
           >
             {{ payOff6 }}

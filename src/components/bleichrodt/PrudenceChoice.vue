@@ -64,7 +64,7 @@
                   {{ payOff3 > 0 ? " kazanırsınız." : " kaybedersiniz." }}.
                 </span>
               </p>
-              <p :class="{ chosen: chosenBall2 >= 50 && chosenBall2 !== -1 }">
+              <p :class="{ chosen: chosenBall2 >= 50 }">
                 <span>Eğer yeşilse </span>
                 <span :style="{ color: color4 }" class="ball"> ● </span>
                 <span
