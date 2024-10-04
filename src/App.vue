@@ -125,14 +125,14 @@ export default {
           pruGam: `dem`,
         },
         // {
-        //   intro: `rskGam`,
+        //   intro: `pruGam`,
         //   rskGam: `temGam`,
         //   temGam: `pruGam`,
         //   pruGam: `son`,
         // },
       ],
       // traut || bleich || ours
-      experiment: "bleich",
+      experiment: "traut",
     };
   },
   beforeMount() {

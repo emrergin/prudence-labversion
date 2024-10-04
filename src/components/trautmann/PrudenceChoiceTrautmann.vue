@@ -2,7 +2,7 @@
   <div class="container">
     <img src="../../assets/reddice.png" class="trautmann-image-1" />
     <img src="../../assets/onetwothree.png" class="trautmann-image" />
-    <div class="payoff-container">
+    <div class="payoff-container" :class="{ uppad: down, downpad: !down }">
       <div class="sublottery">
         <div :class="{ chosen: chosenNumber1 < 50 && chosenNumber1 !== -1 }">
           {{ payOff1 }}
@@ -18,7 +18,7 @@
           src="../../assets/onetwothree.png"
           class="trautmann-image"
         />
-        <div class="payoff-container small-payoff-container" v-if="!down">
+        <div class="small-payoff-container" v-if="!down">
           <div
             :class="{
               chosen:
@@ -59,7 +59,7 @@
           src="../../assets/onetwothree.png"
           class="trautmann-image"
         />
-        <div class="payoff-container small-payoff-container" v-if="down">
+        <div class="small-payoff-container" v-if="down">
           <div
             :class="{
               chosen:
@@ -128,11 +128,28 @@ p {
   justify-content: space-between;
   text-align: left;
   font-size: 30px;
-  gap: 2em;
+  height: 320px;
+}
+
+.downpad {
+  padding-bottom: 60px;
+}
+
+.uppad {
+  padding-top: 60px;
 }
 
 .trautmann-image-1 {
   height: 100px;
   width: auto;
+}
+
+.small-payoff-container {
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 30px;
 }
 </style>

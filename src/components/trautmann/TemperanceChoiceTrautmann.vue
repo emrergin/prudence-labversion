@@ -2,7 +2,7 @@
   <div class="container" :class="{ wide: !temperate, narrow: temperate }">
     <img src="../../assets/reddice.png" class="trautmann-image-1" />
     <img src="../../assets/onetwothree.png" class="trautmann-image" />
-    <div class="payoff-container">
+    <div class="payoff-container" :class="{ largepayoffcontainer: !temperate }">
       <div class="sublottery sublottery1">
         <div :class="{ chosen: chosenNumber1 < 50 && chosenNumber1 !== -1 }">
           {{ payOff1 }}
@@ -171,5 +171,9 @@ p {
   display: flex;
   gap: 0.5em;
   align-items: center;
+}
+
+.largepayoffcontainer {
+  align-self: flex-end;
 }
 </style>

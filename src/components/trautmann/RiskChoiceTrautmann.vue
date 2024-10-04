@@ -43,7 +43,7 @@ p {
 }
 
 .payoff-container {
-  height: 150px;
+  height: 160px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
