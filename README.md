@@ -47,4 +47,4 @@ Some introductory readings for the concepts.
 - We thank [Gürol Afşar](https://tr.linkedin.com/in/g%C3%BCrol-af%C5%9Far-14981286) for the idea of using pipes for the design, which made things more intuitive.
 - [Amit Patel](https://github.com/redblobgames)
 - [Brian Bucklew](https://www.linkedin.com/in/brianbucklew)
-- For the replication of their tasks, [Han Bleichrodt](https://www.erim.eur.nl/people/han-bleichrodt/) and [Paul van Bruggen](https://www.paulvanbruggen.nl/).
+- For their kind help regarding replication of their tasks, [Han Bleichrodt](https://www.erim.eur.nl/people/han-bleichrodt/) and [Paul van Bruggen](https://www.paulvanbruggen.nl/).
