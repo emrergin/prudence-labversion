@@ -254,7 +254,6 @@ function setSelection(a) {
 .choice {
   border: 2px solid black;
   transition: outline 0.3s linear;
-  /* width: 50%; */
 }
 
 .choice.active {
