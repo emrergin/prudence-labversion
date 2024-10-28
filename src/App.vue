@@ -112,24 +112,24 @@ export default {
         },
       ],
       nextTreatment2: [
-        {
-          intro: `tut2`,
-          rskGam: `pruGam`,
-          pruGam: `temGam`,
-          temGam: `dem`,
-        },
-        {
-          intro: `tut2`,
-          rskGam: `temGam`,
-          temGam: `pruGam`,
-          pruGam: `dem`,
-        },
         // {
-        //   intro: `pruGam`,
+        //   intro: `tut2`,
+        //   rskGam: `pruGam`,
+        //   pruGam: `temGam`,
+        //   temGam: `dem`,
+        // },
+        // {
+        //   intro: `tut2`,
         //   rskGam: `temGam`,
         //   temGam: `pruGam`,
-        //   pruGam: `son`,
+        //   pruGam: `dem`,
         // },
+        {
+          intro: `temGam`,
+          rskGam: `temGam`,
+          temGam: `pruGam`,
+          pruGam: `son`,
+        },
       ],
       // traut || bleich || ours
       experiment: "traut",
@@ -137,6 +137,13 @@ export default {
   },
   beforeMount() {
     window.addEventListener("beforeunload", this.preventNav);
+    window.addEventListener(
+      "contextmenu",
+      function (e) {
+        e.preventDefault();
+      },
+      false
+    );
     if (this.experiment !== "ours") {
       this.treatments =
         this.nextTreatment2[

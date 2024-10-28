@@ -30,10 +30,7 @@ function nextTurn2(
     console.log({
       round: currentRound.value + 1,
       payOffs: payOffs[currentRound.value],
-      choice:
-        treatment !== "Temperance"
-          ? choice.value
-          : [choice.value, null, null, null],
+      choice: choice.value,
       earningForCurrentRound: earningForCurrentRound.value,
     });
     updateData();

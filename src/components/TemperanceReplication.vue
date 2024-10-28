@@ -28,7 +28,6 @@ const sessionValues = [practiceValues, ...props.payOffs];
 //true if temperate choice is the left choice
 const isLeft = ref(Math.random() > 0.5);
 const isTemperateChosen = computed(() => {
-  // console.log(secim.value, isLeft.value);
   return secim.value === (isLeft.value ? 1 : 2);
 });
 
@@ -72,30 +71,27 @@ function drawBall() {
   chosenBall1.value = Math.floor(Math.random() * 100);
   chosenBall2.value = Math.floor(Math.random() * 100);
   chosenBall3.value = Math.floor(Math.random() * 100);
-  // console.log(
-  //   "red: ",
-  //   chosenBall1.value,
-  //   "white: ",
-  //   chosenBall2.value,
-  //   "black: ",
-  //   chosenBall3.value
-  // );
 
   const currentPayOffs = sessionValues[currentRound.value + 1];
-  // console.log(currentPayOffs);
-  // console.log(isTemperateChosen.value);
-  if (isTemperateChosen.value) {
+
+  if (secim.value === 1) {
     // temperate case
     if (chosenBall1.value < 50) {
       earningForCurrentRound.value += currentPayOffs[0];
-      if (chosenBall2.value < 50) {
+      if (
+        (props.experiment === "bleich" && chosenBall2.value < 50) ||
+        (props.experiment === "traut" && chosenBall3.value < 50)
+      ) {
         earningForCurrentRound.value += currentPayOffs[2];
       } else {
         earningForCurrentRound.value += currentPayOffs[3];
       }
     } else {
       earningForCurrentRound.value += currentPayOffs[1];
-      if (chosenBall3.value < 50) {
+      if (
+        (props.experiment === "bleich" && chosenBall3.value < 50) ||
+        (props.experiment === "traut" && chosenBall2.value < 50)
+      ) {
         earningForCurrentRound.value += currentPayOffs[4];
       } else {
         earningForCurrentRound.value += currentPayOffs[5];
@@ -107,12 +103,18 @@ function drawBall() {
       earningForCurrentRound.value += currentPayOffs[0];
     } else {
       earningForCurrentRound.value += currentPayOffs[1];
-      if (chosenBall2.value < 50) {
+      if (
+        (props.experiment === "bleich" && chosenBall2.value < 50) ||
+        (props.experiment === "traut" && chosenBall3.value < 50)
+      ) {
         earningForCurrentRound.value += currentPayOffs[2];
       } else {
         earningForCurrentRound.value += currentPayOffs[3];
       }
-      if (chosenBall3.value < 50) {
+      if (
+        (props.experiment === "bleich" && chosenBall3.value < 50) ||
+        (props.experiment === "traut" && chosenBall2.value < 50)
+      ) {
         earningForCurrentRound.value += currentPayOffs[4];
       } else {
         earningForCurrentRound.value += currentPayOffs[5];
