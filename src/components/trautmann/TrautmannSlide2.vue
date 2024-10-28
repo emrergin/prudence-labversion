@@ -42,8 +42,8 @@
 
     <li>
       <p class="tutorial-text">
-        Benzer şekilde, kırmızı zarın 4, 5 veya 6 gelmesi durumunda 5 puan
-        kazandırır.
+        Benzer şekilde, B seçeneği, kırmızı zarın 4, 5 veya 6 gelmesi durumunda
+        3 puan kazandırır.
       </p>
       <p class="tutorial-text">
         Kırmızı zar 1, 2 veya 3 gelirse, B seçeneği 5 puan kazandırır ve başka

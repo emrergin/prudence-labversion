@@ -160,11 +160,11 @@ function drawBall() {
   endTime.value = new Date();
   chosenBall1.value = Math.floor(Math.random() * 100);
 
+  const currentPayOffs = sessionValues[currentRound.value + 1];
   if (props.experiment === "bleich") {
     if (chosenBall1.value >= 50) {
       chosenBall2.value = Math.floor(Math.random() * 100);
     }
-    const currentPayOffs = sessionValues[currentRound.value + 1];
     if (secim.value === 1) {
       if (chosenBall1.value < 50) {
         earningForCurrentRound.value += currentPayOffs[1];

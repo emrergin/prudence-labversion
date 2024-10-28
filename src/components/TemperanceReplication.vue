@@ -3,7 +3,7 @@ import TemperanceChoice from "./bleichrodt/TemperanceChoice.vue";
 import ScoreTable from "./ScoreTable.vue";
 import nextTurn2 from "../functions/nextTurn2.js";
 import { store } from "../store.js";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import TemperanceChoiceTrautmann from "./trautmann/TemperanceChoiceTrautmann.vue";
 
 const props = defineProps({
@@ -25,7 +25,12 @@ const chosenBall2 = ref(-1);
 const chosenBall3 = ref(-1);
 const practiceValues = [13, 13, 2, -2, 7, -7];
 const sessionValues = [practiceValues, ...props.payOffs];
+//true if temperate choice is the left choice
 const isLeft = ref(Math.random() > 0.5);
+const isTemperateChosen = computed(() => {
+  // console.log(secim.value, isLeft.value);
+  return secim.value === (isLeft.value ? 1 : 2);
+});
 
 const earningForCurrentRound = ref(0);
 
@@ -51,7 +56,7 @@ function nextTurnE() {
     earningForCurrentRound,
     currentRound.value === -1
   );
-  isLeft.value = ref(Math.random() > 0.5);
+  isLeft.value = Math.random() > 0.5;
 
   chosenBall1.value = -1;
   chosenBall2.value = -1;
@@ -67,9 +72,19 @@ function drawBall() {
   chosenBall1.value = Math.floor(Math.random() * 100);
   chosenBall2.value = Math.floor(Math.random() * 100);
   chosenBall3.value = Math.floor(Math.random() * 100);
+  // console.log(
+  //   "red: ",
+  //   chosenBall1.value,
+  //   "white: ",
+  //   chosenBall2.value,
+  //   "black: ",
+  //   chosenBall3.value
+  // );
 
   const currentPayOffs = sessionValues[currentRound.value + 1];
-  if (secim.value === 1) {
+  // console.log(currentPayOffs);
+  // console.log(isTemperateChosen.value);
+  if (isTemperateChosen.value) {
     // temperate case
     if (chosenBall1.value < 50) {
       earningForCurrentRound.value += currentPayOffs[0];
@@ -135,7 +150,7 @@ function setSelection(a) {
         <div
           class="choice"
           @click="() => setSelection(isLeft ? 1 : 2)"
-          :class="{ active: secim === (isLeft ? 1 : 2) }"
+          :class="{ active: isTemperateChosen }"
         >
           <div class="title">Seçenek A</div>
           <TemperanceChoice
@@ -145,9 +160,9 @@ function setSelection(a) {
             :payOff4="sessionValues[currentRound + 1][3]"
             :payOff5="sessionValues[currentRound + 1][4]"
             :payOff6="sessionValues[currentRound + 1][5]"
-            :chosenBall1="secim === 1 ? chosenBall1 : -1"
-            :chosenBall2="secim === 1 ? chosenBall2 : -1"
-            :chosenBall3="secim === 1 ? chosenBall3 : -1"
+            :chosenBall1="isTemperateChosen ? chosenBall1 : -1"
+            :chosenBall2="isTemperateChosen ? chosenBall2 : -1"
+            :chosenBall3="isTemperateChosen ? chosenBall3 : -1"
             :temperate="isLeft"
             v-if="experiment === `bleich`"
           />
@@ -158,9 +173,9 @@ function setSelection(a) {
             :payOff4="sessionValues[currentRound + 1][3]"
             :payOff5="sessionValues[currentRound + 1][4]"
             :payOff6="sessionValues[currentRound + 1][5]"
-            :chosenNumber1="secim === 1 ? chosenBall1 : -1"
-            :chosenNumber2="secim === 1 ? chosenBall2 : -1"
-            :chosenNumber3="secim === 1 ? chosenBall3 : -1"
+            :chosenNumber1="isTemperateChosen ? chosenBall1 : -1"
+            :chosenNumber2="isTemperateChosen ? chosenBall2 : -1"
+            :chosenNumber3="isTemperateChosen ? chosenBall3 : -1"
             :temperate="isLeft"
             v-else
           />
@@ -168,7 +183,7 @@ function setSelection(a) {
         <div
           class="choice"
           @click="() => setSelection(isLeft ? 2 : 1)"
-          :class="{ active: secim === (isLeft ? 2 : 1) }"
+          :class="{ active: secim && !isTemperateChosen }"
           style=""
         >
           <div class="title">Seçenek B</div>
@@ -179,9 +194,9 @@ function setSelection(a) {
             :payOff4="sessionValues[currentRound + 1][3]"
             :payOff5="sessionValues[currentRound + 1][4]"
             :payOff6="sessionValues[currentRound + 1][5]"
-            :chosenBall1="secim === 2 ? chosenBall1 : -1"
-            :chosenBall2="secim === 2 ? chosenBall2 : -1"
-            :chosenBall3="secim === 2 ? chosenBall3 : -1"
+            :chosenBall1="!isTemperateChosen ? chosenBall1 : -1"
+            :chosenBall2="!isTemperateChosen ? chosenBall2 : -1"
+            :chosenBall3="!isTemperateChosen ? chosenBall3 : -1"
             :temperate="!isLeft"
             v-if="experiment === `bleich`"
           />
@@ -192,9 +207,9 @@ function setSelection(a) {
             :payOff4="sessionValues[currentRound + 1][3]"
             :payOff5="sessionValues[currentRound + 1][4]"
             :payOff6="sessionValues[currentRound + 1][5]"
-            :chosenNumber1="secim === 2 ? chosenBall1 : -1"
-            :chosenNumber2="secim === 2 ? chosenBall2 : -1"
-            :chosenNumber3="secim === 2 ? chosenBall3 : -1"
+            :chosenNumber1="!isTemperateChosen ? chosenBall1 : -1"
+            :chosenNumber2="!isTemperateChosen ? chosenBall2 : -1"
+            :chosenNumber3="!isTemperateChosen ? chosenBall3 : -1"
             :temperate="!isLeft"
             v-else
           />

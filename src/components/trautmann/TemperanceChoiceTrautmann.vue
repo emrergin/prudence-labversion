@@ -27,7 +27,7 @@
                 chosenNumber1 < 50,
             }"
           >
-            {{ payOff5 }}
+            {{ payOff3 }}
           </div>
           <div
             :class="{
@@ -37,7 +37,7 @@
                 chosenNumber1 < 50,
             }"
           >
-            {{ payOff6 }}
+            {{ payOff4 }}
           </div>
         </div>
       </div>
@@ -57,7 +57,7 @@
                 chosenNumber1 >= 50,
             }"
           >
-            {{ payOff3 }}
+            {{ payOff5 }}
           </div>
           <div
             :class="{
@@ -67,7 +67,7 @@
                 chosenNumber1 >= 50,
             }"
           >
-            {{ payOff4 }}
+            {{ payOff6 }}
           </div>
         </div>
         <div v-if="!temperate">&</div>
@@ -90,14 +90,14 @@
                 chosenNumber1 >= 50,
             }"
           >
-            {{ payOff5 }}
+            {{ payOff3 }}
           </div>
           <div
             :class="{
               chosen: chosenNumber3 >= 50 && chosenNumber1 >= 50,
             }"
           >
-            {{ payOff6 }}
+            {{ payOff4 }}
           </div>
         </div>
       </div>

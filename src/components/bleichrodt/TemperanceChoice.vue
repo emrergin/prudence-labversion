@@ -70,9 +70,7 @@
           :payOff1="payOff3"
           :payOff2="payOff4"
           :numberOf1="50"
-          :chosenBall="
-            chosenBall1 >= 50 && chosenBall1 !== -1 ? chosenBall2 : -1
-          "
+          :chosenBall="chosenBall1 >= 50 ? chosenBall2 : -1"
           colorName1="kırmızıysa"
           colorName2="yeşilse"
           colorName1short="kırmızı"

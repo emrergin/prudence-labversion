@@ -132,7 +132,7 @@ export default {
         // },
       ],
       // traut || bleich || ours
-      experiment: "bleich",
+      experiment: "traut",
     };
   },
   beforeMount() {
