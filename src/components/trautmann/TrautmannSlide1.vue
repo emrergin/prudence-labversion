@@ -13,7 +13,7 @@
   </div>
   <p class="tutorial-text">
     Gördüğünüz gibi, örnek seçim 1'de, A seçeneği kırmızı zarın 1,2 veya 3
-    gelmesi durumunda 4 puan kazandırır. Kırmızı zar 4, 5 veya 6 gelirse, 1 EUR
+    gelmesi durumunda 4 puan kazandırır. Kırmızı zar 4, 5 veya 6 gelirse, 1 puan
     kazandırır.
   </p>
   <p class="tutorial-text">

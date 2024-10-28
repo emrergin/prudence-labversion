@@ -36,7 +36,7 @@
       Bu deneyde, Seçenek A ve Seçenek B olarak adlandırılan iki seçenek
       arasında bir dizi seçim yapmanız istenecektir. Her iki seçenek de
       bilgisayar tarafından atılan üç standart 6 yüzlü zara (kırmızı, siyah ve
-      beyaz) bağlı olarak ödüller kazandırmaktadır. İleriki slaytlarda birkaç
+      beyaz) bağlı olarak ödüller kazandırmaktadır. İleriki ekranlarda birkaç
       örnek seçenek gösterilmiştir. Lütfen bunları dikkatle inceleyiniz.
     </div>
     <TrautmannSlide1 v-if="step === 2" />
@@ -52,7 +52,7 @@
         Hazırım!
       </button>
       <button v-if="step < 4" @click="nextStep" class="stepButton">
-        Sıradaki slayt
+        Sıradaki ekran
       </button>
     </div>
   </template>

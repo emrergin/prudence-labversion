@@ -25,6 +25,7 @@ const chosenBall2 = ref(-1);
 const chosenBall3 = ref(-1);
 const practiceValues = [13, 13, 2, -2, 7, -7];
 const sessionValues = [practiceValues, ...props.payOffs];
+const isLeft = ref(Math.random() > 0.5);
 
 const earningForCurrentRound = ref(0);
 
@@ -50,6 +51,7 @@ function nextTurnE() {
     earningForCurrentRound,
     currentRound.value === -1
   );
+  isLeft.value = ref(Math.random() > 0.5);
 
   chosenBall1.value = -1;
   chosenBall2.value = -1;
@@ -132,8 +134,8 @@ function setSelection(a) {
       <div class="choices">
         <div
           class="choice"
-          @click="() => setSelection(1)"
-          :class="{ active: secim === 1 }"
+          @click="() => setSelection(isLeft ? 1 : 2)"
+          :class="{ active: secim === (isLeft ? 1 : 2) }"
         >
           <div class="title">Seçenek A</div>
           <TemperanceChoice
@@ -146,7 +148,7 @@ function setSelection(a) {
             :chosenBall1="secim === 1 ? chosenBall1 : -1"
             :chosenBall2="secim === 1 ? chosenBall2 : -1"
             :chosenBall3="secim === 1 ? chosenBall3 : -1"
-            :temperate="true"
+            :temperate="isLeft"
             v-if="experiment === `bleich`"
           />
           <TemperanceChoiceTrautmann
@@ -159,14 +161,14 @@ function setSelection(a) {
             :chosenNumber1="secim === 1 ? chosenBall1 : -1"
             :chosenNumber2="secim === 1 ? chosenBall2 : -1"
             :chosenNumber3="secim === 1 ? chosenBall3 : -1"
-            :temperate="true"
+            :temperate="isLeft"
             v-else
           />
         </div>
         <div
           class="choice"
-          @click="() => setSelection(2)"
-          :class="{ active: secim === 2 }"
+          @click="() => setSelection(isLeft ? 2 : 1)"
+          :class="{ active: secim === (isLeft ? 2 : 1) }"
           style=""
         >
           <div class="title">Seçenek B</div>
@@ -180,7 +182,7 @@ function setSelection(a) {
             :chosenBall1="secim === 2 ? chosenBall1 : -1"
             :chosenBall2="secim === 2 ? chosenBall2 : -1"
             :chosenBall3="secim === 2 ? chosenBall3 : -1"
-            :temperate="false"
+            :temperate="!isLeft"
             v-if="experiment === `bleich`"
           />
           <TemperanceChoiceTrautmann
@@ -193,7 +195,7 @@ function setSelection(a) {
             :chosenNumber1="secim === 2 ? chosenBall1 : -1"
             :chosenNumber2="secim === 2 ? chosenBall2 : -1"
             :chosenNumber3="secim === 2 ? chosenBall3 : -1"
-            :temperate="false"
+            :temperate="!isLeft"
             v-else
           />
         </div>
