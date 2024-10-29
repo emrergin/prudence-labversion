@@ -9,7 +9,9 @@ function updateData() {
     _id: store._id,
     demografi: store.demografi,
     gps: store.gps,
+    experiment: store.experiment,
   };
+  console.log(someData.experiment);
   const putMethod = {
     method: "PUT",
     headers: {

@@ -76,6 +76,7 @@ const props = defineProps({
 
 defineEmits(["end"]);
 function logData() {
+  store.experiment = props.experiment;
   const someData = {
     title: "kisi verileri",
     kisiVerisi: store.veriler,
@@ -84,6 +85,7 @@ function logData() {
     _id: store._id,
     demografi: store.demografi,
     gps: store.gps,
+    experiment: store.experiment,
   };
   const postMethod = {
     method: `POST`,
