@@ -77,7 +77,7 @@
         class="stepButton"
         @click="drawBall()"
       >
-        Top çek!
+        {{ experiment === "bleich" ? "Top çek!" : "Zar at!" }}
       </button>
       <div v-show="chosenBall1 !== -1">
         <button class="stepButton" id="nextRound" @click="nextTurnE()">
