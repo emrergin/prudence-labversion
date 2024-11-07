@@ -52,7 +52,7 @@
         Hazırım!
       </button>
       <button v-if="step < 4" @click="nextStep" class="stepButton">
-        Sıradaki ekran
+        Sıradaki Ekran
       </button>
     </div>
   </template>

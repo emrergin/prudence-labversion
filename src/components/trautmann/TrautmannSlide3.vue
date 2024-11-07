@@ -35,7 +35,7 @@
   <ul>
     <li>
       <p class="tutorial-text">
-        Gördüğünüz gibi, örnek seçenek 3'te, A seçeneği kırmızı zar 1, 2 veya 3
+        Gördüğünüz gibi, örnek seçim 3'te, A seçeneği kırmızı zar 1, 2 veya 3
         gelirse, 5 puan kazandırır ve başka bir altı yüzlü zar (siyah) atılır.
         Eğer siyah zar 1, 2 veya 3 gelirse, 5 puana 3 puan <i>eklenir</i>. Aksi
         takdirde, 5 puandan 3 puan <i>çıkarılır</i>.

@@ -144,17 +144,6 @@ export default {
       },
       false
     );
-    if (this.experiment !== "ours") {
-      this.treatments =
-        this.nextTreatment2[
-          Math.floor(Math.random() * this.nextTreatment2.length)
-        ];
-    } else {
-      this.treatments =
-        this.nextTreatment[
-          Math.floor(Math.random() * this.nextTreatment.length)
-        ];
-    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const experimentTag = urlParams.get("experiment");
@@ -167,6 +156,18 @@ export default {
     }
     if (experimentTag === "bleichrodt") {
       this.experiment = "bleich";
+    }
+
+    if (this.experiment !== "ours") {
+      this.treatments =
+        this.nextTreatment2[
+          Math.floor(Math.random() * this.nextTreatment2.length)
+        ];
+    } else {
+      this.treatments =
+        this.nextTreatment[
+          Math.floor(Math.random() * this.nextTreatment.length)
+        ];
     }
   },
   beforeUnmount() {

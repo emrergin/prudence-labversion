@@ -18,7 +18,7 @@
   </p>
   <p class="tutorial-text">
     Aynı şekilde, B Seçeneği, kırmızı zarın 1,2 veya 3 gelmesi durumunda 3 puan
-    kazandırır. Kırmızı zar 4, 5 veya 6 gelirse, 1 puan kazandırır.
+    kazandırır. Kırmızı zar 4, 5 veya 6 gelirse, 2 puan kazandırır.
   </p>
 </template>
 
